@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using NFSScript.Core;
 using static NFSScript.Core.GameMemory;
-using Addrs = NFSScript.Core.CarbonAddresses;
+using static NFSScript.Core.CarbonAddresses;
 using static NFSScript.CarbonFunctions;
 using NFSScript.Math;
 
@@ -73,7 +73,7 @@ namespace NFSScript.Carbon
         {
             get
             {
-                return memory.ReadFloat((IntPtr)Addrs.GenericAddrs.STATIC_RUN_TIME);
+                return memory.ReadFloat((IntPtr)GenericAddrs.STATIC_RUN_TIME);
             }
         }
 
@@ -84,11 +84,11 @@ namespace NFSScript.Carbon
         {
             get
             {
-                return memory.ReadFloat((IntPtr)Addrs.GameAddrs.STATIC_GAME_SPEED);
+                return memory.ReadFloat((IntPtr)GameAddrs.STATIC_GAME_SPEED);
             }
             set
             {
-                memory.WriteFloat((IntPtr)Addrs.GameAddrs.STATIC_GAME_SPEED, value);
+                memory.WriteFloat((IntPtr)GameAddrs.STATIC_GAME_SPEED, value);
             }
         }
 
@@ -99,7 +99,7 @@ namespace NFSScript.Carbon
         {
             get
             {
-                return memory.ReadFloat((IntPtr)Addrs.GenericAddrs.STATIC_LAST_FRAME_TIME);
+                return memory.ReadFloat((IntPtr)GenericAddrs.STATIC_LAST_FRAME_TIME);
             }
         }
 
@@ -110,7 +110,7 @@ namespace NFSScript.Carbon
         {
             get
             {               
-                return memory.ReadByte((IntPtr)Addrs.GenericAddrs.STATIC_IS_GAMEPLAY_ACTIVE) == 1;
+                return memory.ReadByte((IntPtr)GenericAddrs.STATIC_IS_GAMEPLAY_ACTIVE) == 1;
             }
         }        
 
@@ -121,7 +121,7 @@ namespace NFSScript.Carbon
         {
             get
             {
-                return memory.ReadByte((IntPtr)Addrs.GameAddrs.STATIC_IS_ACTIVITY_MODE) == 1;
+                return memory.ReadByte((IntPtr)GameAddrs.STATIC_IS_ACTIVITY_MODE) == 1;
             }
         }
 
@@ -168,7 +168,7 @@ namespace NFSScript.Carbon
         {
             get
             {
-                return memory.ReadBoolean((IntPtr)Addrs.GenericAddrs.STATIC_IS_MEMCARD_VERSIONING_ENABLED);
+                return memory.ReadBoolean((IntPtr)GenericAddrs.STATIC_IS_MEMCARD_VERSIONING_ENABLED);
             }
         }
 
@@ -179,7 +179,7 @@ namespace NFSScript.Carbon
         {
             get
             {
-                return memory.ReadBoolean((IntPtr)Addrs.GenericAddrs.STATIC_IS_COLLECTORS_EDITION);
+                return memory.ReadBoolean((IntPtr)GenericAddrs.STATIC_IS_COLLECTORS_EDITION);
             }
         }
 
@@ -188,7 +188,7 @@ namespace NFSScript.Carbon
         /// </summary>
         public static void UnlockAllThings()
         {
-            memory.WriteByte((IntPtr)Addrs.GameAddrs.STATIC_UNLOCK_ALL_THINGS, 1);
+            memory.WriteByte((IntPtr)GameAddrs.STATIC_UNLOCK_ALL_THINGS, 1);
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace NFSScript.Carbon
         /// </summary>
         public static void SkipCareerIntro()
         {
-            memory.WriteByte((IntPtr)Addrs.GameAddrs.STATIC_SKIP_CAREER_INTRO, 1);
+            memory.WriteByte((IntPtr)GameAddrs.STATIC_SKIP_CAREER_INTRO, 1);
         }
 
         /// <summary>
@@ -205,7 +205,7 @@ namespace NFSScript.Carbon
         /// <param name="value"></param>
         public static void EnableRightStickInFrontend(bool value)
         {
-            memory.WriteBoolean((IntPtr)Addrs.GenericAddrs.STATIC_ENABLE_RIGHT_STICK_IN_FRONTEND, value);
+            memory.WriteBoolean((IntPtr)GenericAddrs.STATIC_ENABLE_RIGHT_STICK_IN_FRONTEND, value);
         }
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace NFSScript.Carbon
         /// <param name="value"></param>
         public static void gDebugEventStrings(bool value)
         {
-            memory.WriteBoolean((IntPtr)Addrs.GenericAddrs.STATIC_GDEBUG_EVENT_STRINGS, value);
+            memory.WriteBoolean((IntPtr)GenericAddrs.STATIC_GDEBUG_EVENT_STRINGS, value);
         }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace NFSScript.Carbon
         /// <param name="value"></param>
         public static void bRumbleEnabled(bool value)
         {
-            memory.WriteBoolean((IntPtr)Addrs.GenericAddrs.STATIC_B_RUMBLE_ENABLED, value);
+            memory.WriteBoolean((IntPtr)GenericAddrs.STATIC_B_RUMBLE_ENABLED, value);
         }
 
         /// <summary>
@@ -232,7 +232,7 @@ namespace NFSScript.Carbon
         /// <param name="value"></param>
         public static void PrecipitationEnable(bool value)
         {
-            memory.WriteBoolean((IntPtr)Addrs.GenericAddrs.STATIC_PRECIPITATION_ENABLE, value);
+            memory.WriteBoolean((IntPtr)GenericAddrs.STATIC_PRECIPITATION_ENABLE, value);
         }
 
         /// <summary>
@@ -241,7 +241,7 @@ namespace NFSScript.Carbon
         /// <param name="value"></param>
         public static void EnableDebugCarCustomize(bool value)
         {
-            memory.WriteBoolean((IntPtr)Addrs.GameAddrs.STATIC_ENABLE_DEBUG_CAR_CUSTOMIZE, value);
+            memory.WriteBoolean((IntPtr)GameAddrs.STATIC_ENABLE_DEBUG_CAR_CUSTOMIZE, value);
         }
 
         /// <summary>
@@ -249,7 +249,7 @@ namespace NFSScript.Carbon
         /// </summary>
         public static void DebugVehicleSelection()
         {
-            memory.WriteByte((IntPtr)Addrs.GameAddrs.STATIC_DEBUG_VEHICLE_SELECTION, 1);
+            memory.WriteByte((IntPtr)GameAddrs.STATIC_DEBUG_VEHICLE_SELECTION, 1);
         }
 
         /// <summary>
@@ -258,7 +258,7 @@ namespace NFSScript.Carbon
         /// <param name="value"></param>
         public static void DoScreenPrintf(bool value)
         {
-            memory.WriteBoolean((IntPtr)Addrs.GenericAddrs.STATIC_DO_SCREEN_PRINTF, value);
+            memory.WriteBoolean((IntPtr)GenericAddrs.STATIC_DO_SCREEN_PRINTF, value);
         }
 
         /// <summary>
@@ -313,7 +313,7 @@ namespace NFSScript.Carbon
         /// <param name="value"></param>
         public static void SkipMovies(bool value)
         {
-            memory.WriteBoolean((IntPtr)Addrs.GenericAddrs.STATIC_SKIP_MOVIES, value);
+            memory.WriteBoolean((IntPtr)GenericAddrs.STATIC_SKIP_MOVIES, value);
         }
 
         /// <summary>
@@ -340,8 +340,8 @@ namespace NFSScript.Carbon
         /// <param name="heat"></param>
         public static void SetWorldHeat(float heat)
         {
-            uint addr = memory.ReadUInteger((IntPtr)Addrs.PlayerAddrs.PSTATIC_PLAYER_HEAT_LEVEL);
-            memory.WriteFloat((IntPtr)addr + Addrs.PlayerAddrs.POINTER_PLAYER_HEAT_LEVEL, heat - 0.001f);
+            uint addr = memory.ReadUInteger((IntPtr)PlayerAddrs.PSTATIC_PLAYER_HEAT_LEVEL);
+            memory.WriteFloat((IntPtr)addr + PlayerAddrs.POINTER_PLAYER_HEAT_LEVEL, heat - 0.001f);
         }
 
         /// <summary>
@@ -350,8 +350,8 @@ namespace NFSScript.Carbon
         /// <returns></returns>
         public static float GetWorldHeat()
         {
-            uint addr = memory.ReadUInteger((IntPtr)Addrs.PlayerAddrs.PSTATIC_PLAYER_HEAT_LEVEL);
-            return memory.ReadFloat((IntPtr)addr + Addrs.PlayerAddrs.POINTER_PLAYER_HEAT_LEVEL);
+            uint addr = memory.ReadUInteger((IntPtr)PlayerAddrs.PSTATIC_PLAYER_HEAT_LEVEL);
+            return memory.ReadFloat((IntPtr)addr + PlayerAddrs.POINTER_PLAYER_HEAT_LEVEL);
         }
 
         /// <summary>
@@ -476,7 +476,7 @@ namespace NFSScript.Carbon
         /// <param name="enabled"></param>
         public static void SkipFE(bool enabled)
         {
-            memory.WriteBoolean((IntPtr)Addrs.GameAddrs.STATIC_SKIP_FE_ENABLED, enabled);
+            memory.WriteBoolean((IntPtr)GameAddrs.STATIC_SKIP_FE_ENABLED, enabled);
         }
 
         /// <summary>
@@ -485,7 +485,7 @@ namespace NFSScript.Carbon
         /// <returns></returns>
         public static string GetCurrentActivityID()
         {
-            return Encoding.Default.GetString(memory.ReadByteArray((IntPtr)Addrs.GameAddrs.STATIC_ACTIVITY_ID, 106).Where(b => b != 0x00).ToArray());
+            return Encoding.Default.GetString(memory.ReadByteArray((IntPtr)GameAddrs.STATIC_ACTIVITY_ID, 106).Where(b => b != 0x00).ToArray());
         }
 
         /// <summary>
@@ -496,18 +496,18 @@ namespace NFSScript.Carbon
         {
             Dictionary<string, float> dic = new Dictionary<string, float>();
 
-            dic.Add("Redlights", memory.ReadFloat((IntPtr)Addrs.GameAddrs.STATIC_GLOBAL_COP_LIGHTS_RED));
-            dic.Add("Bluelights", memory.ReadFloat((IntPtr)Addrs.GameAddrs.STATIC_GLOBAL_COP_LIGHTS_BLUE));
-            dic.Add("Whitelights", memory.ReadFloat((IntPtr)Addrs.GameAddrs.STATIC_GLOBAL_COP_LIGHTS_WHITE));
+            dic.Add("Redlights", memory.ReadFloat((IntPtr)GameAddrs.STATIC_GLOBAL_COP_LIGHTS_RED));
+            dic.Add("Bluelights", memory.ReadFloat((IntPtr)GameAddrs.STATIC_GLOBAL_COP_LIGHTS_BLUE));
+            dic.Add("Whitelights", memory.ReadFloat((IntPtr)GameAddrs.STATIC_GLOBAL_COP_LIGHTS_WHITE));
 
             return dic;
         }
 
         internal static void _setPoliceSirensIntensity(float r, float b, float w)
         {
-            memory.WriteFloat((IntPtr)Addrs.GameAddrs.STATIC_GLOBAL_COP_LIGHTS_RED, r);
-            memory.WriteFloat((IntPtr)Addrs.GameAddrs.STATIC_GLOBAL_COP_LIGHTS_BLUE, b);
-            memory.WriteFloat((IntPtr)Addrs.GameAddrs.STATIC_GLOBAL_COP_LIGHTS_WHITE, w);
+            memory.WriteFloat((IntPtr)GameAddrs.STATIC_GLOBAL_COP_LIGHTS_RED, r);
+            memory.WriteFloat((IntPtr)GameAddrs.STATIC_GLOBAL_COP_LIGHTS_BLUE, b);
+            memory.WriteFloat((IntPtr)GameAddrs.STATIC_GLOBAL_COP_LIGHTS_WHITE, w);
         }
 
         internal static void _setAudioIDValue(int id, bool value)
@@ -518,19 +518,19 @@ namespace NFSScript.Carbon
             switch (id)
             {
                 case SOUND_ID:
-                    address = (IntPtr)Addrs.GenericAddrs.STATIC_IS_SOUND_ENABLED;
+                    address = (IntPtr)GenericAddrs.STATIC_IS_SOUND_ENABLED;
                     break;
 
                 case AUDIO_STREAMING_ID:
-                    address = (IntPtr)Addrs.GenericAddrs.STATIC_IS_AUDIO_STREAMING_ENABLED;
+                    address = (IntPtr)GenericAddrs.STATIC_IS_AUDIO_STREAMING_ENABLED;
                     break;
 
                 case SPEECH_ID:
-                    address = (IntPtr)Addrs.GenericAddrs.STATIC_IS_SPEECH_ENABLED;
+                    address = (IntPtr)GenericAddrs.STATIC_IS_SPEECH_ENABLED;
                     break;
 
                 case NIS_AUDIO_ID:
-                    address = (IntPtr)Addrs.GenericAddrs.STATIC_IS_NIS_AUDIO_ENABLED;
+                    address = (IntPtr)GenericAddrs.STATIC_IS_NIS_AUDIO_ENABLED;
                     break;
 
                 default:
@@ -546,23 +546,23 @@ namespace NFSScript.Carbon
             switch (pointer)
             {
                 case DRAW_RACE_CAR_POINTER_ID:
-                    p = Addrs.GameAddrs.STATIC_CONSTRUCTOR_DRAW_RACE_CAR;
+                    p = GameAddrs.STATIC_CONSTRUCTOR_DRAW_RACE_CAR;
                     break;
 
                 case DRAW_HELI_POINTER_ID:
-                    p = Addrs.GameAddrs.STATIC_CONSTRUCTOR_DRAW_HELI;
+                    p = GameAddrs.STATIC_CONSTRUCTOR_DRAW_HELI;
                     break;
 
                 case DRAW_COP_CAR_POINTER_ID:
-                    p = Addrs.GameAddrs.STATIC_CONSTRUCTOR_DRAW_COP_CAR;
+                    p = GameAddrs.STATIC_CONSTRUCTOR_DRAW_COP_CAR;
                     break;
 
                 case DRAW_TRAFFIC_POINTER_ID:
-                    p = Addrs.GameAddrs.STATIC_CONSTRUCTOR_DRAW_TRAFFIC;
+                    p = GameAddrs.STATIC_CONSTRUCTOR_DRAW_TRAFFIC;
                     break;
 
                 case DRAW_NIS_CAR_POINTER_ID:
-                    p = Addrs.GameAddrs.STATIC_CONSTRUCTOR_DRAW_NIS_CAR;
+                    p = GameAddrs.STATIC_CONSTRUCTOR_DRAW_NIS_CAR;
                     break;
             }
 
@@ -570,23 +570,23 @@ namespace NFSScript.Carbon
             switch (id)
             {
                 case DRAW_RACE_CAR_ADDR:
-                    addr = (IntPtr)Addrs.GameAddrs.STATIC_CONSTRUCTOR_POINTER_CALL_DRAW_RACER_CAR;
+                    addr = (IntPtr)GameAddrs.STATIC_CONSTRUCTOR_POINTER_CALL_DRAW_RACER_CAR;
                     break;
 
                 case DRAW_HELI_ADDR:
-                    addr = (IntPtr)Addrs.GameAddrs.STATIC_CONSTRUCTOR_POINTER_CALL_DRAW_HELI;
+                    addr = (IntPtr)GameAddrs.STATIC_CONSTRUCTOR_POINTER_CALL_DRAW_HELI;
                     break;
 
                 case DRAW_COP_CAR_ADDR:
-                    addr = (IntPtr)Addrs.GameAddrs.STATIC_CONSTRUCTOR_POINTER_CALL_DRAW_COP_CAR;
+                    addr = (IntPtr)GameAddrs.STATIC_CONSTRUCTOR_POINTER_CALL_DRAW_COP_CAR;
                     break;
 
                 case DRAW_TRAFFIC_ADDR:
-                    addr = (IntPtr)Addrs.GameAddrs.STATIC_CONSTRUCTOR_POINTER_CALL_DRAW_TRAFFIC;
+                    addr = (IntPtr)GameAddrs.STATIC_CONSTRUCTOR_POINTER_CALL_DRAW_TRAFFIC;
                     break;
 
                 case DRAW_NIS_CAR_ADDR:
-                    addr = (IntPtr)Addrs.GameAddrs.STATIC_CONSTRUCTOR_DRAW_NIS_CAR;
+                    addr = (IntPtr)GameAddrs.STATIC_CONSTRUCTOR_DRAW_NIS_CAR;
                     break;
             }
 
@@ -599,19 +599,19 @@ namespace NFSScript.Carbon
             switch (id)
             {
                 case SOUND_ID:
-                    b = memory.ReadByte((IntPtr)Addrs.GenericAddrs.STATIC_IS_SOUND_ENABLED);
+                    b = memory.ReadByte((IntPtr)GenericAddrs.STATIC_IS_SOUND_ENABLED);
                     break;
 
                 case AUDIO_STREAMING_ID:
-                    b = memory.ReadByte((IntPtr)Addrs.GenericAddrs.STATIC_IS_AUDIO_STREAMING_ENABLED);
+                    b = memory.ReadByte((IntPtr)GenericAddrs.STATIC_IS_AUDIO_STREAMING_ENABLED);
                     break;
 
                 case SPEECH_ID:
-                    b = memory.ReadByte((IntPtr)Addrs.GenericAddrs.STATIC_IS_SPEECH_ENABLED);
+                    b = memory.ReadByte((IntPtr)GenericAddrs.STATIC_IS_SPEECH_ENABLED);
                     break;
 
                 case NIS_AUDIO_ID:
-                    b = memory.ReadByte((IntPtr)Addrs.GenericAddrs.STATIC_IS_NIS_AUDIO_ENABLED);
+                    b = memory.ReadByte((IntPtr)GenericAddrs.STATIC_IS_NIS_AUDIO_ENABLED);
                     break;
 
                 default:
@@ -632,8 +632,8 @@ namespace NFSScript.Carbon
             /// </summary>
             public static float animationSpeed
             {
-                get { return memory.ReadFloat((IntPtr)Addrs.WorldAddrs.STATIC_ANIMATION_SPEED); }
-                set { memory.WriteFloat((IntPtr)Addrs.WorldAddrs.STATIC_ANIMATION_SPEED, value); }
+                get { return memory.ReadFloat((IntPtr)WorldAddrs.STATIC_ANIMATION_SPEED); }
+                set { memory.WriteFloat((IntPtr)WorldAddrs.STATIC_ANIMATION_SPEED, value); }
             }
 
             /// <summary>
@@ -643,7 +643,7 @@ namespace NFSScript.Carbon
             {
                 get
                 {
-                    byte b = memory.ReadByte((IntPtr)Addrs.WorldAddrs.STATIC_ALWAYS_RAIN);
+                    byte b = memory.ReadByte((IntPtr)WorldAddrs.STATIC_ALWAYS_RAIN);
                     if (b == 1)
                         return true;
                     else return false;
@@ -651,8 +651,8 @@ namespace NFSScript.Carbon
                 set
                 {
                     if (value)
-                        memory.WriteByte((IntPtr)Addrs.WorldAddrs.STATIC_ALWAYS_RAIN, 1);
-                    else memory.WriteByte((IntPtr)Addrs.WorldAddrs.STATIC_ALWAYS_RAIN, 0);
+                        memory.WriteByte((IntPtr)WorldAddrs.STATIC_ALWAYS_RAIN, 1);
+                    else memory.WriteByte((IntPtr)WorldAddrs.STATIC_ALWAYS_RAIN, 0);
                 }
             }
 
@@ -663,17 +663,17 @@ namespace NFSScript.Carbon
             {
                 get
                 {
-                    float x = memory.ReadFloat((IntPtr)Addrs.WorldAddrs.STATIC_GLOBAL_CAR_SCALE_X);
-                    float y = memory.ReadFloat((IntPtr)Addrs.WorldAddrs.STATIC_GLOBAL_CAR_SCALE_Y);
-                    float z = memory.ReadFloat((IntPtr)Addrs.WorldAddrs.STATIC_GLOBAL_CAR_SCALE_Z);
+                    float x = memory.ReadFloat((IntPtr)WorldAddrs.STATIC_GLOBAL_CAR_SCALE_X);
+                    float y = memory.ReadFloat((IntPtr)WorldAddrs.STATIC_GLOBAL_CAR_SCALE_Y);
+                    float z = memory.ReadFloat((IntPtr)WorldAddrs.STATIC_GLOBAL_CAR_SCALE_Z);
 
                     return new Vector3(x, y, z);
                 }
                 set
                 {
-                    memory.WriteFloat((IntPtr)Addrs.WorldAddrs.STATIC_GLOBAL_CAR_SCALE_X, value.x);
-                    memory.WriteFloat((IntPtr)Addrs.WorldAddrs.STATIC_GLOBAL_CAR_SCALE_Y, value.y);
-                    memory.WriteFloat((IntPtr)Addrs.WorldAddrs.STATIC_GLOBAL_CAR_SCALE_Z, value.z);
+                    memory.WriteFloat((IntPtr)WorldAddrs.STATIC_GLOBAL_CAR_SCALE_X, value.x);
+                    memory.WriteFloat((IntPtr)WorldAddrs.STATIC_GLOBAL_CAR_SCALE_Y, value.y);
+                    memory.WriteFloat((IntPtr)WorldAddrs.STATIC_GLOBAL_CAR_SCALE_Z, value.z);
                 }
             }
 
@@ -682,7 +682,7 @@ namespace NFSScript.Carbon
             /// </summary>
             public static void EnableFog()
             {
-                memory.WriteByte((IntPtr)Addrs.WorldAddrs.STATIC_FOG, 1);
+                memory.WriteByte((IntPtr)WorldAddrs.STATIC_FOG, 1);
             }
 
             /// <summary>
@@ -690,7 +690,7 @@ namespace NFSScript.Carbon
             /// </summary>
             public static void DisableFog()
             {
-                memory.WriteByte((IntPtr)Addrs.WorldAddrs.STATIC_FOG, 0);
+                memory.WriteByte((IntPtr)WorldAddrs.STATIC_FOG, 0);
             }
 
             /// <summary>
@@ -700,7 +700,7 @@ namespace NFSScript.Carbon
             {
                 get
                 {
-                    byte b = memory.ReadByte((IntPtr)Addrs.WorldAddrs.STATIC_RAIN_ROAD_REFLECTION);
+                    byte b = memory.ReadByte((IntPtr)WorldAddrs.STATIC_RAIN_ROAD_REFLECTION);
                     if (b == 1)
                         return true;
                     else return false;
@@ -708,8 +708,8 @@ namespace NFSScript.Carbon
                 set
                 {
                     if (value)
-                        memory.WriteByte((IntPtr)Addrs.WorldAddrs.STATIC_RAIN_ROAD_REFLECTION, 1);
-                    else memory.WriteByte((IntPtr)Addrs.WorldAddrs.STATIC_RAIN_ROAD_REFLECTION, 0);
+                        memory.WriteByte((IntPtr)WorldAddrs.STATIC_RAIN_ROAD_REFLECTION, 1);
+                    else memory.WriteByte((IntPtr)WorldAddrs.STATIC_RAIN_ROAD_REFLECTION, 0);
                 }
             }
 
@@ -722,7 +722,7 @@ namespace NFSScript.Carbon
                 byte b = 0;
                 if(value) b = 1;
 
-                memory.WriteByte((IntPtr)Addrs.WorldAddrs.STATIC_TIME_OF_DAY_SWAP_ENABLE, b);
+                memory.WriteByte((IntPtr)WorldAddrs.STATIC_TIME_OF_DAY_SWAP_ENABLE, b);
             }
 
             /// <summary>
@@ -735,11 +735,11 @@ namespace NFSScript.Carbon
             /// <param name="gravity"></param>
             public static void SetRainProperties(float rainSize, float intensity, float crossing, float fallSpeed, float gravity)
             {
-                memory.WriteFloat((IntPtr)Addrs.WorldAddrs.STATIC_RAIN_SIZE, rainSize);
-                memory.WriteFloat((IntPtr)Addrs.WorldAddrs.STATIC_RAIN_INTENSITY, intensity);
-                memory.WriteFloat((IntPtr)Addrs.WorldAddrs.STATIC_RAIN_XING, crossing);
-                memory.WriteFloat((IntPtr)Addrs.WorldAddrs.STATIC_RAIN_FALL_SPEED, fallSpeed);
-                memory.WriteFloat((IntPtr)Addrs.WorldAddrs.STATIC_RAIN_GRAVITY, gravity);
+                memory.WriteFloat((IntPtr)WorldAddrs.STATIC_RAIN_SIZE, rainSize);
+                memory.WriteFloat((IntPtr)WorldAddrs.STATIC_RAIN_INTENSITY, intensity);
+                memory.WriteFloat((IntPtr)WorldAddrs.STATIC_RAIN_XING, crossing);
+                memory.WriteFloat((IntPtr)WorldAddrs.STATIC_RAIN_FALL_SPEED, fallSpeed);
+                memory.WriteFloat((IntPtr)WorldAddrs.STATIC_RAIN_GRAVITY, gravity);
             }
 
             /// <summary>
@@ -750,11 +750,11 @@ namespace NFSScript.Carbon
             {
                 Dictionary<string, float> dic = new Dictionary<string, float>();
 
-                dic.Add("RainSize", memory.ReadFloat((IntPtr)Addrs.WorldAddrs.STATIC_RAIN_SIZE));
-                dic.Add("Intensity", memory.ReadFloat((IntPtr)Addrs.WorldAddrs.STATIC_RAIN_INTENSITY));
-                dic.Add("Crossing", memory.ReadFloat((IntPtr)Addrs.WorldAddrs.STATIC_RAIN_XING));
-                dic.Add("FallSpeed", memory.ReadFloat((IntPtr)Addrs.WorldAddrs.STATIC_RAIN_FALL_SPEED));
-                dic.Add("Gravity", memory.ReadFloat((IntPtr)Addrs.WorldAddrs.STATIC_RAIN_GRAVITY));
+                dic.Add("RainSize", memory.ReadFloat((IntPtr)WorldAddrs.STATIC_RAIN_SIZE));
+                dic.Add("Intensity", memory.ReadFloat((IntPtr)WorldAddrs.STATIC_RAIN_INTENSITY));
+                dic.Add("Crossing", memory.ReadFloat((IntPtr)WorldAddrs.STATIC_RAIN_XING));
+                dic.Add("FallSpeed", memory.ReadFloat((IntPtr)WorldAddrs.STATIC_RAIN_FALL_SPEED));
+                dic.Add("Gravity", memory.ReadFloat((IntPtr)WorldAddrs.STATIC_RAIN_GRAVITY));
 
                 return dic;
             }
@@ -772,11 +772,11 @@ namespace NFSScript.Carbon
             {
                 get
                 {
-                    return memory.ReadByte((IntPtr)Addrs.RaceAddrs.STATIC_MAX_DRIFT_MULTIPLIER_TRACK);
+                    return memory.ReadByte((IntPtr)RaceAddrs.STATIC_MAX_DRIFT_MULTIPLIER_TRACK);
                 }
                 set
                 {
-                    memory.WriteByte((IntPtr)Addrs.RaceAddrs.STATIC_MAX_DRIFT_MULTIPLIER_TRACK, value);
+                    memory.WriteByte((IntPtr)RaceAddrs.STATIC_MAX_DRIFT_MULTIPLIER_TRACK, value);
                 }
             }
 
@@ -787,12 +787,12 @@ namespace NFSScript.Carbon
             {
                 get
                 {
-                    return memory.ReadByte((IntPtr)Addrs.RaceAddrs.STATIC_MAX_DRIFT_MULTIPLIER_CANYON);
+                    return memory.ReadByte((IntPtr)RaceAddrs.STATIC_MAX_DRIFT_MULTIPLIER_CANYON);
                 }
                 set
                 {
-                    memory.WriteByte((IntPtr)Addrs.RaceAddrs.STATIC_MAX_DRIFT_MULTIPLIER_CANYON, value);
-                    memory.WriteByte((IntPtr)Addrs.RaceAddrs.STATIC_MAX_DRIFT_MULTIPLIER_CANYON2, value);
+                    memory.WriteByte((IntPtr)RaceAddrs.STATIC_MAX_DRIFT_MULTIPLIER_CANYON, value);
+                    memory.WriteByte((IntPtr)RaceAddrs.STATIC_MAX_DRIFT_MULTIPLIER_CANYON2, value);
                 }
             }
 
@@ -804,19 +804,19 @@ namespace NFSScript.Carbon
             {
                 if (enabled)
                 {
-                    memory.WriteUInteger((IntPtr)Addrs.RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_1, 0x90900134);
-                    memory.WriteInteger((IntPtr)Addrs.RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_2, 0x13EBC084);
-                    memory.WriteUInteger((IntPtr)Addrs.RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_3, 0x9001347F);
-                    memory.WriteUInteger((IntPtr)Addrs.RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_4, 0x90909090);
-                    memory.WriteUInteger((IntPtr)Addrs.RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_5, 0xC8878A90);
+                    memory.WriteUInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_1, 0x90900134);
+                    memory.WriteInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_2, 0x13EBC084);
+                    memory.WriteUInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_3, 0x9001347F);
+                    memory.WriteUInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_4, 0x90909090);
+                    memory.WriteUInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_5, 0xC8878A90);
                 }
                 else if (!enabled)
                 {
-                    memory.WriteInteger((IntPtr)Addrs.RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_1, 0x40750134);
-                    memory.WriteInteger((IntPtr)Addrs.RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_2, 0x1374C084);
-                    memory.WriteInteger((IntPtr)Addrs.RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_3, 0xF01347F);
-                    memory.WriteInteger((IntPtr)Addrs.RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_4, 0x24BB5);
-                    memory.WriteUInteger((IntPtr)Addrs.RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_5, 0xC8878A00);
+                    memory.WriteInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_1, 0x40750134);
+                    memory.WriteInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_2, 0x1374C084);
+                    memory.WriteInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_3, 0xF01347F);
+                    memory.WriteInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_4, 0x24BB5);
+                    memory.WriteUInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_5, 0xC8878A00);
                 }
             }
         }
@@ -830,7 +830,7 @@ namespace NFSScript.Carbon
         /// <summary>
         /// The address where the main GameFlowManager is located at.
         /// </summary>
-        public static IntPtr address { get { return (IntPtr)Addrs.GenericAddrs.STATIC_GAME_STATE; } }
+        public static IntPtr address { get { return (IntPtr)GenericAddrs.STATIC_GAME_STATE; } }
 
         private int gameStateValue;
 

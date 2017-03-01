@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using NFSScript.Core;
 
 namespace NFSScript
 {
@@ -14,6 +15,22 @@ namespace NFSScript
         /// 
         /// </summary>
         public static NFSGame currentLoadedNFSGame;
+
+        /// <summary>
+        /// The directory of the script loader (NFSScriptLoader.exe).
+        /// </summary>
+        public static string Directory { get { return AppDomain.CurrentDomain.BaseDirectory; } }
+    }
+
+    /// <summary>
+    /// The class that represents the current game.
+    /// </summary>
+    public static class CurrentGame
+    {
+        /// <summary>
+        /// Returns whether the game is minimized or not.
+        /// </summary>
+        public static bool IsMinimized { get { return NativeMethods.IsIconic(GameMemory.memory.GetMainProcess().MainWindowHandle); } }
     }
 
     /// <summary>
@@ -50,8 +67,12 @@ namespace NFSScript
         /// </summary>
         Undercover = 6,
         /// <summary>
+        /// The game Need for Speed: World.
+        /// </summary>
+        World = 7,
+        /// <summary>
         /// Undetermined game.
         /// </summary>
-        Undetermined = 7
+        Undetermined = 255
     }
 }

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using NFSScript.Core;
 using static NFSScript.Core.GameMemory;
-using Addrs = NFSScript.Core.CarbonAddresses;
-using Funcs = NFSScript.CarbonFunctions;
+using static NFSScript.Core.CarbonAddresses;
+using static NFSScript.CarbonFunctions;
 using NFSScript.Math;
 
 namespace NFSScript.Carbon
@@ -76,7 +76,7 @@ namespace NFSScript.Carbon
         /// </summary>
         public void Activate()
         {
-            Function.Call(Funcs.CAMERA_AI__SET_ACTION, CDActionDebug, 1);
+            Function.Call(CAMERA_AI__SET_ACTION, CDActionDebug, 1);
         }
 
         /// <summary>
@@ -84,23 +84,23 @@ namespace NFSScript.Carbon
         /// </summary>
         public void Deactivate()
         {
-            Function.Call(Funcs.CAMERA_AI__SET_ACTION, CDActionDrive, 1);
+            Function.Call(CAMERA_AI__SET_ACTION, CDActionDrive, 1);
         }
 
         internal Vector3 _readPos()
         {
-            float x = memory.ReadFloat((IntPtr)Addrs.CameraAddrs.STATIC_DEBUG_CAMERA_POS_X);
-            float y = memory.ReadFloat((IntPtr)Addrs.CameraAddrs.STATIC_DEBUG_CAMERA_POS_Y);
-            float z = memory.ReadFloat((IntPtr)Addrs.CameraAddrs.STATIC_DEBUG_CAMERA_POS_Z);
+            float x = memory.ReadFloat((IntPtr)CameraAddrs.STATIC_DEBUG_CAMERA_POS_X);
+            float y = memory.ReadFloat((IntPtr)CameraAddrs.STATIC_DEBUG_CAMERA_POS_Y);
+            float z = memory.ReadFloat((IntPtr)CameraAddrs.STATIC_DEBUG_CAMERA_POS_Z);
 
             return new Vector3(x, y, z);
         }
 
         internal void _setPos(float x, float y, float z)
         {
-            memory.WriteFloat((IntPtr)Addrs.CameraAddrs.STATIC_DEBUG_CAMERA_POS_X, x);
-            memory.WriteFloat((IntPtr)Addrs.CameraAddrs.STATIC_DEBUG_CAMERA_POS_Y, y);
-            memory.WriteFloat((IntPtr)Addrs.CameraAddrs.STATIC_DEBUG_CAMERA_POS_Z, z);
+            memory.WriteFloat((IntPtr)CameraAddrs.STATIC_DEBUG_CAMERA_POS_X, x);
+            memory.WriteFloat((IntPtr)CameraAddrs.STATIC_DEBUG_CAMERA_POS_Y, y);
+            memory.WriteFloat((IntPtr)CameraAddrs.STATIC_DEBUG_CAMERA_POS_Z, z);
         }
 
         /* //Not for this class atm..

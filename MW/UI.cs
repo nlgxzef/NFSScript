@@ -2,8 +2,8 @@
 using System.Text;
 using NFSScript.Core;
 using static NFSScript.Core.GameMemory;
-using Addrs = NFSScript.Core.MWAddresses;
-using Funcs = NFSScript.MWFunctions;
+using static NFSScript.Core.MWAddresses;
+using static NFSScript.MWFunctions;
 using NFSScript.Math;
 
 
@@ -31,8 +31,8 @@ namespace NFSScript.MW
         {
             get
             {
-                ushort x = memory.ReadUShort((IntPtr)Addrs.UIAddrs.STATIC_CURSOR_POS_X);
-                ushort y = memory.ReadUShort((IntPtr)Addrs.UIAddrs.STATIC_CURSOR_POS_Y);
+                ushort x = memory.ReadUShort((IntPtr)UIAddrs.STATIC_CURSOR_POS_X);
+                ushort y = memory.ReadUShort((IntPtr)UIAddrs.STATIC_CURSOR_POS_Y);
 
                 return new Point(x, y);
             }
@@ -43,7 +43,7 @@ namespace NFSScript.MW
         /// </summary>
         public static void CallEATraxNotification()
         {
-            memory.WriteByte((IntPtr)Addrs.UIAddrs.STATIC_TRIGGER_EA_TRAX_NOTIFICATION, 1);
+            memory.WriteByte((IntPtr)UIAddrs.STATIC_TRIGGER_EA_TRAX_NOTIFICATION, 1);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace NFSScript.MW
         /// </summary>
         public static void CallGPSLost()
         {
-            Function.Call(Funcs.GPS_LOST);
+            Function.Call(GPS_LOST);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace NFSScript.MW
         public static void ShowRaceCountdown()
         {
             //ASM.CallAssembly(Funcs.E_SHOW_RACE_COUNTDOWN);
-            Function.Call(Funcs.UI_SHOW_RACE_COUTNDOWN);
+            Function.Call(UI_SHOW_RACE_COUTNDOWN);
         }
 
         /// <summary>
@@ -75,15 +75,15 @@ namespace NFSScript.MW
             switch (id)
             {
                 case DIALOG_INFO:
-                    ar = Funcs.DIALOG_BOX_SHOW_INFO;
+                    ar = DIALOG_BOX_SHOW_INFO;
                     break;
 
                 case DIALOG_WARNING:
-                    ar = Funcs.DIALOG_BOX_SHOW_WARNING;
+                    ar = DIALOG_BOX_SHOW_WARNING;
                     break;
 
                 default:
-                    ar = Funcs.DIALOG_BOX_SHOW_INFO;
+                    ar = DIALOG_BOX_SHOW_INFO;
                     break;
             }
 
@@ -97,13 +97,13 @@ namespace NFSScript.MW
         public static void ShowTextScreenMessage(string message)
         {
             _setDebugErrorString(message);
-            Function.Call(Funcs.SHOW_SCREEN_MESSAGE);
+            Function.Call(SHOW_SCREEN_MESSAGE);
         }
 
         private const int STRING_MAX_LENGTH = 128;
         internal static void _setHelloWorldString(string s)
         {
-            IntPtr address = (IntPtr)Addrs.UIAddrs.STATIC_STRING_HELLO_WORLD_ADDRESS;
+            IntPtr address = (IntPtr)UIAddrs.STATIC_STRING_HELLO_WORLD_ADDRESS;
             ASM.Abolish(address, STRING_MAX_LENGTH);
             string newString = s;
             if (newString.Length > STRING_MAX_LENGTH)
@@ -114,7 +114,7 @@ namespace NFSScript.MW
         private const int DEBUG_ERROR_STRING_MAX_LENGTH = 64;
         internal static void _setDebugErrorString(string s)
         {
-            IntPtr address = (IntPtr)Addrs.UIAddrs.STATIC_DEBUG_ERROR_MSG_ADDRESS;
+            IntPtr address = (IntPtr)UIAddrs.STATIC_DEBUG_ERROR_MSG_ADDRESS;
             ASM.Abolish(address, DEBUG_ERROR_STRING_MAX_LENGTH);
             string newString = s;
             if (newString.Length > DEBUG_ERROR_STRING_MAX_LENGTH)

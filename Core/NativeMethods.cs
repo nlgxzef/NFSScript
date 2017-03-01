@@ -28,6 +28,10 @@ namespace NFSScript.Core
         [DllImport("kernel32.dll")]
         internal static extern int VirtualQueryEx(IntPtr hProcess, IntPtr lpAddress, out MEMORY_BASIC_INFORMATION lpBuffer, int dwLength);
 
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool IsIconic(IntPtr hWnd);
+
         #region Definitions
         internal const int MEM_COMMIT = 0x1000;
         internal const int PAGE_GUARD = 0x100;

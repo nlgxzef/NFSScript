@@ -2628,4 +2628,135 @@
             public const int STATIC_UI_VIDEO_CONTENT_ITEM_3 = 0x2069CBEF;
         }
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public static class WorldAddresses
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public struct GenericAddrs
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_GAME_STATE = 0x131C730;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_IS_GAME_LOADED = 0x132433D;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_IS_GAMEPLAY_ACTIVE = 0x12AE840;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_LAST_FRAME_TIME = 0x130CDD8;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public struct GameAddrs
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_IS_FREE_ROAM = 0x130CD94;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_IS_ACTIVITY_MODE = 0x1331F11;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_MASTER_VOLUME = 0x1324D98;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_SPEECH_VOLUME = 0x01324D84;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_SOUND_EFFECTS_VOLUME = 0x01324D7C;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_CAR_VOLUME = 0x01324D80;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_FREE_ROAM_MUSIC_VOLUME = 0x1324D8C;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_EVENT_MUSIC_VOLUME = 0x01324D90;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public struct PlayerAddrs
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_PLAYER_CASH = 0x1305C70;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_PLAYER_BOOST = 0x13038A8;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int NONSTATIC_PLAYER_SPEED = 0x008A1018;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int PSTATIC_PLAYER_SPEED = 0x108;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int NONSTATIC_GEMS_COLLECTED = 0x009119EC;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int PSTATIC_GEMS_COLLECTED_1 = 0xC, PSTATIC_GEMS_COLLECTED_2 = 0x4, PSTATIC_GEMS_COLLECTED_3 = 0x10,
+                PSTATIC_GEMS_COLLECTED_4 = 0x0, PSTATIC_GEMS_COLLECTED_5 = 0x58;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public struct UIAddrs
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_CURSOR_POS_X = 0x13E2C48;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_CURSOR_POS_Y = 0x13E2C4C;
+        }
+    }
 }
