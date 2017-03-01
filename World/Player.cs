@@ -20,7 +20,7 @@ namespace NFSScript.World
         {
             get
             {
-                return memory.ReadByte((IntPtr)GameAddrs.STATIC_IS_FREE_ROAM) == 1;
+                return memory.ReadByte((IntPtr)memory.getBaseAddress + GameAddrs.NON_STATIC_IS_FREE_ROAM) == 1;
             }
         }
 
@@ -31,7 +31,7 @@ namespace NFSScript.World
         {
             get
             {
-                return memory.ReadInt32((IntPtr)PlayerAddrs.STATIC_PLAYER_CASH);
+                return memory.ReadInt32((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_CASH);
             }
         }
 
@@ -42,7 +42,7 @@ namespace NFSScript.World
         {
             get
             {
-                return memory.ReadInt32((IntPtr)PlayerAddrs.STATIC_PLAYER_BOOST);
+                return memory.ReadInt32((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_BOOST);
             }
         }
 

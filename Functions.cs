@@ -5809,6 +5809,17 @@ namespace NFSScript
     }
 
     /// <summary>
+    /// A class for World functions.
+    /// </summary>
+    public static class WorldFunctions
+    {
+        /// <summary>
+        /// It wouldn't be an NFS game without the good old camera shake function.
+        /// </summary>
+        public const int BASE_CAMERA_SHAKE = 0x00753F50;
+    }
+
+    /// <summary>
     /// A class for functions related functions.
     /// </summary>
     public static class Function
@@ -5819,7 +5830,7 @@ namespace NFSScript
         /// </summary>
         /// <param name="address">The address to call.</param>
         /// <param name="o">The parameters to pass to the function.</param>
-        public static void Call(int address, params object[] o)
+        public static void Call(uint address, params object[] o)
         {
             Call(address, true, o);
         }
@@ -5830,7 +5841,7 @@ namespace NFSScript
         /// <param name="address">The address to call.</param>
         /// <param name="o">The parameters to pass to the function.</param>
         /// <param name="align">Whether to align the stack or not.</param>
-        public static void Call(int address, bool align, params object[] o)
+        public static void Call(uint address, bool align, params object[] o)
         {
             ASMBuilder function = new ASMBuilder();
 

@@ -110,6 +110,7 @@
     <Compile Include="Underground\Player.cs" />
     <Compile Include="Underground\UI.cs" />
     <Compile Include="World\Game.cs" />
+    <Compile Include="World\MemoryBase.cs" />
     <Compile Include="World\Player.cs" />
     <Compile Include="World\UI.cs" />
   </ItemGroup>

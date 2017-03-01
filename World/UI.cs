@@ -19,8 +19,8 @@ namespace NFSScript.World
         {
             get
             {
-                ushort x = memory.ReadUShort((IntPtr)UIAddrs.STATIC_CURSOR_POS_X);
-                ushort y = memory.ReadUShort((IntPtr)UIAddrs.STATIC_CURSOR_POS_Y);
+                ushort x = memory.ReadUShort((IntPtr)memory.getBaseAddress + UIAddrs.NON_STATIC_CURSOR_POS_X);
+                ushort y = memory.ReadUShort((IntPtr)memory.getBaseAddress + UIAddrs.NON_STATIC_CURSOR_POS_Y);
 
                 return new Point(x, y);
             }

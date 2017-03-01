@@ -2642,22 +2642,22 @@
             /// <summary>
             /// 
             /// </summary>
-            public const int STATIC_GAME_STATE = 0x131C730;
+            public const int NON_STATIC_GAME_STATE = 0x8FC730; // no need for 0xA20000
 
             /// <summary>
             /// 
             /// </summary>
-            public const int STATIC_IS_GAME_LOADED = 0x132433D;
+            public const int NON_STATIC_IS_GAME_LOADED = 0x889D5C; // no need for 0xA20000
 
             /// <summary>
             /// 
             /// </summary>
-            public const int STATIC_IS_GAMEPLAY_ACTIVE = 0x12AE840;
+            public const int NON_STATIC_IS_GAMEPLAY_ACTIVE = 0x12AE840 - 0xA20000;
 
             /// <summary>
             /// 
             /// </summary>
-            public const int STATIC_LAST_FRAME_TIME = 0x130CDD8;
+            public const int STATIC_LAST_FRAME_TIME = 0x130CDD8 - 0xA20000;
         }
 
         /// <summary>
@@ -2668,42 +2668,42 @@
             /// <summary>
             /// 
             /// </summary>
-            public const int STATIC_IS_FREE_ROAM = 0x130CD94;
+            public const int NON_STATIC_IS_FREE_ROAM = 0x130CD94 - 0xA20000;
 
             /// <summary>
             /// 
             /// </summary>
-            public const int STATIC_IS_ACTIVITY_MODE = 0x1331F11;
+            public const int NON_STATIC_IS_ACTIVITY_MODE = 0x1331F11 - 0xA20000;
 
             /// <summary>
             /// 
             /// </summary>
-            public const int STATIC_MASTER_VOLUME = 0x1324D98;
+            public const int NON_STATIC_MASTER_VOLUME = 0x1324D98 - 0xA20000;
 
             /// <summary>
             /// 
             /// </summary>
-            public const int STATIC_SPEECH_VOLUME = 0x01324D84;
+            public const int NON_STATIC_SPEECH_VOLUME = 0x01324D84 - 0xA20000;
 
             /// <summary>
             /// 
             /// </summary>
-            public const int STATIC_SOUND_EFFECTS_VOLUME = 0x01324D7C;
+            public const int NON_STATIC_SOUND_EFFECTS_VOLUME = 0x01324D7C - 0xA20000;
 
             /// <summary>
             /// 
             /// </summary>
-            public const int STATIC_CAR_VOLUME = 0x01324D80;
+            public const int NON_STATIC_CAR_VOLUME = 0x01324D80 - 0xA20000;
 
             /// <summary>
             /// 
             /// </summary>
-            public const int STATIC_FREE_ROAM_MUSIC_VOLUME = 0x1324D8C;
+            public const int NON_STATIC_FREE_ROAM_MUSIC_VOLUME = 0x1324D8C - 0xA20000;
 
             /// <summary>
             /// 
             /// </summary>
-            public const int STATIC_EVENT_MUSIC_VOLUME = 0x01324D90;
+            public const int STATIC_EVENT_MUSIC_VOLUME = 0x01324D90 - 0xA20000;
         }
 
         /// <summary>
@@ -2714,12 +2714,12 @@
             /// <summary>
             /// 
             /// </summary>
-            public const int STATIC_PLAYER_CASH = 0x1305C70;
+            public const int NON_STATIC_PLAYER_CASH = 0x1305C70 - 0xA20000;
 
             /// <summary>
             /// 
             /// </summary>
-            public const int STATIC_PLAYER_BOOST = 0x13038A8;
+            public const int NON_STATIC_PLAYER_BOOST = 0x13038A8 - 0xA20000;
 
             /// <summary>
             /// 
@@ -2751,12 +2751,12 @@
             /// <summary>
             /// 
             /// </summary>
-            public const int STATIC_CURSOR_POS_X = 0x13E2C48;
+            public const int NON_STATIC_CURSOR_POS_X = 0x13E2C48 - 0xA20000;
 
             /// <summary>
             /// 
             /// </summary>
-            public const int STATIC_CURSOR_POS_Y = 0x13E2C4C;
+            public const int NON_STATIC_CURSOR_POS_Y = 0x13E2C4C - 0xA20000;
         }
     }
 }

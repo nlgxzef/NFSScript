@@ -189,7 +189,7 @@ namespace NFSScript.Core
         /// Move a value to the EAX registry
         /// </summary>
         /// <param name="value"></param>
-        public void MovEAX(int value)
+        public void MovEAX(uint value)
         {
             b.Add(0xb8);
             b.AddRange(BitConverter.GetBytes(value));
