@@ -2657,7 +2657,7 @@
             /// <summary>
             /// 
             /// </summary>
-            public const int STATIC_LAST_FRAME_TIME = 0x130CDD8 - 0xA20000;
+            public const int NON_STATIC_LAST_FRAME_TIME = 0x130CDD8 - 0xA20000;
         }
 
         /// <summary>
@@ -2703,7 +2703,7 @@
             /// <summary>
             /// 
             /// </summary>
-            public const int STATIC_EVENT_MUSIC_VOLUME = 0x01324D90 - 0xA20000;
+            public const int NON_STATIC_EVENT_MUSIC_VOLUME = 0x01324D90 - 0xA20000;
         }
 
         /// <summary>

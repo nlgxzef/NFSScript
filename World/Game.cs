@@ -23,7 +23,7 @@ namespace NFSScript.World
         {
             get
             {
-                return memory.ReadFloat((IntPtr)memory.getBaseAddress + GenericAddrs.STATIC_LAST_FRAME_TIME);
+                return memory.ReadFloat((IntPtr)memory.getBaseAddress + GenericAddrs.NON_STATIC_LAST_FRAME_TIME);
             }
         }
 
@@ -88,8 +88,8 @@ namespace NFSScript.World
         /// </summary>
         public static float eventMusicVolume
         {
-            get { return memory.ReadFloat((IntPtr)memory.getBaseAddress + GameAddrs.STATIC_EVENT_MUSIC_VOLUME); }
-            set { memory.WriteFloat((IntPtr)memory.getBaseAddress + GameAddrs.STATIC_EVENT_MUSIC_VOLUME, value); }
+            get { return memory.ReadFloat((IntPtr)memory.getBaseAddress + GameAddrs.NON_STATIC_EVENT_MUSIC_VOLUME); }
+            set { memory.WriteFloat((IntPtr)memory.getBaseAddress + GameAddrs.NON_STATIC_EVENT_MUSIC_VOLUME, value); }
         }
 
         /// <summary>
