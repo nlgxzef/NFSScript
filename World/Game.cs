@@ -109,7 +109,7 @@ namespace NFSScript.World
         /// <summary>
         /// The address where the main GameFlowManager is located at.
         /// </summary>
-        public static IntPtr address { get { return (IntPtr)GenericAddrs.NON_STATIC_GAME_STATE; } }
+        public static IntPtr address { get { return (IntPtr)memory.getBaseAddress + GenericAddrs.NON_STATIC_GAME_STATE; } }
 
         private int gameStateValue;
 
