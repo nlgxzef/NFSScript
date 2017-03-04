@@ -109,9 +109,14 @@
     <Compile Include="Underground\Network.cs" />
     <Compile Include="Underground\Player.cs" />
     <Compile Include="Underground\UI.cs" />
+    <Compile Include="World\EASharpBindings.cs" />
+    <Compile Include="World\EffectType.cs" />
     <Compile Include="World\Game.cs" />
+    <Compile Include="World\HUD.cs" />
     <Compile Include="World\MemoryBase.cs" />
+    <Compile Include="World\Net.cs" />
     <Compile Include="World\Player.cs" />
+    <Compile Include="World\Render.cs" />
     <Compile Include="World\UI.cs" />
   </ItemGroup>
   <ItemGroup>

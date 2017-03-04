@@ -414,6 +414,11 @@
             /// 
             /// </summary>
             public const int STATIC_IS_PLAYER_ACTIVE = 0x905820;
+            
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_IS_ACTIVITY_MODE = 0x91372A;
 
             /// <summary>
             /// 

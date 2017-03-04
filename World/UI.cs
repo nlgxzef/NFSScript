@@ -8,7 +8,7 @@ using NFSScript.Math;
 namespace NFSScript.World
 {
     /// <summary>
-    /// A struct that represents the game's UI.
+    /// A class that represents the game's UI.
     /// </summary>
     public static class UI
     {
