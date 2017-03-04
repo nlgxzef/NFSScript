@@ -16,7 +16,7 @@ namespace NFSScript.World
     /// A class that represents the main game manager.
     /// </summary>
     public static class Game
-    {        
+    {
         /// <summary>
         /// Returns the amount of seconds it takes to render a frame.
         /// </summary>
@@ -121,7 +121,7 @@ namespace NFSScript.World
             /// <param name="pMixTriggerString"></param>
             /// <param name="value"></param>
             public static unsafe void SendMixTrigger(string pMixTriggerString, int value)
-            {               
+            {
                 CallBinding(_EASharpBinding_17, pMixTriggerString, value);
             }
         }
@@ -153,7 +153,7 @@ namespace NFSScript.World
             }
 
             /// <summary>
-            /// 
+            /// Changes camera configuration.
             /// </summary>
             /// <param name="cameraName"></param>
             public static unsafe void Set(string cameraName)
@@ -220,6 +220,14 @@ namespace NFSScript.World
             }
 
             /// <summary>
+            /// Spawns rhinos.
+            /// </summary>
+            public static void CreateRhinos(float distanceFromPlayer, uint numOfRhinos)
+            {
+                CallBinding(_EASharpBinding_47, distanceFromPlayer, numOfRhinos);
+            }
+
+            /// <summary>
             /// 
             /// </summary>
             /// <param name="vehicleKey"></param>
@@ -236,6 +244,73 @@ namespace NFSScript.World
             public static void EnablePursuitSynchronization(bool enable)
             {
                 CallBinding(_EASharpBinding_49, enable);
+            }
+        }
+
+        /// <summary>
+        /// Game's powerups class.
+        /// </summary>
+        public static class Powerups
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public enum PowerupConfiguration
+            {
+                PowerupConfigFreeRoam,
+                PowerupConfigCircuit,
+                PowerupConfigSprint,
+                PowerupConfigPursuit,
+                PowerupConfigMultiplayerPursuit
+            }
+
+            /// <summary>
+            /// Changes the current powerup configuration/deck.
+            /// </summary>
+            public static void AssignPowerupConfiguration(PowerupConfiguration powerupConfiguration)
+            {
+                CallBinding(_EASharpBinding_637, (int)powerupConfiguration);
+            }
+
+            /// <summary>
+            /// Instantly refreshes all powerups.
+            /// </summary>
+            public static void RechargeAllPowerups()
+            {
+                CallBinding(_EASharpBinding_638);
+            }
+        }
+
+        /// <summary>
+        /// Game's traffic class.
+        /// </summary>
+        public static class Traffic
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="density"></param>
+            public static void SetTrafficDensity(int density)
+            {
+                CallBinding(_EASharpBinding_490, density);
+            }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public static void FlushAllTraffic()
+            {
+                CallBinding(_EASharpBinding_491);
+            }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="vehicleKey"></param>
+            /// <param name="numOfVehicles"></param>
+            public static void PrimeTrafficVehicleCache(uint vehicleKey, int numOfVehicles)
+            {
+                CallBinding(_EASharpBinding_493, vehicleKey, numOfVehicles);
             }
         }
 
