@@ -21,6 +21,17 @@ namespace NFSScript.World
         }
 
         /// <summary>
+        /// Same as Function.Call only that the executable base math is done for you.
+        /// </summary>
+        /// <param name="binding"></param>
+        /// <param name="o"></param>
+        /// <returns></returns>
+        public static object CallBinding<T>(uint binding, params object[] o)
+        {
+            return Function.Call<T>(binding + MemoryBase.FunctionBase, true, o);
+        }
+
+        /// <summary>
         ///
         /// </summary>
         public const int _EASharpBinding_0 = 0x6A37F0;

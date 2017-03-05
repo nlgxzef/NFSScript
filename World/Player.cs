@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using NFSScript.Core;
 using static NFSScript.Core.GameMemory;
 using static NFSScript.Core.WorldAddresses;
+using static NFSScript.World.EASharpBindings;
 using NFSScript.Math;
-
 
 namespace NFSScript.World
 {
@@ -78,6 +78,29 @@ namespace NFSScript.World
                 address = memory.ReadInt32((IntPtr)address + PlayerAddrs.PSTATIC_PLAYER_SPEED);
 
                 return memory.ReadFloat((IntPtr)address);
+            }
+        }
+
+        /// <summary>
+        /// A class for powerups.
+        /// </summary>
+        public static class Powerups
+        {
+            /// <summary>
+            /// Changes the current powerup configuration/deck.
+            /// </summary>
+            /// <param name="config"></param>
+            public static void AssignPowerupConfiguration(PowerupConfiguration config)
+            {
+                CallBinding(_EASharpBinding_637, (int)config);
+            }
+
+            /// <summary>
+            /// Recharges all the powerups.
+            /// </summary>
+            public static void RechargeAllPowerups()
+            {
+                CallBinding(_EASharpBinding_638);
             }
         }
     }

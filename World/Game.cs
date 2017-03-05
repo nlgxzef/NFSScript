@@ -16,7 +16,7 @@ namespace NFSScript.World
     /// A class that represents the main game manager.
     /// </summary>
     public static class Game
-    {
+    {        
         /// <summary>
         /// Returns the amount of seconds it takes to render a frame.
         /// </summary>
@@ -121,7 +121,7 @@ namespace NFSScript.World
             /// <param name="pMixTriggerString"></param>
             /// <param name="value"></param>
             public static unsafe void SendMixTrigger(string pMixTriggerString, int value)
-            {
+            {               
                 CallBinding(_EASharpBinding_17, pMixTriggerString, value);
             }
         }
@@ -220,14 +220,6 @@ namespace NFSScript.World
             }
 
             /// <summary>
-            /// Spawns rhinos.
-            /// </summary>
-            public static void CreateRhinos(float distanceFromPlayer, uint numOfRhinos)
-            {
-                CallBinding(_EASharpBinding_47, distanceFromPlayer, numOfRhinos);
-            }
-
-            /// <summary>
             /// 
             /// </summary>
             /// <param name="vehicleKey"></param>
@@ -245,39 +237,34 @@ namespace NFSScript.World
             {
                 CallBinding(_EASharpBinding_49, enable);
             }
-        }
 
-        /// <summary>
-        /// Game's powerups class.
-        /// </summary>
-        public static class Powerups
-        {
             /// <summary>
-            /// 
+            /// Returns a value that indicates whether a pursuit is active or not.
             /// </summary>
-            public enum PowerupConfiguration
+            /// <returns></returns>
+            public static bool IsPursuitActive()
             {
-                PowerupConfigFreeRoam,
-                PowerupConfigCircuit,
-                PowerupConfigSprint,
-                PowerupConfigPursuit,
-                PowerupConfigMultiplayerPursuit
+                return (bool)CallBinding<bool>(_EASharpBinding_38);
             }
 
             /// <summary>
-            /// Changes the current powerup configuration/deck.
+            /// Returns the pursuit heat.
             /// </summary>
-            public static void AssignPowerupConfiguration(PowerupConfiguration powerupConfiguration)
+            /// <returns></returns>
+            public static float GetPursuitHeat()
             {
-                CallBinding(_EASharpBinding_637, (int)powerupConfiguration);
+                return (float)CallBinding<float>(_EASharpBinding_45);
             }
 
             /// <summary>
-            /// Instantly refreshes all powerups.
+            /// Creates Rhinos.
             /// </summary>
-            public static void RechargeAllPowerups()
+            /// <param name="distFromPlayer"></param>
+            /// <param name="numRhinos"></param>
+            /// <returns></returns>
+            public static bool CreateRhinos(float distFromPlayer, ushort numRhinos)
             {
-                CallBinding(_EASharpBinding_638);
+                return (bool)CallBinding<bool>(_EASharpBinding_47, distFromPlayer, numRhinos);
             }
         }
 

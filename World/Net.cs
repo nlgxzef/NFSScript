@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-using NFSScript.Core;
-using static NFSScript.Core.GameMemory;
-using static NFSScript.Core.WorldAddresses;
-using static NFSScript.WorldFunctions;
-using static NFSScript.World.EASharpBindings;
-using NFSScript.Math;
+﻿using static NFSScript.World.EASharpBindings;
 
 namespace NFSScript.World
 {
@@ -44,11 +34,22 @@ namespace NFSScript.World
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="buffer">The memory address of the buffer</param>
-        /// <param name="length">The length of the buffer</param>
+        /// <param name="buffer">The memory address of the buffer.</param>
+        /// <param name="length">The length of the buffer.</param>
         public static void SendGameplayMessage(uint buffer, uint length)
         {
             CallBinding(_EASharpBinding_354, buffer, length);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fixedBuffer">The memory address of the fixed buffer.</param>
+        /// <param name="length">The length of the fixed buffer.</param>
+        /// <returns></returns>
+        public static uint RecvGameplayMessage(uint fixedBuffer, uint length)
+        {
+            return (uint)CallBinding<uint>(_EASharpBinding_355, fixedBuffer, length);
         }
     }
 }

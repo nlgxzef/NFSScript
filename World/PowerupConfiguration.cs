@@ -3,27 +3,27 @@
     /// <summary>
     /// 
     /// </summary>
-    public enum EffectType
+    public enum PowerupConfiguration
     {
         /// <summary>
         /// 
         /// </summary>
-        ENTER_ENGAGE_TRIGGER,
+        kPowerupConfigFreeRoam,
         /// <summary>
         /// 
         /// </summary>
-        ENTER_COP_PURSUIT,
+        kPowerupConfigCircuit,
         /// <summary>
         /// 
         /// </summary>
-        COP_DESTROYED,
+        kPowerupConfigSprint,
         /// <summary>
         /// 
         /// </summary>
-        TRAFFIC_DESTROYED,
+        kPowerupConfigPursuit,
         /// <summary>
         /// 
         /// </summary>
-        TREASURE_HUNT_ICON_PICKUP,
+        kPowerupConfigMultiplayerPursuit,
     }
 }

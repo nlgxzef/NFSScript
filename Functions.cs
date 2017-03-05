@@ -5825,28 +5825,12 @@ namespace NFSScript
     public static class Function
     {
         static Dictionary<IntPtr, string> memoryStringPointers = new Dictionary<IntPtr, string>();
-        /// <summary>
-        /// Call a <see cref="Function"/> address.
-        /// </summary>
-        /// <param name="address">The address to call.</param>
-        /// <param name="o">The parameters to pass to the function.</param>
-        public static void Call(uint address, params object[] o)
-        {
-            Call(address, true, o);
-        }
 
-        /// <summary>
-        /// Call a <see cref="Function"/> address.
-        /// </summary>
-        /// <param name="address">The address to call.</param>
-        /// <param name="o">The parameters to pass to the function.</param>
-        /// <param name="align">Whether to align the stack or not.</param>
-        public static void Call(uint address, bool align, params object[] o)
+        private static ASMBuilder ParameterPush(params object[] o)
         {
             ASMBuilder function = new ASMBuilder();
-
             // Push parameters to the stack backwards since the stack is LIFO
-            for (int i = o.Length; i --> 0;)
+            for (int i = o.Length; i-- > 0;)
             {
                 if (o[i] is byte)
                 {
@@ -5886,7 +5870,7 @@ namespace NFSScript
                         if (addr == IntPtr.Zero)
                         {
                             Log.Print("ERROR", "Failed to allocate memory!");
-                            return;
+                            break;
                         }
 
                         UIntPtr bytesWritten = UIntPtr.Zero;
@@ -5894,7 +5878,7 @@ namespace NFSScript
                         if (!NativeMethods.WriteProcessMemory(handle, addr, Encoding.ASCII.GetBytes(s), (uint)s.Length + 4, out bytesWritten))
                         {
                             Log.Print("ERROR", "Could not write process memory!");
-                            return;
+                            break;
                         }
                         else memoryStringPointers.Add(addr, s);
 
@@ -5920,13 +5904,9 @@ namespace NFSScript
                     function.Push((uint)o[i]);
                     //Log.Print("TEST", string.Format("Pushing uint {0} to the stack", (uint)o[i]));
                 }
-                else if (o[i] is Vector3) // experimental (not known yet):
+                else if (o[i] is ushort)
                 {
-                    Vector3 vec = (Vector3)o[i];
-                    // REMEMBER THAT THE STACK IS LIFO!
-                    function.Push(vec.y); // In EAGL the Z is basically Y, I swapped them for convinence, it should get pushed first. This haven't been test so I might be wrong either way I need to code the pushes differently for different game engines.
-                    function.Push(vec.z);
-                    function.Push(vec.x);
+                    function.Push((ushort)o[i]);
                 }
                 else
                 {
@@ -5935,6 +5915,29 @@ namespace NFSScript
                 }
             }
 
+            return function;
+        }
+
+        /// <summary>
+        /// Call a <see cref="Function"/> address.
+        /// </summary>
+        /// <param name="address">The address to call.</param>
+        /// <param name="o">The parameters to pass to the function.</param>
+        public static void Call(uint address, params object[] o)
+        {
+            Call(address, true, o);
+        }
+
+        /// <summary>
+        /// Call a <see cref="Function"/> address.
+        /// </summary>
+        /// <param name="address">The address to call.</param>
+        /// <param name="o">The parameters to pass to the function.</param>
+        /// <param name="align">Whether to align the stack or not.</param>
+        public static void Call(uint address, bool align, params object[] o)
+        {
+            ASMBuilder function = ParameterPush(o);
+            
             function.MovEAX(address);
             function.CallEAX();
 
@@ -5950,6 +5953,118 @@ namespace NFSScript
             function.Return();
 
             ASM.CallAssembly(function.ToArray());
+        }
+
+        /// <summary>
+        /// Call a <see cref="Function"/> address.
+        /// </summary>
+        /// <typeparam name="T">The type to return.</typeparam>
+        /// <param name="address">The address to call.</param>
+        /// <param name="o">The parameters to pass to the function.</param>
+        /// <param name="align">Whether to align the stack or not.</param>
+        public static object Call<T>(uint address, bool align, params object[] o)
+        {
+            Type typeParameterType = typeof(T);
+            Any ret = Return(address, align, o);
+            object obj = null;
+
+            if (typeParameterType == typeof(int))
+            {
+                obj = BitConverter.ToInt32(ret, 0);
+            }
+            else if (typeParameterType == typeof(bool))
+            {
+                obj = BitConverter.ToBoolean(ret, 0);
+            }
+            else if (typeParameterType == typeof(byte[]))
+            {
+                obj = ret;
+            }
+            else if (typeParameterType == typeof(short))
+            {
+                obj = BitConverter.ToInt16(ret, 0);
+            }
+            else if (typeParameterType == typeof(uint))
+            {
+                obj = BitConverter.ToUInt32(ret, 0);
+            }
+            else if (typeParameterType == typeof(ushort))
+            {
+                obj = BitConverter.ToUInt16(ret, 0);
+            }
+            else if (typeParameterType == typeof(long))
+            {
+                obj = BitConverter.ToInt64(ret, 0);
+            }
+            else if (typeParameterType == typeof(ulong))
+            {
+                obj = BitConverter.ToUInt64(ret, 0);
+            }
+            else if (typeParameterType == typeof(float))
+            {
+                obj = BitConverter.ToSingle(ret, 0);
+            }
+            else if (typeParameterType == typeof(double))
+            {
+                obj = BitConverter.ToDouble(ret, 0);
+            }
+            else
+            {
+                obj = ret;
+            }
+
+            return obj;
+        }
+
+        /// <summary>
+        /// Returns a value from a function address.
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="align"></param>
+        /// <param name="o"></param>
+        /// <returns></returns>
+        private static Any Return(uint address, bool align, params object[] o)
+        {            
+            ASMBuilder function = ParameterPush(o);
+
+            function.MovEAX(address);
+            function.CallEAX();
+
+            IntPtr handle = GameMemory.memory.ProcessHandle;
+            IntPtr retAddr = IntPtr.Zero;
+
+            if (MemoryAllocMap.ExistsInMemoryReturnAlloc(address))
+                retAddr = MemoryAllocMap.GetMemoryAllocMapByCalledAddress(address).storedAddress;
+            else retAddr = NativeMethods.VirtualAllocEx(handle, IntPtr.Zero, 4 + 2, AllocationType.Commit, MemoryProtection.ExecuteReadWrite);
+
+            function.MovEAXToAddress((uint)retAddr.ToInt32());
+
+            if (align)
+            {
+                // For stack alignment to prevent crashes
+                for (int i = 0; i < o.Length; i++)
+                {
+                    function.PopEAX();
+                }
+            }
+
+            function.Return();
+
+            ASM.CallAssembly(function.ToArray());
+
+
+            if (retAddr == IntPtr.Zero)
+            {
+                Log.Print("ERROR", "Failed to allocate memory!");
+                return null;
+            }
+            else
+            {
+                if (!MemoryAllocMap.ExistsInMemoryReturnAlloc(address))
+                    ASM.memoryReturnAllocation.Add(new MemoryAllocMap(retAddr, address));
+            }
+
+            return GameMemory.memory.ReadByteArray(retAddr, 8+2);
         }
     }
 }

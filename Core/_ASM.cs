@@ -196,6 +196,16 @@ namespace NFSScript.Core
         }
 
         /// <summary>
+        /// Move the value stored at EAX to an address.
+        /// </summary>
+        /// <param name="address"></param>
+        public void MovEAXToAddress(uint address)
+        {
+            b.Add(0xa3);
+            b.AddRange(BitConverter.GetBytes(address));
+        }
+
+        /// <summary>
         /// Calls ret.
         /// </summary>
         /// <returns></returns>
@@ -218,6 +228,11 @@ namespace NFSScript.Core
     /// </summary>
     public static class ASM
     {
+        /// <summary>
+        /// I wouldn't touch that if I were you.
+        /// </summary>
+        public static List<MemoryAllocMap> memoryReturnAllocation = new List<MemoryAllocMap>();
+
         /// <summary>
         /// 
         /// </summary>
