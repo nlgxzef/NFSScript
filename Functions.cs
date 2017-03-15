@@ -5842,6 +5842,11 @@ namespace NFSScript
                     function.Push((int)o[i]);
                     //Log.Print("TEST", string.Format("Pushing int {0} to the stack", (int)o[i]));
                 }
+                else if (o[i] is IntPtr)
+                {
+                    IntPtr p = (IntPtr)o[i];
+                    function.Push(p.ToInt32());
+                }
                 else if (o[i] is float)
                 {
                     function.Push((float)o[i]);
@@ -5961,6 +5966,18 @@ namespace NFSScript
         /// <typeparam name="T">The type to return.</typeparam>
         /// <param name="address">The address to call.</param>
         /// <param name="o">The parameters to pass to the function.</param>
+        /// <returns></returns>
+        public static object Call<T>(uint address, params object[] o)
+        {
+            return Call<T>(address, true, o);
+        }
+
+        /// <summary>
+        /// Call a <see cref="Function"/> address.
+        /// </summary>
+        /// <typeparam name="T">The type to return.</typeparam>
+        /// <param name="address">The address to call.</param>
+        /// <param name="o">The parameters to pass to the function.</param>
         /// <param name="align">Whether to align the stack or not.</param>
         public static object Call<T>(uint address, bool align, params object[] o)
         {
@@ -5971,6 +5988,10 @@ namespace NFSScript
             if (typeParameterType == typeof(int))
             {
                 obj = BitConverter.ToInt32(ret, 0);
+            }
+            else if (typeParameterType == typeof(IntPtr))
+            {
+                obj = ASM.memoryReturnAllocation.Last().storedAddress;
             }
             else if (typeParameterType == typeof(bool))
             {

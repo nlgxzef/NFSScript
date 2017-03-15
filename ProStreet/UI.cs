@@ -22,7 +22,7 @@ namespace NFSScript.ProStreet
         /// <param name="msg"></param>
         public static void SetCodeEntryMessage(string msg)
         {
-            int addr = memory.ReadInt32((IntPtr)memory.getBaseAddress + Addrs.UIAddrs.PNONSTATIC_UI_INVALID_CODE_ENTRY_TEXT);
+            int addr = memory.ReadInt32((IntPtr)memory.getBaseAddress + Addrs.UIAddrs.PNON_STATIC_UI_INVALID_CODE_ENTRY_TEXT);
             addr = memory.ReadInt32((IntPtr)addr + Addrs.UIAddrs.POINTER_UI_INVALID_CODE_ENTRY_TEXT_1);
             addr = memory.ReadInt32((IntPtr)addr + Addrs.UIAddrs.POINTER_UI_INVALID_CODE_ENTRY_TEXT_2);
             addr = memory.ReadInt32((IntPtr)addr + Addrs.UIAddrs.POINTER_UI_INVALID_CODE_ENTRY_TEXT_3);

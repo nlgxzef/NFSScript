@@ -55,8 +55,8 @@ namespace NFSScript.Core
         /// </code>
         /// </example>
         /// <remarks>Doesn't support 'ghost' patterns, a.k.a. unknown byte patterns; e.g., xx??x.</remarks>
-        /// <param name="processName">The process context, has to be idenntifiable in WIN32 memory; e.g., myExe.exe, myLib.dll.</param>
-        /// <param name="pattern">Byte array that containts the pattern in big-endian order (MSB->LSB).</param>
+        /// <param name="processName">The process context, has to be identifiable  in WIN32 memory; e.g., myExe.exe, myLib.dll.</param>
+        /// <param name="pattern">Byte array that contains  the pattern in big-endian order (MSB->LSB).</param>
         /// <returns>The dynamic memory address if found, else IntPtr.Zero.</returns>
         public static IntPtr matchPattern(string processName, byte[] pattern)
         {

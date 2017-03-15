@@ -104,7 +104,7 @@ namespace NFSScript.Carbon
             /// <param name="w"></param>
             internal static void _setMinimapRouteColourEdge(float x, float y, float z, float w)
             {
-                int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + Addrs.UIAddrs.PNONSTATIC_MINIMAP_ROUTE_COLOR_EDGE_X);
+                int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + Addrs.UIAddrs.PNON_STATIC_MINIMAP_ROUTE_COLOR_EDGE_X);
                 address = memory.ReadInt32((IntPtr)address + Addrs.UIAddrs.POINTER_MINIMAP_ROUTE_COLOR_EDGE_X_1);
                 address = memory.ReadInt32((IntPtr)address + Addrs.UIAddrs.POINTER_MINIMAP_ROUTE_COLOR_EDGE_X_2);
                 address = memory.ReadInt32((IntPtr)address + Addrs.UIAddrs.POINTER_MINIMAP_ROUTE_COLOR_EDGE_X_3);
@@ -126,7 +126,7 @@ namespace NFSScript.Carbon
             /// <param name="w"></param>
             internal static void _setMinimapRouteColorCenter(float x, float y, float z, float w)
             {
-                int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + Addrs.UIAddrs.PNONSTATIC_MINIMAP_ROUTE_COLOR_CENTER_X);
+                int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + Addrs.UIAddrs.PNON_STATIC_MINIMAP_ROUTE_COLOR_CENTER_X);
                 address = memory.ReadInt32((IntPtr)address + Addrs.UIAddrs.POINTER_MINIMAP_ROUTE_COLOR_CENTER_X_1);
                 address = memory.ReadInt32((IntPtr)address + Addrs.UIAddrs.POINTER_MINIMAP_ROUTE_COLOR_CENTER_X_2);
                 address = memory.ReadInt32((IntPtr)address + Addrs.UIAddrs.POINTER_MINIMAP_ROUTE_COLOR_CENTER_X_3);
@@ -145,7 +145,7 @@ namespace NFSScript.Carbon
             /// <param name="value"></param>
             internal static void _setMinimapRouteWidth(float value)
             {
-                int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + Addrs.UIAddrs.PNONSTATIC_MINIMAP_ROUTE_WIDTH);
+                int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + Addrs.UIAddrs.PNON_STATIC_MINIMAP_ROUTE_WIDTH);
                 address = memory.ReadInt32((IntPtr)address + Addrs.UIAddrs.POINTER_MINIMAP_ROUTE_WIDTH_1);
                 address = memory.ReadInt32((IntPtr)address + Addrs.UIAddrs.POINTER_MINIMAP_ROUTE_WIDTH_2);
                 address = memory.ReadInt32((IntPtr)address + Addrs.UIAddrs.POINTER_MINIMAP_ROUTE_WIDTH_3);

@@ -94,6 +94,24 @@ namespace NFSScript.World
         }
 
         /// <summary>
+        /// Enable the loading screen.
+        /// </summary>
+        /// <param name="enable">A value that indicates whether the loading screen should be enabled or not.</param>
+        public static void EnableLoadingScreen(bool enable)
+        {
+            CallBinding(_EASharpBinding_331, enable);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsLoading()
+        {
+            return (bool)CallBinding<bool>(_EASharpBinding_324);
+        }
+
+        /// <summary>
         /// Shakes the camera.
         /// </summary>
         public static void CameraShake()
@@ -266,6 +284,17 @@ namespace NFSScript.World
             {
                 return (bool)CallBinding<bool>(_EASharpBinding_47, distFromPlayer, numRhinos);
             }
+
+            /// <summary>
+            /// Spawns a cop (Note: Not sure how this function works).
+            /// </summary>
+            /// <param name="vehicleKey"></param>
+            /// <param name="position"></param>
+            /// <param name="direction"></param>
+            public static unsafe void SpawnCop(uint vehicleKey, EAVector3 position, EAVector3 direction)
+            {
+                CallBinding(_EASharpBinding_53, vehicleKey, position.mSelf, direction.mSelf);
+            }
         }
 
         /// <summary>
@@ -274,7 +303,7 @@ namespace NFSScript.World
         public static class Traffic
         {
             /// <summary>
-            /// 
+            /// Changes the traffic density.
             /// </summary>
             /// <param name="density"></param>
             public static void SetTrafficDensity(int density)
@@ -283,7 +312,7 @@ namespace NFSScript.World
             }
 
             /// <summary>
-            /// 
+            /// Instantly removes all traffic.
             /// </summary>
             public static void FlushAllTraffic()
             {
@@ -291,13 +320,25 @@ namespace NFSScript.World
             }
 
             /// <summary>
-            /// 
+            /// Prefetches the <paramref name="vehicleKey"/> into the memory <paramref name="numOfVehicles"/> times.
             /// </summary>
             /// <param name="vehicleKey"></param>
             /// <param name="numOfVehicles"></param>
             public static void PrimeTrafficVehicleCache(uint vehicleKey, int numOfVehicles)
             {
                 CallBinding(_EASharpBinding_493, vehicleKey, numOfVehicles);
+            }
+
+            /// <summary>
+            /// Spawns a traffic car (Note: Not sure how this function works).
+            /// </summary>
+            /// <param name="vehicleKey"></param>
+            /// <param name="position"></param>
+            /// <param name="direction"></param>
+            /// <param name="initialSpeed"></param>
+            public static unsafe void SpawnTraffic(uint vehicleKey, EAVector3 position, EAVector3 direction, float initialSpeed)
+            {
+                CallBinding(_EASharpBinding_492, vehicleKey, position.mSelf, direction.mSelf, initialSpeed);
             }
         }
 

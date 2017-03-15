@@ -17,7 +17,7 @@ namespace NFSScript
         /// <param name="t">Factor</param>
         /// <returns></returns>
         public static float PingPong(float speed, float t)
-        {
+        {            
             return (float)(System.Math.Sin(t * speed) + 1) / 2.0f;
         }
     }

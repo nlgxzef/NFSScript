@@ -32,9 +32,9 @@ namespace NFSScript.Carbon
                 {
                     offset = offset + GenericAddrs.POINTER_CAR_OFFSET;
                 }
-                float x = memory.ReadFloat((IntPtr)PlayerAddrs.NONSTATIC_PLAYER_X_POS + offset + 30);
-                float y = memory.ReadFloat((IntPtr)PlayerAddrs.NONSTATIC_PLAYER_Y_POS + offset + 30);
-                float z = memory.ReadFloat((IntPtr)PlayerAddrs.NONSTATIC_PLAYER_Y_POS + offset + 30);
+                float x = memory.ReadFloat((IntPtr)PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset + 30);
+                float y = memory.ReadFloat((IntPtr)PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset + 30);
+                float z = memory.ReadFloat((IntPtr)PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset + 30);
 
                 return new Vector3(x, y, z);
             }
@@ -46,9 +46,9 @@ namespace NFSScript.Carbon
                 {
                     offset = offset + GenericAddrs.POINTER_CAR_OFFSET;
                 }
-                memory.WriteFloat((IntPtr)PlayerAddrs.NONSTATIC_PLAYER_X_POS + offset + 30, value.x);
-                memory.WriteFloat((IntPtr)PlayerAddrs.NONSTATIC_PLAYER_Y_POS + offset + 30, value.y);
-                memory.WriteFloat((IntPtr)PlayerAddrs.NONSTATIC_PLAYER_Y_POS + offset + 30, value.z);
+                memory.WriteFloat((IntPtr)PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset + 30, value.x);
+                memory.WriteFloat((IntPtr)PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset + 30, value.y);
+                memory.WriteFloat((IntPtr)PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset + 30, value.z);
             }
         }
 
@@ -65,9 +65,9 @@ namespace NFSScript.Carbon
                 {
                     offset = offset + GenericAddrs.POINTER_CAR_OFFSET;
                 }
-                float x = memory.ReadFloat((IntPtr)addr + PlayerAddrs.NONSTATIC_PLAYER_X_POS + offset);
-                float y = memory.ReadFloat((IntPtr)addr + PlayerAddrs.NONSTATIC_PLAYER_Y_POS + offset);
-                float z = memory.ReadFloat((IntPtr)addr + PlayerAddrs.NONSTATIC_PLAYER_Z_POS + offset);
+                float x = memory.ReadFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset);
+                float y = memory.ReadFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset);
+                float z = memory.ReadFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Z_POS + offset);
 
                 return new Vector3(x, y, z);
             }
@@ -79,9 +79,9 @@ namespace NFSScript.Carbon
                 {
                     offset = offset + GenericAddrs.POINTER_CAR_OFFSET;
                 }
-                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NONSTATIC_PLAYER_X_POS + offset, value.x);
-                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NONSTATIC_PLAYER_Y_POS + offset, value.y);
-                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NONSTATIC_PLAYER_Z_POS + offset, value.z);
+                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset, value.x);
+                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset, value.y);
+                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Z_POS + offset, value.z);
             }
         }
 

@@ -53,7 +53,7 @@ namespace NFSScript.World
         {
             get
             {
-                int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + PlayerAddrs.NONSTATIC_GEMS_COLLECTED);
+                int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_GEMS_COLLECTED);
                 address = memory.ReadInt32((IntPtr)address + PlayerAddrs.PSTATIC_GEMS_COLLECTED_1);
                 address = memory.ReadInt32((IntPtr)address + PlayerAddrs.PSTATIC_GEMS_COLLECTED_2);
                 address = memory.ReadInt32((IntPtr)address + PlayerAddrs.PSTATIC_GEMS_COLLECTED_3);
@@ -63,24 +63,14 @@ namespace NFSScript.World
                 return memory.ReadInt32((IntPtr)address);
             }
         }
+    }
 
-        /// <summary>
-        /// A class that represents the <see cref="Player"/>'s car.
-        /// </summary>
-        public static class Car
-        {
-            /// <summary>
-            /// Returns the <see cref="Player"/>'s car speed.
-            /// </summary>
-            public static float GetSpeed()
-            {
-                int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + PlayerAddrs.NONSTATIC_PLAYER_SPEED);
-                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.PSTATIC_PLAYER_SPEED);
 
-                return memory.ReadFloat((IntPtr)address);
-            }
-        }
-
+    /// <summary>
+    /// A class that represents the <see cref="Player"/>'s car.
+    /// </summary>
+    public static class Car
+    {
         /// <summary>
         /// A class for powerups.
         /// </summary>

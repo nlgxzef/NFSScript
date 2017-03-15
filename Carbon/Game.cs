@@ -184,6 +184,15 @@ namespace NFSScript.Carbon
         }
 
         /// <summary>
+        /// Returns the storyline progression.
+        /// </summary>
+        /// <returns></returns>
+        public static float GetStorylineProgression()
+        {
+            return (float)Function.Call<float>(GET_STORY_LINE_PROGRESSION);
+        }
+
+        /// <summary>
         /// Unlock everything.
         /// </summary>
         public static void UnlockAllThings()

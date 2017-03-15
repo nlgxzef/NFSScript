@@ -22,7 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\NFSScript.XML</DocumentationFile>
-	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Carbon\Database.cs" />
     <Compile Include="Core\Audio.cs" />
+    <Compile Include="Core\ExposedBase.cs" />
     <Compile Include="Core\MemoryEssentials.cs" />
     <Compile Include="Core\NativeMethods.cs" />
     <Compile Include="Core\PatternScan.cs" />
@@ -113,8 +114,10 @@
     <Compile Include="Underground\UI.cs" />
     <Compile Include="World\Database.cs" />
     <Compile Include="World\EASharpBindings.cs" />
+    <Compile Include="World\EASharp\Math.cs" />
     <Compile Include="World\EffectType.cs" />
     <Compile Include="World\Game.cs" />
+    <Compile Include="World\Hash.cs" />
     <Compile Include="World\HUD.cs" />
     <Compile Include="World\MemoryBase.cs" />
     <Compile Include="World\Net.cs" />
@@ -122,6 +125,7 @@
     <Compile Include="World\PowerupConfiguration.cs" />
     <Compile Include="World\Render.cs" />
     <Compile Include="World\SecurityManager.cs" />
+    <Compile Include="World\TrafficLevel.cs" />
     <Compile Include="World\UI.cs" />
   </ItemGroup>
   <ItemGroup>

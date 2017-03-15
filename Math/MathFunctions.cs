@@ -72,5 +72,17 @@ namespace NFSScript.Math
                 b = byte.MinValue;
             return (byte)b;
         }
+
+        /// <summary>
+        /// Returns the absolute of value of a float.
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
+        public static float Abs(float number)
+        {
+            if (number < 0)
+                number = -number;
+            return number;
+        }
     }
 }

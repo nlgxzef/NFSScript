@@ -668,7 +668,7 @@
             /// <summary>
             /// 
             /// </summary>
-            public const int PNONSTATIC_VISUAL_TREATMENT_ADDR = 0x982af0;
+            public const int PNON_STATIC_VISUAL_TREATMENT_ADDR = 0x982af0;
 
             /// <summary>
             /// 
@@ -1153,7 +1153,7 @@
             /// <summary>
             /// 
             /// </summary>
-            public const int NONSTATIC_CURRENT_AMOUNT_OF_COPS_IN_PURSUIT = 0x69F384; // int
+            public const int NON_STATIC_CURRENT_AMOUNT_OF_COPS_IN_PURSUIT = 0x69F384; // int
         }
 
         /// <summary>
@@ -1315,7 +1315,7 @@
             /// <summary>
             /// 
             /// </summary>
-            public const int NONSTATIC_PLAYER_OPPONENT = 0x68E774;
+            public const int NON_STATIC_PLAYER_OPPONENT = 0x68E774;
 
             /// <summary>
             /// 
@@ -1416,17 +1416,17 @@
             /// <summary>
             /// 
             /// </summary>
-            public const int NONSTATIC_PLAYER_X_POS = 0x6AB140; // float
+            public const int NON_STATIC_PLAYER_X_POS = 0x6AB140; // float
 
             /// <summary>
             /// 
             /// </summary>
-            public const int NONSTATIC_PLAYER_Y_POS = 0x6AB144; // float
+            public const int NON_STATIC_PLAYER_Y_POS = 0x6AB144; // float
 
             /// <summary>
             /// 
             /// </summary>
-            public const int NONSTATIC_PLAYER_Z_POS = 0x6AB148; // float
+            public const int NON_STATIC_PLAYER_Z_POS = 0x6AB148; // float
 
             /// <summary>
             /// 
@@ -1456,12 +1456,12 @@
             /// <summary>
             /// 
             /// </summary>
-            public const int NONSTATIC_PLAYER_SPEED = 0x68E59C; // float
+            public const int NON_STATIC_PLAYER_SPEED = 0x68E59C; // float
 
             /// <summary>
             /// An int32 address
             /// </summary>
-            public const int PNONSTATIC_PLAYER_CASH = 0x697CFC;
+            public const int PNON_STATIC_PLAYER_CASH = 0x697CFC;
 
             /// <summary>
             /// 
@@ -1527,22 +1527,22 @@
             /// <summary>
             /// 
             /// </summary>
-            public const int NONSTATIC_CAMERA_LOD_VALUE_1 = 0x673070;
+            public const int NON_STATIC_CAMERA_LOD_VALUE_1 = 0x673070;
 
             /// <summary>
             /// 
             /// </summary>
-            public const int NONSTATIC_CAMERA_LOD_VALUE_2 = 0x67306C;
+            public const int NON_STATIC_CAMERA_LOD_VALUE_2 = 0x67306C;
 
             /// <summary>
             /// 
             /// </summary>
-            public const int NONSTATIC_CAMERA_LOD_VALUE_3 = 0x673074;
+            public const int NON_STATIC_CAMERA_LOD_VALUE_3 = 0x673074;
 
             /// <summary>
             /// 
             /// </summary>
-            public const int NONSTATIC_CAMERA_LOD_VALUE_4 = 0x673078;
+            public const int NON_STATIC_CAMERA_LOD_VALUE_4 = 0x673078;
 
         }
 
@@ -1569,17 +1569,17 @@
             /// <summary>
             /// 
             /// </summary>
-            public const int PNONSTATIC_MINIMAP_ROUTE_COLOR_EDGE_X = 0x68499C;
+            public const int PNON_STATIC_MINIMAP_ROUTE_COLOR_EDGE_X = 0x68499C;
 
             /// <summary>
             /// 
             /// </summary>
-            public const int PNONSTATIC_MINIMAP_ROUTE_COLOR_CENTER_X = 0x6849A0;
+            public const int PNON_STATIC_MINIMAP_ROUTE_COLOR_CENTER_X = 0x6849A0;
 
             /// <summary>
             /// 
             /// </summary>
-            public const int PNONSTATIC_MINIMAP_ROUTE_WIDTH = 0x6849A8;
+            public const int PNON_STATIC_MINIMAP_ROUTE_WIDTH = 0x6849A8;
 
             /// <summary>
             /// 
@@ -2232,7 +2232,7 @@
             /// <summary>
             /// 
             /// </summary>
-            public const int PNONSTATIC_UI_INVALID_CODE_ENTRY_TEXT = 0x736F78;
+            public const int PNON_STATIC_UI_INVALID_CODE_ENTRY_TEXT = 0x736F78;
 
             /// <summary>
             /// 
@@ -2729,7 +2729,7 @@
             /// <summary>
             /// 
             /// </summary>
-            public const int NONSTATIC_PLAYER_SPEED = 0x008A1018;
+            public const int NON_STATIC_PLAYER_SPEED = 0x008A1018;
 
             /// <summary>
             /// 
@@ -2739,7 +2739,7 @@
             /// <summary>
             /// 
             /// </summary>
-            public const int NONSTATIC_GEMS_COLLECTED = 0x009119EC;
+            public const int NON_STATIC_GEMS_COLLECTED = 0x009119EC;
 
             /// <summary>
             /// 

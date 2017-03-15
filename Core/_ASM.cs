@@ -231,7 +231,7 @@ namespace NFSScript.Core
         /// <summary>
         /// I wouldn't touch that if I were you.
         /// </summary>
-        public static List<MemoryAllocMap> memoryReturnAllocation = new List<MemoryAllocMap>();
+        internal static List<MemoryAllocMap> memoryReturnAllocation = new List<MemoryAllocMap>();
 
         /// <summary>
         /// 

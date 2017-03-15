@@ -466,7 +466,7 @@ namespace NFSScript.MW
                 return dic;
             }
         }
-
+        
         /// <summary>
         /// A class for the main camera in-game.
         /// </summary>
@@ -518,7 +518,7 @@ namespace NFSScript.MW
 
             internal static void _setVisualTreatmentBlackBloomAmount(float value)
             {
-                int address = memory.ReadInt32((IntPtr)Addrs.CameraAddrs.PNONSTATIC_VISUAL_TREATMENT_ADDR);
+                int address = memory.ReadInt32((IntPtr)Addrs.CameraAddrs.PNON_STATIC_VISUAL_TREATMENT_ADDR);
                 address = memory.ReadInt32((IntPtr)address + Addrs.CameraAddrs.POINTER_VISUAL_TREAT);
 
                 memory.WriteFloat((IntPtr)address + 0xD8, value);
@@ -526,7 +526,7 @@ namespace NFSScript.MW
 
             internal static void _setVisualTreatmentBloomAmount(float value)
             {
-                int address = memory.ReadInt32((IntPtr)Addrs.CameraAddrs.PNONSTATIC_VISUAL_TREATMENT_ADDR);
+                int address = memory.ReadInt32((IntPtr)Addrs.CameraAddrs.PNON_STATIC_VISUAL_TREATMENT_ADDR);
                 address = memory.ReadInt32((IntPtr)address + Addrs.CameraAddrs.POINTER_VISUAL_TREAT);
 
                 memory.WriteFloat((IntPtr)address + 0xD0, value);
@@ -534,7 +534,7 @@ namespace NFSScript.MW
 
             internal static void _setVisualTreatmentSaturation(float value)
             {
-                int address = memory.ReadInt32((IntPtr)Addrs.CameraAddrs.PNONSTATIC_VISUAL_TREATMENT_ADDR);
+                int address = memory.ReadInt32((IntPtr)Addrs.CameraAddrs.PNON_STATIC_VISUAL_TREATMENT_ADDR);
                 address = memory.ReadInt32((IntPtr)address + Addrs.CameraAddrs.POINTER_VISUAL_TREAT);
 
                 memory.WriteFloat((IntPtr)address + 0xD4, value);
@@ -542,7 +542,7 @@ namespace NFSScript.MW
 
             internal static void _setVisualTreatmentRGB(float r, float g, float b)
             {
-                int address = memory.ReadInt32((IntPtr)Addrs.CameraAddrs.PNONSTATIC_VISUAL_TREATMENT_ADDR);
+                int address = memory.ReadInt32((IntPtr)Addrs.CameraAddrs.PNON_STATIC_VISUAL_TREATMENT_ADDR);
                 address = memory.ReadInt32((IntPtr)address + Addrs.CameraAddrs.POINTER_VISUAL_TREAT);
 
                 memory.WriteFloat((IntPtr)address + 0xC0, r);
