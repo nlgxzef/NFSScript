@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using NFSScript.Core;
 using static NFSScript.Core.GameMemory;
 using Addrs = NFSScript.Core.ProStreetAddresses;
 using Funcs = NFSScript.ProStreetFunctions;
-using NFSScript.Math;
-using NFSScript.Types;
 
 namespace NFSScript.ProStreet
 {

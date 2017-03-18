@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-using NFSScript.Core;
 using static NFSScript.Core.GameMemory;
 using static NFSScript.Core.WorldAddresses;
 using static NFSScript.WorldFunctions;
 using static NFSScript.World.EASharpBindings;
-using NFSScript.Math;
 
 namespace NFSScript.World
 {
@@ -94,6 +88,17 @@ namespace NFSScript.World
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public static int PWorld_Cars
+        {
+            get
+            {
+                return memory.ReadInt32(((IntPtr)memory.getBaseAddress + GameAddrs.NON_STATIC_WORLD_CARS));
+            }
+        }
+
+        /// <summary>
         /// Enable the loading screen.
         /// </summary>
         /// <param name="enable">A value that indicates whether the loading screen should be enabled or not.</param>
@@ -109,14 +114,6 @@ namespace NFSScript.World
         public static bool IsLoading()
         {
             return (bool)CallBinding<bool>(_EASharpBinding_324);
-        }
-
-        /// <summary>
-        /// Shakes the camera.
-        /// </summary>
-        public static void CameraShake()
-        {
-            Function.Call(BASE_CAMERA_SHAKE + MemoryBase.FunctionBase);
         }
 
         /// <summary>
@@ -177,6 +174,14 @@ namespace NFSScript.World
             public static unsafe void Set(string cameraName)
             {
                 CallBinding(_EASharpBinding_33, cameraName);
+            }
+            
+            /// <summary>
+            /// Shakes the camera.
+            /// </summary>
+            public static void CameraShake()
+            {
+                Function.Call(BASE_CAMERA_SHAKE + MemoryBase.FunctionBase);
             }
         }
 
@@ -306,9 +311,9 @@ namespace NFSScript.World
             /// Changes the traffic density.
             /// </summary>
             /// <param name="density"></param>
-            public static void SetTrafficDensity(int density)
+            public static void SetTrafficDensity(TrafficLevel density)
             {
-                CallBinding(_EASharpBinding_490, density);
+                CallBinding(_EASharpBinding_490, (int)density);
             }
 
             /// <summary>

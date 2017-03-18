@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace NFSScript.World
+﻿namespace NFSScript.World
 {
     /// <summary>
     /// A class for EASharp's bindings.

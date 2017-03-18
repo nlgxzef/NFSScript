@@ -1,5 +1,4 @@
 ﻿using System;
-using NFSScript.Core;
 using static NFSScript.Core.GameMemory;
 using Addrs = NFSScript.Core.MWAddresses;
 using NFSScript.Math;

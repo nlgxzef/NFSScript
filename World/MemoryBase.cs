@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using static NFSScript.Core.GameMemory;
+﻿using static NFSScript.Core.GameMemory;
 
 namespace NFSScript.World
 {

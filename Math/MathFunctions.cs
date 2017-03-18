@@ -33,23 +33,29 @@ namespace NFSScript.Math
         public const float SingleMileToKM = 1.609344f;
 
         /// <summary>
-        /// Returns a converted value from miles per hour to kilometers per hour.
+        /// Converts the given <paramref name="speed"/> using the given <paramref name="speedMeasurementConversionType"/>
         /// </summary>
-        /// <param name="mph">The miles per hour value to convert.</param>
-        /// <returns></returns>
-        public static float ToKPH(float mph)
+        /// <param name="speed">The speed.</param>
+        /// <param name="speedMeasurementConversionType">The conversion type to use.</param>
+        /// <returns>The converted speed if succeeded, else 0.</returns>
+        public static float ConvertSpeed(float speed, SpeedMeasurementConversionTypes speedMeasurementConversionType)
         {
-            return mph * SingleMileToKM;
-        }
-
-        /// <summary>
-        /// Returns a converted value from kilometers per hour to miles per hour.
-        /// </summary>
-        /// <param name="kph">The kilometers per hour value to convert.</param>
-        /// <returns></returns>
-        public static float ToMPH(float kph)
-        {
-            return kph / SingleMileToKM;
+            switch (speedMeasurementConversionType)
+            {
+                case SpeedMeasurementConversionTypes.MPSToKPH:
+                    return speed * SpeedMeasurementConversions.SingleMPSToKPH;
+                case SpeedMeasurementConversionTypes.MPSToMPH:
+                    return speed * SpeedMeasurementConversions.SingleMPSToMPH;
+                case SpeedMeasurementConversionTypes.KPHToMPS:
+                    return speed * SpeedMeasurementConversions.SingleKPHToMPS;
+                case SpeedMeasurementConversionTypes.KPHToMPH:
+                    return speed * SpeedMeasurementConversions.SingleKPHToMPH;
+                case SpeedMeasurementConversionTypes.MPHToMPS:
+                    return speed * SpeedMeasurementConversions.SingleMPHToMPS;
+                case SpeedMeasurementConversionTypes.MPHToKMH:
+                    return speed * SpeedMeasurementConversions.SingleMPHToKPH;
+            }
+            return 0f;
         }
 
         /// <summary>
@@ -84,5 +90,95 @@ namespace NFSScript.Math
                 number = -number;
             return number;
         }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum SpeedMeasurements
+    {
+        /// <summary>
+        /// m/s
+        /// </summary>
+        MetresPerSecond,
+
+        /// <summary>
+        /// km/h
+        /// </summary>
+        KilometresPerHour,
+
+        /// <summary>
+        /// mp/h
+        /// </summary>
+        MilesPerHour
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum SpeedMeasurementConversionTypes
+    {
+        /// <summary>
+        /// m/s to km/h
+        /// </summary>
+        MPSToKPH,
+        /// <summary>
+        /// m/s to mp/h
+        /// </summary>
+        MPSToMPH,
+
+        /// <summary>
+        /// km/h to m/s
+        /// </summary>
+        KPHToMPS,
+        /// <summary>
+        /// km/h to mp/h
+        /// </summary>
+        KPHToMPH,
+
+        /// <summary>
+        /// mp/h to m/s
+        /// </summary>
+        MPHToMPS,
+        /// <summary>
+        /// mp/h to km/h
+        /// </summary>
+        MPHToKMH
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public static class SpeedMeasurementConversions
+    {
+        /// <summary>
+        /// 1 m/s for km/h
+        /// </summary>
+        public static readonly float SingleMPSToKPH = 3.6f;
+
+        /// <summary>
+        /// 1 m/s for mp/h
+        /// </summary>
+        public static readonly float SingleMPSToMPH = 2.236936f;
+
+        /// <summary>
+        /// 1 km/h for m/s
+        /// </summary>
+        public static readonly float SingleKPHToMPS = 0.277778f;
+
+        /// <summary>
+        /// 1 km/h for mp/h
+        /// </summary>
+        public static readonly float SingleKPHToMPH = 0.621371f;
+
+        /// <summary>
+        /// 1 mp/h for m/s
+        /// </summary>
+        public static readonly float SingleMPHToMPS = 0.44704f;
+
+        /// <summary>
+        /// 1 mp/h for km/h
+        /// </summary>
+        public static readonly float SingleMPHToKPH = 1.609344f;
     }
 }

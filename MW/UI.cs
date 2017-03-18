@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Text;
 using NFSScript.Core;
 using static NFSScript.Core.GameMemory;
 using static NFSScript.Core.MWAddresses;
 using static NFSScript.MWFunctions;
 using NFSScript.Math;
-
 
 namespace NFSScript.MW
 {

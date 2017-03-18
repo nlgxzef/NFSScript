@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using NFSScript.Core;
 using static NFSScript.Core.GameMemory;
 using Addrs = NFSScript.Core.UndercoverAddresses;
 using static NFSScript.UndercoverFunctions;
-using NFSScript.Math;
 
 namespace NFSScript.Undercover
 {

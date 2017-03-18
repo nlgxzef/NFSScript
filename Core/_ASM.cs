@@ -6,10 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Runtime.InteropServices;
-using System.Threading;
-using System.Diagnostics;
 
 using static NFSScript.Core.NativeMethods;
 
@@ -323,9 +320,9 @@ namespace NFSScript.Core
     internal static class _ASM
     {
         static Dictionary<IntPtr, byte[]> memoryPointersCache = new Dictionary<IntPtr, byte[]>();
-
-
+        
         public const string ASM_ERROR = "ASMERROR";
+
         /// <summary>
         /// Inject shellcode and get the address where the shellcode was injected. (Doesn't save to memory's cache!!)
         /// </summary>
@@ -425,8 +422,6 @@ namespace NFSScript.Core
 
             if (!CloseHandle(hThread))
                 Log.Print(ASM_ERROR, string.Format("Could not close handle! {0}", Marshal.GetLastWin32Error()));
-
-            
 
             return result;
         }

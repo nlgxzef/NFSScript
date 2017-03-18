@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace NFSScript
 {
@@ -88,40 +84,31 @@ namespace NFSScript
         /// Update method is called every 1ms.
         /// </summary>
         public virtual void Update()
-        {
-        }
+        { }
 
         /// <summary>
         /// This method is called when the gameplay starts.
         /// </summary>
         public virtual void OnGameplayStart()
-        {
-
-        }
+        { }
 
         /// <summary>
         /// This method is called when the gameplay is stopped (When the player enters the garage/car lot/etc...).
         /// </summary>
         public virtual void OnGameplayExit()
-        {
-
-        }
+        { }
 
         /// <summary>
         /// This method is called when the player has entered an activity (Doesn't work in Most Wanted and Undercover, yet).
         /// </summary>
         public virtual void OnActivityEnter()
-        {
-
-        }
+        { }
 
         /// <summary>
         /// This method is called when the player has exited from an activity (Doesn't work in Most Wanted and Undercover, yet).
         /// </summary>
         public virtual void OnActivityExit()
-        {
-
-        }
+        { }
 
         /// <summary>
         /// This method is called when a key is being held in-game.
@@ -139,9 +126,7 @@ namespace NFSScript
         /// This method is called when the script is being terminated.
         /// </summary>
         public virtual void OnExit()
-        {
-
-        }
+        { }
 
         /// <summary>
         /// Basically makes the thread sleep but without the need to reference System.Threading.

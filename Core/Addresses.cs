@@ -2709,6 +2709,84 @@
             /// 
             /// </summary>
             public const int NON_STATIC_EVENT_MUSIC_VOLUME = 0x01324D90 - 0xA20000;
+            
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int NON_STATIC_WORLD_CARS = 0x9CF1D8;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int PSTATIC_CAR_X_POS = 0x18;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int PSTATIC_CAR_Y_POS = 0x10;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int PSTATIC_CAR_Z_POS = 0x14;
+
+            /// <summary>
+            /// Value 0 = full east
+            /// </summary>
+            public const int PSTATIC_CAR_1_ROT = 0x4;
+
+            /// <summary>
+            /// Value 0 = full west
+            /// </summary>
+            public const int PSTATIC_CAR_2_ROT = 0xC;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int PSTATIC_CAR_VELOCITY_TOWARDS_SOUTH = 0x20;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int PSTATIC_CAR_VELOCITY_TOWARDS_EAST = 0x28;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int PSTATIC_CAR_VERTICAL_VELOCITY = 0x24;
+
+            /// <summary>
+            /// Positive values mean the car is turning clockwise, 
+            /// negative values mean the car is turning counter-clockwise.
+            /// </summary>
+            public const int PSTATIC_CAR_ANGULAR_VELOCITY = 0x34;
+
+            /// <summary>
+            /// Positive values lift the car from west, 
+            /// negative values lift the car from east.
+            /// </summary>
+            public const int PSTATIC_CAR_FORCE_LIFT_WEST = 0x30;
+
+            /// <summary>
+            /// Positive values lift the car from south, 
+            /// negative values lift the car from north.
+            /// </summary>
+            public const int PSTATIC_CAR_FORCE_LIFT_SOUTH = 0x38;
+
+            /// <summary>
+            /// Value is metres per second.
+            /// </summary>
+            public const int PSTATIC_CAR_SPEED = 0x28;
+
+            /// <summary>
+            /// Default value is 1000.
+            /// </summary>
+            public const int PSTATIC_CAR_GRAVITY = 0x2C;
+
+            /// <summary>
+            /// Car mass, default value is different per car.
+            /// </summary>
+            public const int PSTATIC_CAR_WEIGHT = 0x3C;
         }
 
         /// <summary>
@@ -2732,6 +2810,21 @@
             public const int NON_STATIC_PLAYER_SPEED = 0x008A1018;
 
             /// <summary>
+            /// Read-Only
+            /// </summary>
+            public const int NON_STATIC_PLAYER_X_POS = 0x9A7C90;
+
+            /// <summary>
+            /// Read-Only
+            /// </summary>
+            public const int NON_STATIC_PLAYER_Y_POS = 0x9A7C94;
+
+            /// <summary>
+            /// Read-Only
+            /// </summary>
+            public const int NON_STATIC_PLAYER_Z_POS = 0x9A7C98;
+
+            /// <summary>
             /// 
             /// </summary>
             public const int PSTATIC_PLAYER_SPEED = 0x108;
@@ -2746,6 +2839,26 @@
             /// </summary>
             public const int PSTATIC_GEMS_COLLECTED_1 = 0xC, PSTATIC_GEMS_COLLECTED_2 = 0x4, PSTATIC_GEMS_COLLECTED_3 = 0x10,
                 PSTATIC_GEMS_COLLECTED_4 = 0x0, PSTATIC_GEMS_COLLECTED_5 = 0x58;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int NON_STATIC_WALL_COLLISION = 0x444DEC;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int NON_STATIC_CAR_COLLISION = 0x45DD8F;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int NON_STATIC_POWERUP_COOLDOWN = 0x39CDB8;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int NON_STATIC_AUTODRIVE = 0x40040C;
         }
 
         /// <summary>

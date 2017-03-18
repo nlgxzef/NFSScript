@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Media;
-using System.Threading;
-using NFSScript.Math;
-using NFSScript.Core;
-using NFSScript.Types;
 
 using MDPlayer = MediaPlayer.MediaPlayer;
 

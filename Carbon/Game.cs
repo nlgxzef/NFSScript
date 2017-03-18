@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using NFSScript.Core;
 using static NFSScript.Core.GameMemory;
 using static NFSScript.Core.CarbonAddresses;
 using static NFSScript.CarbonFunctions;

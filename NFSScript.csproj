@@ -93,12 +93,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\VAMemory.cs" />
     <Compile Include="ProStreet\Game.cs" />
-    <Compile Include="ProStreet\Language.cs" />
     <Compile Include="ProStreet\Player.cs" />
     <Compile Include="ProStreet\UI.cs" />
     <Compile Include="Undercover\Database.cs" />
     <Compile Include="Undercover\Game.cs" />
-    <Compile Include="Undercover\Language.cs" />
     <Compile Include="Undercover\Player.cs" />
     <Compile Include="Undercover\SecretCodes.cs" />
     <Compile Include="Undercover\UI.cs" />

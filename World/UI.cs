@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using NFSScript.Core;
 using static NFSScript.Core.GameMemory;
 using static NFSScript.Core.WorldAddresses;
 using NFSScript.Math;
