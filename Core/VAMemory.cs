@@ -8,6 +8,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
+using static NFSScript.Core.NativeMethods;
+
 namespace NFSScript.Core
 {
     /// <summary>
@@ -63,21 +65,6 @@ namespace NFSScript.Core
             this.processName = pProcessName;
         }
 
-        [DllImport("kernel32.dll", SetLastError = true)]
-        private static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, uint dwSize, uint lpNumberOfBytesRead);
-
-        [DllImport("kernel32.dll")]
-        private static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, uint nSize, uint lpNumberOfBytesWritten);
-
-        [DllImport("kernel32.dll")]
-        private static extern IntPtr OpenProcess(uint dwDesiredAccess, bool bInheritHandle, int dwProcessId);
-
-        [DllImport("kernel32.dll")]
-        private static extern bool CloseHandle(IntPtr hObject);
-
-        [DllImport("kernel32.dll")]
-        private static extern bool VirtualProtectEx(IntPtr hProcess, IntPtr lpAddress, UIntPtr dwSize, uint flNewProtect, out uint lpflOldProtect);
-
         /// <summary>
         /// 
         /// </summary>
@@ -91,7 +78,7 @@ namespace NFSScript.Core
                     this.ErrorProcessNotFound(this.processName);
                     return false;
                 }
-                this.processHandle = VAMemory.OpenProcess(2035711U, false, this.mainProcess[0].Id);
+                this.processHandle = OpenProcess(2035711U, false, this.mainProcess[0].Id);
                 if (!(this.processHandle == IntPtr.Zero))
                     return true;
                 this.ErrorProcessNotFound(this.processName);
@@ -111,10 +98,10 @@ namespace NFSScript.Core
             try
             {
                 uint lpflOldProtect;
-                VAMemory.VirtualProtectEx(this.processHandle, pOffset, (UIntPtr)pSize, 4U, out lpflOldProtect);
+                VirtualProtectEx(this.processHandle, pOffset, (UIntPtr)pSize, 4U, out lpflOldProtect);
                 byte[] lpBuffer = new byte[(int)pSize];
-                VAMemory.ReadProcessMemory(this.processHandle, pOffset, lpBuffer, pSize, 0U);
-                VAMemory.VirtualProtectEx(this.processHandle, pOffset, (UIntPtr)pSize, lpflOldProtect, out lpflOldProtect);
+                ReadProcessMemory(this.processHandle, pOffset, lpBuffer, pSize, 0U);
+                VirtualProtectEx(this.processHandle, pOffset, (UIntPtr)pSize, lpflOldProtect, out lpflOldProtect);
                 return lpBuffer;
             }
             catch (Exception ex)
@@ -496,9 +483,9 @@ namespace NFSScript.Core
             try
             {
                 uint lpflOldProtect;
-                VAMemory.VirtualProtectEx(this.processHandle, pOffset, (UIntPtr)((ulong)pBytes.Length), 4U, out lpflOldProtect);
-                bool flag = VAMemory.WriteProcessMemory(this.processHandle, pOffset, pBytes, (uint)pBytes.Length, 0U);
-                VAMemory.VirtualProtectEx(this.processHandle, pOffset, (UIntPtr)((ulong)pBytes.Length), lpflOldProtect, out lpflOldProtect);
+                VirtualProtectEx(this.processHandle, pOffset, (UIntPtr)((ulong)pBytes.Length), 4U, out lpflOldProtect);
+                bool flag = WriteProcessMemory(this.processHandle, pOffset, pBytes, (uint)pBytes.Length, 0U);
+                VirtualProtectEx(this.processHandle, pOffset, (UIntPtr)((ulong)pBytes.Length), lpflOldProtect, out lpflOldProtect);
                 return flag;
             }
             catch (Exception ex)

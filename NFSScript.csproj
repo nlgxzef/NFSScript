@@ -52,6 +52,7 @@
     <Compile Include="Carbon\Database.cs" />
     <Compile Include="Core\Audio.cs" />
     <Compile Include="Core\ExposedBase.cs" />
+    <Compile Include="Core\GMemory.cs" />
     <Compile Include="Core\MemoryEssentials.cs" />
     <Compile Include="Core\NativeMethods.cs" />
     <Compile Include="Core\PatternScan.cs" />

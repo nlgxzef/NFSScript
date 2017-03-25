@@ -423,5 +423,21 @@ namespace NFSScript.World
         {
             CallBinding(_EASharpBinding_638);
         }
+
+        /// <summary>
+        /// Enables powerup cooldown.
+        /// </summary>
+        public static void EnablePowerupCooldown()
+        {
+            memory.WriteByteArray((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_POWERUP_COOLDOWN, new byte[] { 0x80, 0x7D, 0xFB, 0x0 });
+        }
+
+        /// <summary>
+        /// Blocks powerups from going into cooldown.
+        /// </summary>
+        public static void DisablePowerupCooldown()
+        {
+            memory.WriteByteArray((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_POWERUP_COOLDOWN, new byte[] { 0x3A, 0xC0, 0x90, 0x90 });
+        }
     }
 }

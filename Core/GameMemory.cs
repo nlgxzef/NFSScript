@@ -9,5 +9,10 @@
         /// Where the magic happens.
         /// </summary>
         public static VAMemory memory;
+
+        /// <summary>
+        /// A generic memory.
+        /// </summary>
+        public static GMemory genericMemory;
     }
 }
