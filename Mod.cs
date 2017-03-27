@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace NFSScript
 {
@@ -129,12 +131,27 @@ namespace NFSScript
         { }
 
         /// <summary>
-        /// Basically makes the thread sleep but without the need to reference System.Threading.
+        /// Peforms a task.
         /// </summary>
-        /// <param name="ms"></param>
-        public static void Sleep(int ms)
+        /// <param name="action"></param>
+        public static void DoTask(Action action)
         {
-            System.Threading.Thread.Sleep(ms);
+            action();
+        }
+
+        /// <summary>
+        /// Peforms a task after a number of defined milliseconds without blocking the thread.
+        /// </summary>
+        /// <param name="action">The action to peform.</param>
+        /// <param name="secondsBeforeExecuting">The amount of time to wait in milliseconds before executing the task.</param>
+        public static void DoTimedTask(Action action, int secondsBeforeExecuting)
+        {
+            var task = new Task(() =>
+            {
+                System.Threading.Thread.Sleep(secondsBeforeExecuting);
+                action();
+            });
+            task.Start();
         }
     }
 }
