@@ -45,5 +45,23 @@ namespace NFSScript
                 file.WriteLine(output);
             }
         }
+
+        /// <summary>
+        /// Prints a debug message if <seealso cref="NFSScript.DEBUG"/> is set to true.
+        /// </summary>
+        /// <param name="message"></param>
+        public static void Debug(string message)
+        {
+            if (NFSScript.DEBUG)
+            {
+                string output = string.Format("({0}) DEBUG: {1}", DateTime.Now.ToString("u").Replace("Z", string.Empty), message);
+                Console.WriteLine(output);
+
+                using (StreamWriter file = new StreamWriter(GetFileName(), true))
+                {
+                    file.WriteLine(output);
+                }
+            }
+        }
     }
 }

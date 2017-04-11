@@ -84,7 +84,7 @@ namespace NFSScript.MW
         public static class GameRoom
         {
             /// <summary>
-            /// Get the players in the current game room.
+            /// Returns an array of players in the current game room.
             /// </summary>
             public static Player[] players { get { return _readPlayers(); } }
 

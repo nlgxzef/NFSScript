@@ -5834,28 +5834,30 @@ namespace NFSScript
                 if (o[i] is byte)
                 {
                     function.Push((int)o[i]);
-                    //Log.Print("TEST", string.Format("Pushing byte {0} to the stack", (byte)o[i]));
+                    Log.Debug(string.Format("Pushing byte {0} to the stack", (byte)o[i]));
                 }
                 else if (o[i] is int)
                 {
                     function.Push((int)o[i]);
-                    //Log.Print("TEST", string.Format("Pushing int {0} to the stack", (int)o[i]));
+                    Log.Debug(string.Format("Pushing byte {0} to the stack", (byte)o[i]));
                 }
                 else if (o[i] is IntPtr)
                 {
                     IntPtr p = (IntPtr)o[i];
                     function.Push(p.ToInt32());
+                    Log.Debug(string.Format("Pushing address {0} to the stack", p.ToInt32().ToString("X")));
                 }
                 else if (o[i] is float)
                 {
                     function.Push((float)o[i]);
-                    //Log.Print("TEST", string.Format("Pushing float {0} to the stack", (float)o[i]));
+                    Log.Debug(string.Format("Pushing byte {0} to the stack", (byte)o[i]));
                 }
                 else if (o[i] is bool)
                 {
                     bool b = (bool)o[i];
 
                     function.Push(b.ToByte());
+                    Log.Debug(string.Format("Pushing bool {0} to the stack", b.ToString()));
                 }
                 else if (o[i] is string)
                 {
@@ -5892,7 +5894,7 @@ namespace NFSScript
                         }
 
                     }
-
+                    Log.Debug(string.Format("Pushing string {0} to the stack", s));
                     function.Push(addr.ToInt32());
 
                 }
@@ -5901,12 +5903,12 @@ namespace NFSScript
                     int value = (Locval)o[i];
                     function.PushWORDPTRDS(value);
 
-                    //Log.Print("TEST", string.Format("Pushing the value of [0x{0}] to the stack", value.ToString("X")));
+                    Log.Debug(string.Format("Pushing the value of [0x{0}] to the stack", value.ToString("X")));
                 }
                 else if (o[i] is uint)
                 {
                     function.Push((uint)o[i]);
-                    //Log.Print("TEST", string.Format("Pushing uint {0} to the stack", (uint)o[i]));
+                    Log.Debug(string.Format("Pushing uint {0} to the stack", (uint)o[i]));
                 }
                 else if (o[i] is ushort)
                 {

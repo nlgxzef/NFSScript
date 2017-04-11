@@ -140,6 +140,16 @@ namespace NFSScript
         }
 
         /// <summary>
+        /// Peforms an asynchronous task.
+        /// </summary>
+        /// <param name="action"></param>
+        public static void DoAsyncTask(Action action)
+        {
+            var task = new Task(() => { action(); });
+            task.Start();
+        }
+
+        /// <summary>
         /// Peforms a task after a number of defined milliseconds without blocking the thread.
         /// </summary>
         /// <param name="action">The action to peform.</param>

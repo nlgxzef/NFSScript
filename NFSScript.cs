@@ -9,6 +9,11 @@ namespace NFSScript
     public static class NFSScript
     {
         /// <summary>
+        /// DEBUG.
+        /// </summary>
+        public static bool DEBUG = false;
+
+        /// <summary>
         /// 
         /// </summary>
         public static NFSGame currentLoadedNFSGame;
