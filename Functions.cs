@@ -5805,7 +5805,7 @@ namespace NFSScript
                 else if (o[i] is double)
                 {
                     function.Push((double)o[i]);
-                    Log.Debug(string.Format("Pushing double {0} to the stack", (float)o[i]));
+                    Log.Debug(string.Format("Pushing double {0} to the stack", (double)o[i]));
                 }
                 else if (o[i] is bool)
                 {
