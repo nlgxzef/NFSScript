@@ -727,7 +727,6 @@ namespace NFSScript
         /// </summary>
         public const int SET_RACER_GOAL = 0x611700;
 
-
         /// <summary>
         ///
         /// </summary>
@@ -738,84 +737,70 @@ namespace NFSScript
         /// </summary>
         public const int TOTAL_RACER = 0x611440;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int NOTIFY_RACE_PLACEMENT = 0x60AA00;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int NOTIFY_SPEED_TRAP_TRIGGERED = 0x60A7B0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int NOTIFY_CHECKPOINT_REACHED = 0x6117F0;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int NOTIFY_LAP_FINISHED = 0x611850;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int NOTIFY_RACE_FINISHED = 0x6119F0;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int SET_RACE_ACTIVITY = 0x604ED0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int START_RACE = 0x60DBD0;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int START_RACE_TIMERS = 0x604EF0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int SAVE_START_POSITIONS = 0x604E90;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int RESTORE_START_POSITIONS = 0x60AA50;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int ENTER_POST_RACE_FLOW = 0x611F20;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int SHOW_ONLINE_POST_RACE_SCREEN = 0x605690;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int SET_COPS_ENABLED = 0x604F40;
-
 
         /// <summary>
         ///
@@ -832,240 +817,200 @@ namespace NFSScript
         /// </summary>
         public const int ENTER_GATE_ZONE = 0x611FB0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int EXIT_GATE_ZONE = 0x611FF0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int SHOW_RACE_OVER_SUMMARY = 0x6120C0;
-
-
+        
         /// <summary>
         ///
         /// </summary>
         public const int SET_TRAFFIC_SPEED = 0x605090;
-
-
+        
         /// <summary>
         ///
         /// </summary>
         public const int SPAWN_COP = 0x60A670;
-
-
+        
         /// <summary>
         ///
         /// </summary>
         public const int SPAWN_CHARACTER = 0x604D40;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int UNSPAWN_CHARACTER = 0x604DA0;
-
-
+        
         /// <summary>
         ///
         /// </summary>
         public const int SEND_CHARACTER_STIMULUS = 0x60A6E0;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int JACK_KNIFE = 0x605030;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int SET_ALL_STAGING = 0x60DF70;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int SHOW_PAUSE_MENU = 0x6050F0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int AWARD_CASH = 0x612130;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int AWARD_POINTS = 0x60E030;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int CHALLENGE_COMPLETED = 0x605140;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int UNLOCK_RACE = 0x612140;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int NOTIFY_COUNTDOWN_DONE = 0x60E160;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int RESET_COPS_FOR_RESTART = 0x60AB10;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int SHOW_TRIGGER_ICON = 0x604D20;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int HIDE_TRIGGER_ICON = 0x604D30;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int WARP_TO_MARKER_WHEN_ROAMING = 0x605930;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int DO_SPECIAL_FINALIZATION = 0x605890;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int ALLOW_ENGAGE_EVENTS = 0x605640;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int ALLOW_MENU_GATES = 0x605650;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int ALLOW_ENGAGE_SAFEHOUSE = 0x605660;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int DO_SPECIAL_SETUP = 0x605830;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int CLEAR_RACERS = 0x5E30A0;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int ADD_RACER = 0x601F90;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int ADD_CHECKPOINT = 0x5F5C20;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int SET_NEXT_CHECKPOINT_POS = 0x5FE660;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int SET_ROAMING = 0x5FE3E0;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int SET_IS_LOADING = 0x5DB3E0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int ENTER_SUDDEN_DEATH = 0x604030;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int AWARD_BONUS_TIME = 0x5FE600;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int SET_ACTIVELY_RACING = 0x604050;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int SET_TASK_TIME = 0x604040;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int DISABLE_BARRIERS = 0x5DBF00;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int ENABLE_BIN_BARRIERS = 0x5E3020;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int NOTIFY_SCRIPT_WHEN_LOADED = 0x5EEA60;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int SET_HAS_BEEN_WON = 0x604080;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int AWARD_PLAYER_BOUNTY = 0x612220;
-
 
         /// <summary>
         ///
@@ -5839,7 +5784,7 @@ namespace NFSScript
                 else if (o[i] is int)
                 {
                     function.Push((int)o[i]);
-                    Log.Debug(string.Format("Pushing byte {0} to the stack", (byte)o[i]));
+                    Log.Debug(string.Format("Pushing int {0} to the stack", (int)o[i]));
                 }
                 else if (o[i] is IntPtr)
                 {
@@ -5847,10 +5792,20 @@ namespace NFSScript
                     function.Push(p.ToInt32());
                     Log.Debug(string.Format("Pushing address {0} to the stack", p.ToInt32().ToString("X")));
                 }
+                else if (o[i] is short)
+                {
+                    function.Push((int)o[i]);
+                    Log.Debug(string.Format("Pushing short {0} to the stack", (int)o[i]));
+                }
                 else if (o[i] is float)
                 {
                     function.Push((float)o[i]);
-                    Log.Debug(string.Format("Pushing byte {0} to the stack", (byte)o[i]));
+                    Log.Debug(string.Format("Pushing float {0} to the stack", (float)o[i]));
+                }
+                else if (o[i] is double)
+                {
+                    function.Push((double)o[i]);
+                    Log.Debug(string.Format("Pushing double {0} to the stack", (float)o[i]));
                 }
                 else if (o[i] is bool)
                 {
@@ -5905,6 +5860,11 @@ namespace NFSScript
 
                     Log.Debug(string.Format("Pushing the value of [0x{0}] to the stack", value.ToString("X")));
                 }
+                else if (o[i] is sbyte)
+                {
+                    function.Push((int)o[i]);
+                    Log.Debug(string.Format("Pushing sbyte {0} to the stack", (sbyte)o[i]));
+                }
                 else if (o[i] is uint)
                 {
                     function.Push((uint)o[i]);
@@ -5912,7 +5872,8 @@ namespace NFSScript
                 }
                 else if (o[i] is ushort)
                 {
-                    function.Push((ushort)o[i]);
+                    function.Push((int)o[i]);
+                    Log.Debug(string.Format("Pushing ushort {0} to the stack", (sbyte)o[i]));
                 }
                 else
                 {

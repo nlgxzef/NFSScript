@@ -89,7 +89,7 @@ namespace NFSScript.Core
         }
 
         /// <summary>
-        /// Push a value to the stack.
+        /// Pushes a value to the stack.
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -109,10 +109,21 @@ namespace NFSScript.Core
         }
 
         /// <summary>
-        /// Push a floating point value to the stack.
+        /// Pushes a floating point value to the stack.
         /// </summary>
         /// <param name="value"></param>
         public void Push(float value)
+        {
+            byte[] bytes = BitConverter.GetBytes(value);
+            b.Add(0x68);
+            b.AddRange(bytes);
+        }
+
+        /// <summary>
+        /// Pushes a double value to the stack.
+        /// </summary>
+        /// <param name="value"></param>
+        public void Push(double value)
         {
             byte[] bytes = BitConverter.GetBytes(value);
             b.Add(0x68);

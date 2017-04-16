@@ -390,7 +390,7 @@ namespace NFSScript.MW
         public static class World
         {
             /// <summary>
-            /// World's speed modifier for animations (like waving trees) on the game's world. (Default value is 45.0)
+            /// World's speed modifier for animations (like waving trees) in the game's world. (Default value is 45.0)
             /// </summary>
             public static float animationSpeed
             {
