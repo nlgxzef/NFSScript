@@ -39,6 +39,12 @@ namespace NFSScript.Core
         [DllImport("kernel32.dll")]
         internal static extern bool VirtualProtectEx(IntPtr hProcess, IntPtr lpAddress, UIntPtr dwSize, uint flNewProtect, out uint lpflOldProtect);
 
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out int lpdwProcessId);
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetForegroundWindow();
+
         #region Definitions
         internal const int MEM_COMMIT = 0x1000;
         internal const int PAGE_GUARD = 0x100;

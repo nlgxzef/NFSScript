@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using NFSScript.Core;
 
 namespace NFSScript
@@ -30,9 +31,27 @@ namespace NFSScript
     public static class CurrentGame
     {
         /// <summary>
-        /// Returns whether the game is minimized or not.
+        /// Returns a value that indicates whether the game is minimized or not.
         /// </summary>
         public static bool IsMinimized { get { return NativeMethods.IsIconic(GameMemory.memory.GetMainProcess().MainWindowHandle); } }
+
+        /// <summary>
+        /// Returns a value that indicates whether the game window is focused or not.
+        /// </summary>
+        public static bool IsGameInFocus
+        {
+            get
+            {
+                int processID;
+                NativeMethods.GetWindowThreadProcessId(NativeMethods.GetForegroundWindow(), out processID);
+                Process processToCheck = Process.GetProcessById(processID);
+                if (GameMemory.memory.GetMainProcess().Id == processToCheck.Id)
+                {
+                    return true;
+                }
+                else return false;
+            }
+        }
     }
 
     /// <summary>

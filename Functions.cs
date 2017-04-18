@@ -5776,48 +5776,44 @@ namespace NFSScript
             // Push parameters to the stack backwards since the stack is LIFO
             for (int i = o.Length; i-- > 0;)
             {
-                if (o[i] is byte)
+                if (o[i] is byte b)
                 {
-                    function.Push((int)o[i]);
-                    Log.Debug(string.Format("Pushing byte {0} to the stack", (byte)o[i]));
+                    function.Push(b);
+                    Log.Debug(string.Format("Pushing byte {0} to the stack", b));
                 }
-                else if (o[i] is int)
+                else if (o[i] is int num)
                 {
-                    function.Push((int)o[i]);
-                    Log.Debug(string.Format("Pushing int {0} to the stack", (int)o[i]));
+                    function.Push(num);
+                    Log.Debug(string.Format("Pushing int {0} to the stack", num));
                 }
-                else if (o[i] is IntPtr)
+                else if (o[i] is IntPtr ptr)
                 {
-                    IntPtr p = (IntPtr)o[i];
-                    function.Push(p.ToInt32());
-                    Log.Debug(string.Format("Pushing address {0} to the stack", p.ToInt32().ToString("X")));
+                    function.Push(ptr.ToInt32());
+                    Log.Debug(string.Format("Pushing address {0} to the stack", ptr.ToInt32().ToString("X")));
                 }
-                else if (o[i] is short)
+                else if (o[i] is short shrt)
                 {
-                    function.Push((int)o[i]);
-                    Log.Debug(string.Format("Pushing short {0} to the stack", (int)o[i]));
+                    function.Push(shrt);
+                    Log.Debug(string.Format("Pushing short {0} to the stack", shrt));
                 }
-                else if (o[i] is float)
+                else if (o[i] is float f)
                 {
-                    function.Push((float)o[i]);
-                    Log.Debug(string.Format("Pushing float {0} to the stack", (float)o[i]));
+                    function.Push(f);
+                    Log.Debug(string.Format("Pushing float {0} to the stack", f));
                 }
-                else if (o[i] is double)
+                else if (o[i] is double d)
                 {
-                    function.Push((double)o[i]);
-                    Log.Debug(string.Format("Pushing double {0} to the stack", (double)o[i]));
+                    function.Push(d);
+                    Log.Debug(string.Format("Pushing double {0} to the stack", d));
                 }
-                else if (o[i] is bool)
+                else if (o[i] is bool boo)
                 {
-                    bool b = (bool)o[i];
 
-                    function.Push(b.ToByte());
-                    Log.Debug(string.Format("Pushing bool {0} to the stack", b.ToString()));
+                    function.Push(boo.ToByte());
+                    Log.Debug(string.Format("Pushing bool {0} to the stack", boo.ToString()));
                 }
-                else if (o[i] is string)
+                else if (o[i] is string s)
                 {
-                    string s = (string)o[i];
-
                     IntPtr addr = IntPtr.Zero;
                     IntPtr handle = GameMemory.memory.ProcessHandle;
                     if (memoryStringPointers.ContainsValue(s))
@@ -5853,27 +5849,27 @@ namespace NFSScript
                     function.Push(addr.ToInt32());
 
                 }
-                else if (o[i] is Locval)
+                else if (o[i] is Locval loc)
                 {
-                    int value = (Locval)o[i];
+                    int value = loc;
                     function.PushWORDPTRDS(value);
 
                     Log.Debug(string.Format("Pushing the value of [0x{0}] to the stack", value.ToString("X")));
                 }
-                else if (o[i] is sbyte)
+                else if (o[i] is sbyte sb)
                 {
-                    function.Push((int)o[i]);
-                    Log.Debug(string.Format("Pushing sbyte {0} to the stack", (sbyte)o[i]));
+                    function.Push(sb);
+                    Log.Debug(string.Format("Pushing sbyte {0} to the stack", sb));
                 }
-                else if (o[i] is uint)
+                else if (o[i] is uint unum)
                 {
-                    function.Push((uint)o[i]);
-                    Log.Debug(string.Format("Pushing uint {0} to the stack", (uint)o[i]));
+                    function.Push(unum);
+                    Log.Debug(string.Format("Pushing uint {0} to the stack", unum));
                 }
-                else if (o[i] is ushort)
+                else if (o[i] is ushort ushrt)
                 {
-                    function.Push((int)o[i]);
-                    Log.Debug(string.Format("Pushing ushort {0} to the stack", (sbyte)o[i]));
+                    function.Push(ushrt);
+                    Log.Debug(string.Format("Pushing ushort {0} to the stack", ushrt));
                 }
                 else
                 {
