@@ -50,7 +50,7 @@ namespace NFSScript.Core
         /// <param name="value"></param>
         public void PushWORDPTRDS(int value)
         {
-            b.AddRange(new byte[] { 0xff, 0x35 });
+            b.AddRange(new byte[] { 0xFF, 0x35 });
             b.AddRange(BitConverter.GetBytes(value));
         }
 
@@ -84,7 +84,7 @@ namespace NFSScript.Core
         /// <param name="value"></param>
         public void AddToESP(int value)
         {
-            b.AddRange(new byte[] { 0x83, 0xc4 });
+            b.AddRange(new byte[] { 0x83, 0xC4 });
             b.AddRange(BitConverter.GetBytes(value));
         }
 
@@ -199,7 +199,7 @@ namespace NFSScript.Core
         /// <param name="value"></param>
         public void MovEAX(uint value)
         {
-            b.Add(0xb8);
+            b.Add(0xB8);
             b.AddRange(BitConverter.GetBytes(value));
         }
 
@@ -209,7 +209,7 @@ namespace NFSScript.Core
         /// <param name="address"></param>
         public void MovEAXToAddress(uint address)
         {
-            b.Add(0xa3);
+            b.Add(0xA3);
             b.AddRange(BitConverter.GetBytes(address));
         }
 

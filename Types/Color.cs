@@ -11,27 +11,27 @@ namespace NFSScript
     public struct Color
     {
         /// <summary>
-        /// Alpha value of the color
+        /// Alpha value of the color.
         /// </summary>
         public float a { get; set; }
 
         /// <summary>
-        /// Blue value of the color
+        /// Blue value of the color.
         /// </summary>
         public float b { get; set; }
 
         /// <summary>
-        /// Green value of the color
+        /// Green value of the color.
         /// </summary>
         public float g { get; set; }
 
         /// <summary>
-        /// Red value of the color
+        /// Red value of the color.
         /// </summary>
         public float r { get; set; }
 
         /// <summary>
-        /// The color black
+        /// The color black.
         /// </summary>
         public static Color black
         {
@@ -42,7 +42,7 @@ namespace NFSScript
         }
 
         /// <summary>
-        /// The color blue
+        /// The color blue.
         /// </summary>
         public static Color blue
         {
@@ -53,7 +53,7 @@ namespace NFSScript
         }
 
         /// <summary>
-        /// Transparent
+        /// Transparent.
         /// </summary>
         public static Color clear
         {
@@ -64,7 +64,7 @@ namespace NFSScript
         }
 
         /// <summary>
-        /// The color cyan
+        /// The color cyan.
         /// </summary>
         public static Color cyan
         {
@@ -75,7 +75,7 @@ namespace NFSScript
         }
 
         /// <summary>
-        /// The color gray for the Americans
+        /// The color gray for the Americans.
         /// </summary>
         public static Color gray
         {
@@ -86,7 +86,7 @@ namespace NFSScript
         }
 
         /// <summary>
-        /// The color green
+        /// The color green.
         /// </summary>
         public static Color green
         {
@@ -97,7 +97,7 @@ namespace NFSScript
         }
 
         /// <summary>
-        /// The color grey for the Englishmen
+        /// The color grey for the Englishmen.
         /// </summary>
         public static Color grey
         {
@@ -108,7 +108,7 @@ namespace NFSScript
         }
 
         /// <summary>
-        /// The color magenta
+        /// The color magenta.
         /// </summary>
         public static Color magenta
         {
@@ -119,7 +119,7 @@ namespace NFSScript
         }
 
         /// <summary>
-        /// The color red
+        /// The color red.
         /// </summary>
         public static Color red
         {
@@ -130,7 +130,7 @@ namespace NFSScript
         }
 
         /// <summary>
-        /// The color white
+        /// The color white.
         /// </summary>
         public static Color white
         {
@@ -141,7 +141,7 @@ namespace NFSScript
         }
 
         /// <summary>
-        /// The color yellow
+        /// The color yellow.
         /// </summary>
         public static Color yellow
         {
@@ -222,7 +222,7 @@ namespace NFSScript
         }
 
         /// <summary>
-        /// Returns a color from hex
+        /// Returns a color from hex.
         /// </summary>
         /// <param name="hex"></param>
         /// <returns></returns>

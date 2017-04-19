@@ -2,11 +2,7 @@
 
 namespace NFSScript.Types
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <typeparam name="TCustom"></typeparam>
-    /// <typeparam name="TValue"></typeparam>
+    /// <summary/>
     public class CustomValueType<TCustom, TValue>
     {
         /// <summary>
@@ -14,118 +10,67 @@ namespace NFSScript.Types
         /// </summary>
         protected readonly TValue value;
 
-        /// <summary>
-        /// Custom value type
-        /// </summary>
-        /// <param name="value"></param>
+        /// <summary/>
         public CustomValueType(TValue value)
         {
             this.value = value;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <summary/>
         public static bool operator <(CustomValueType<TCustom, TValue> a, CustomValueType<TCustom, TValue> b)
         {
             return Comparer<TValue>.Default.Compare(a.value, b.value) < 0;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <summary/>
         public static bool operator >(CustomValueType<TCustom, TValue> a, CustomValueType<TCustom, TValue> b)
         {
             return !(a < b);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <summary/>
         public static bool operator <=(CustomValueType<TCustom, TValue> a, CustomValueType<TCustom, TValue> b)
         {
             return (a < b) || (a == b);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <summary/>
         public static bool operator >=(CustomValueType<TCustom, TValue> a, CustomValueType<TCustom, TValue> b)
         {
             return (a > b) || (a == b);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <summary/>
         public static bool operator ==(CustomValueType<TCustom, TValue> a, CustomValueType<TCustom, TValue> b)
         {
             return a.Equals((object)b);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <summary/>
         public static bool operator !=(CustomValueType<TCustom, TValue> a, CustomValueType<TCustom, TValue> b)
         {
             return !(a == b);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <summary/>
         public static TCustom operator +(CustomValueType<TCustom, TValue> a, CustomValueType<TCustom, TValue> b)
         {
             return (dynamic)a.value + b.value;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <summary/>
         public static TCustom operator -(CustomValueType<TCustom, TValue> a, CustomValueType<TCustom, TValue> b)
         {
             return ((dynamic)a.value - b.value);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
+        /// <summary/>
         protected bool Equals(CustomValueType<TCustom, TValue> other)
         {
             return EqualityComparer<TValue>.Default.Equals(value, other.value);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
+        /// <summary/>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -134,19 +79,13 @@ namespace NFSScript.Types
             return Equals((CustomValueType<TCustom, TValue>)obj);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+        /// <summary/>
         public override int GetHashCode()
         {
             return EqualityComparer<TValue>.Default.GetHashCode(value);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+        /// <summary/>
         public override string ToString()
         {
             return value.ToString();

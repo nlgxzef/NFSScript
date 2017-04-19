@@ -3091,7 +3091,7 @@ namespace NFSScript
         /// <summary>
         ///
         /// </summary>
-        public const int NIS_REEZE_CAMERA = 0x6E2070;
+        public const int NIS_FREEZE_CAMERA = 0x6E2070;
 
 
         /// <summary>
@@ -5808,7 +5808,6 @@ namespace NFSScript
                 }
                 else if (o[i] is bool boo)
                 {
-
                     function.Push(boo.ToByte());
                     Log.Debug(string.Format("Pushing bool {0} to the stack", boo.ToString()));
                 }
@@ -6020,7 +6019,7 @@ namespace NFSScript
 
             if (align)
             {
-                // For stack alignment to prevent crashes
+                // Stack alignment in order to prevent crashes
                 for (int i = 0; i < o.Length; i++)
                 {
                     function.PopEAX();

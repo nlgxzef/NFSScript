@@ -112,6 +112,19 @@
     <Compile Include="Underground\Network.cs" />
     <Compile Include="Underground\Player.cs" />
     <Compile Include="Underground\UI.cs" />
+    <Compile Include="World\Attrib\Hash\Blackboard\Attributes.cs" />
+    <Compile Include="World\Attrib\Hash\Blackboard\Keys.cs" />
+    <Compile Include="World\Attrib\Hash\FE_Flashers\Attributes.cs" />
+    <Compile Include="World\Attrib\Hash\FE_Flashers\Keys.cs" />
+    <Compile Include="World\Attrib\Hash\Gameplay\Attributes.cs" />
+    <Compile Include="World\Attrib\Hash\Gameplay\Keys.cs" />
+    <Compile Include="World\Attrib\Hash\Powerup_Gamegroup\Attributes.cs" />
+    <Compile Include="World\Attrib\Hash\Powerup_Gamegroup\Keys.cs" />
+    <Compile Include="World\Attrib\Hash\PursuitEscalation\Attributes.cs" />
+    <Compile Include="World\Attrib\Hash\PursuitEscalation\Keys.cs" />
+    <Compile Include="World\Attrib\Hash\PursuitLevels\Attributes.cs" />
+    <Compile Include="World\Attrib\Hash\VisualItem\Attributes.cs" />
+    <Compile Include="World\Attrib\Hash\VisualPart\Attributes.cs" />
     <Compile Include="World\Database.cs" />
     <Compile Include="World\EASharpBindings.cs" />
     <Compile Include="World\EASharp\Math.cs" />
@@ -125,6 +138,7 @@
     <Compile Include="World\PowerupConfiguration.cs" />
     <Compile Include="World\Render.cs" />
     <Compile Include="World\SecurityManager.cs" />
+    <Compile Include="World\Simulation.cs" />
     <Compile Include="World\TrafficLevel.cs" />
     <Compile Include="World\UI.cs" />
   </ItemGroup>

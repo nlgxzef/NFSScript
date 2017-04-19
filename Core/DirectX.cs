@@ -120,8 +120,7 @@ namespace NFSScript
         /// <returns></returns>
         public static Keys DirectXKeyToKeys(DirectXKeys dKey)
         {
-            Keys key;
-            inputDictonary.TryGetValue(dKey, out key);
+            inputDictonary.TryGetValue(dKey, out Keys key);
 
             return key;
         }

@@ -1,37 +1,24 @@
 ﻿namespace NFSScript
 {
-    /// <summary>
-    /// 
-    /// </summary>
+    /// <summary/>
     public struct Locval
     {
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <summary/>
         public int value { get; private set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="value"></param>
+        /// <summary/>
         public Locval(int value)
         {
             this.value = value;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="instance"></param>
+        /// <summary/>
         public static implicit operator int(Locval instance)
         {
             return instance.value;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="value"></param>
+        /// <summary/>
         public static implicit operator Locval(int value)
         {
             return new Locval(value);

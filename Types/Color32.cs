@@ -10,22 +10,22 @@ namespace NFSScript
     public struct Color32
     {
         /// <summary>
-        /// Alpha value of the color
+        /// Alpha value of the color.
         /// </summary>
         public byte a { get; set; }
 
         /// <summary>
-        /// Blue value of the color
+        /// Blue value of the color.
         /// </summary>
         public byte b { get; set; }
 
         /// <summary>
-        /// Green value of the color
+        /// Green value of the color.
         /// </summary>
         public byte g { get; set; }
 
         /// <summary>
-        /// Red value of the color
+        /// Red value of the color.
         /// </summary>
         public byte r { get; set; }
 
@@ -60,7 +60,7 @@ namespace NFSScript
         }
 
         /// <summary>
-        /// Returns a color32 from hex
+        /// Returns a color32 from hex.
         /// </summary>
         /// <param name="hex"></param>
         /// <returns></returns>
@@ -76,7 +76,7 @@ namespace NFSScript
             }
             catch
             {
-                throw new Exception(string.Format("{0} {1}", hex, "is not a valid color"));
+                throw new Exception(string.Format("{0} {1}", hex, "is not a valid color."));
             }
         }
     }
