@@ -20,9 +20,14 @@ namespace NFSScript
         public static NFSGame currentLoadedNFSGame;
 
         /// <summary>
-        /// The directory of the script loader (NFSScriptLoader.exe).
+        /// Returns the directory of the script loader (NFSScriptLoader.exe).
         /// </summary>
         public static string Directory { get { return AppDomain.CurrentDomain.BaseDirectory; } }
+
+        /// <summary>
+        /// Returns the game's directory.
+        /// </summary>
+        public static string GameDirectory { get { return System.IO.Path.GetDirectoryName(GameMemory.memory.GetMainProcess().MainModule.FileName); } }
     }
 
     /// <summary>

@@ -280,10 +280,11 @@ namespace NFSScript.Core
         /// <param name="count"></param>
         public static void MakeNopAt(int address, int count)
         {
+            int addr = address;
             for (int i = 0; i < count; i++)
             {
-                int addr = address + 0x02;
                 GameMemory.memory.WriteByte((IntPtr)addr, 0x90);
+                addr = addr + 0x01;
             }
         }
 
@@ -298,7 +299,7 @@ namespace NFSScript.Core
 
             for (int i = 0; i < arr.Length; i++)
             {
-                arr[i] = 0;
+                arr[i] = 0x00;
             }
 
             GameMemory.memory.WriteByteArray(address, arr);

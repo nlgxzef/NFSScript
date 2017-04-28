@@ -665,7 +665,7 @@ namespace NFSScript.Carbon
             }
 
             /// <summary>
-            /// Game world cars current scale
+            /// Game world cars current scale.
             /// </summary>
             public static Vector3 CarsScale
             {
@@ -810,22 +810,30 @@ namespace NFSScript.Carbon
             /// <param name="enabled"></param>
             public static void SetPlayerAlwaysWin(bool enabled)
             {
+                uint x = 0, x2 = 0, x3 = 0, x4 = 0, x5 = 0;
+
                 if (enabled)
                 {
-                    memory.WriteUInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_1, 0x90900134);
-                    memory.WriteInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_2, 0x13EBC084);
-                    memory.WriteUInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_3, 0x9001347F);
-                    memory.WriteUInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_4, 0x90909090);
-                    memory.WriteUInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_5, 0xC8878A90);
+                    x = 0x90900134;
+                    x2 = 0x13EBC084;
+                    x3 = 0x9001347F;
+                    x4 = 0x90909090;
+                    x5 = 0xC8878A90;
                 }
                 else if (!enabled)
                 {
-                    memory.WriteInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_1, 0x40750134);
-                    memory.WriteInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_2, 0x1374C084);
-                    memory.WriteInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_3, 0xF01347F);
-                    memory.WriteInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_4, 0x24BB5);
-                    memory.WriteUInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_5, 0xC8878A00);
+                    x = 0x40750134;
+                    x2 = 0x1374C084;
+                    x3 = 0xF01347F;
+                    x4 = 0x24BB5;
+                    x5 = 0xC8878A00;
                 }
+
+                memory.WriteUInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_1, x);
+                memory.WriteUInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_2, x2);
+                memory.WriteUInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_3, x3);
+                memory.WriteUInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_4, x4);
+                memory.WriteUInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_5, x5);
             }
         }
     }
