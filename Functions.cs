@@ -1922,7 +1922,7 @@ namespace NFSScript
         /// <summary>
         ///
         /// </summary>
-        public const int NIS__PLAY = 0x650DB0;
+        public const int NIS_PLAY = 0x650DB0;
         
         /// <summary>
         ///
@@ -2708,7 +2708,7 @@ namespace NFSScript
         /// <summary>
         ///
         /// </summary>
-        public const int UPATE_BOSS_STATE = 0x64C600;
+        public const int UPDATE_BOSS_STATE = 0x64C600;
 
 
         /// <summary>

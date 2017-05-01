@@ -125,6 +125,31 @@ namespace NFSScript.Carbon
         }
 
         /// <summary>
+        /// Returns the current game resolution.
+        /// </summary>
+        public static Point videoResolution
+        {
+            get
+            {
+                int x = memory.ReadInt32((IntPtr)GenericAddrs.STATIC_CURRENT_RES_X);
+                int y = memory.ReadInt32((IntPtr)GenericAddrs.STATIC_CURRENT_RES_Y);
+
+                return new Point(x, y);
+            }
+        }
+
+        /// <summary>
+        /// Returns true if the mouse button is currently being held.
+        /// </summary>
+        public static bool IsMouseButtonHeld
+        {
+            get
+            {
+                return memory.ReadInt32((IntPtr)GenericAddrs.STATIC_IS_MOUSE_HELD) == 1;
+            }
+        }
+
+        /// <summary>
         /// Is sound enabled?
         /// </summary>
         public static bool isSoundEnabled

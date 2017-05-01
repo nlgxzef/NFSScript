@@ -61,6 +61,60 @@ namespace NFSScript.Math
         }
 
         /// <summary>
+        /// Returns a value determining whether the two Point values are equal.
+        /// </summary>
+        /// <param name="l"></param>
+        /// <param name="r"></param>
+        /// <returns></returns>
+        public static bool operator ==(Point l, Point r)
+        {
+            return Equals(l, r);
+        }
+
+        /// <summary>
+        /// Returns a value determining whether the two Point values aren't equal.
+        /// </summary>
+        /// <param name="l"></param>
+        /// <param name="r"></param>
+        /// <returns></returns>
+        public static bool operator !=(Point l, Point r)
+        {
+            return !Equals(l, r);
+        }
+
+        /// <summary>
+        /// Returns a hash code for this <see cref="Point"/>.
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return x.GetHashCode() ^ y.GetHashCode() << 2;
+        }
+
+        /// <summary>
+        /// Determines whether the specified <see cref="Point"/> is equal to the current <see cref="Point"/>.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            if (obj.GetType() != typeof(Point) || obj == null)
+                return false;
+            else return Equals(this, (Point)obj);
+        }
+
+        /// <summary>
+        /// Determines whether the specified <see cref="Point"/> values are equal.
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static bool Equals(Point a, Point b)
+        {
+            return (a.x == b.x && a.y == b.y);
+        }
+
+        /// <summary>
         /// Returns a formatted <see cref="Point"/> string.
         /// </summary>
         /// <returns></returns>

@@ -897,6 +897,15 @@
             /// 
             /// </summary>
             public const int STATIC_SKIP_MOVIES = 0xA9E6D8;
+
+            /// <summary/>
+            public const int STATIC_IS_MOUSE_HELD = 0xB1F654;
+
+            /// <summary/>
+            public const int STATIC_CURRENT_RES_X = 0xA63F80;
+
+            /// <summary/>
+            public const int STATIC_CURRENT_RES_Y = 0xA63F84;
         }
 
         /// <summary>
