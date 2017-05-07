@@ -8,7 +8,7 @@ If you plan to write mods and/or contribute, you should check the [Getting Start
 # Download
 Downloads of this tool can be found on the [releases](https://github.com/DennisStanistan/NFSScript/releases) page.
 
-# Credits & Special Thanks
+# Special Thanks
 Xan1242 - Provided me with a HUGE list of function addresses.
 
 nlgzrgn - Sent me useful variables.
