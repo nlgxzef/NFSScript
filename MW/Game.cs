@@ -25,17 +25,17 @@ namespace NFSScript.MW
         /// <summary>
         /// Returns a value that indicates whether the sirens are enabled or not.
         /// </summary>
-        public static bool sirensEnabled { get; private set; }
+        public static bool SirensEnabled { get; private set; }
 
         /// <summary>
         /// Returns the save game directory path.
         /// </summary>
-        public static string saveDirectory { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NFS Most Wanted"); } }
+        public static string SaveDirectory { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NFS Most Wanted"); } }
 
         /// <summary>
         /// The scale at which the gameplay's time is passing. (Not the global time scale)
         /// </summary>
-        public static float gameSpeed
+        public static float GameSpeed
         {
             get
             {
@@ -50,7 +50,7 @@ namespace NFSScript.MW
         /// <summary>
         /// Returns the amount of seconds it takes to render a frame
         /// </summary>
-        public static float lastFrameTime
+        public static float LastFrameTime
         {
             get
             {
@@ -61,7 +61,7 @@ namespace NFSScript.MW
         /// <summary>
         /// Returns true is the gameplay is active.
         /// </summary>
-        public static bool isGameplayActive
+        public static bool IsGameplayActive
         {
             get
             {
@@ -75,7 +75,7 @@ namespace NFSScript.MW
         /// <summary>
         /// Is sound enabled?
         /// </summary>
-        public static bool isSoundEnabled
+        public static bool IsSoundEnabled
         {
             get { return _readAudioIDValue(SOUND_ID); }
             set { _setAudioIDValue(SOUND_ID, value); }
@@ -84,7 +84,7 @@ namespace NFSScript.MW
         /// <summary>
         /// Is audio stream enabled?
         /// </summary>
-        public static bool isAudioStreamingEnabled
+        public static bool IsAudioStreamingEnabled
         {
             get { return _readAudioIDValue(AUDIO_STREAMING_ID); }
             set { _setAudioIDValue(AUDIO_STREAMING_ID, value); }
@@ -93,7 +93,7 @@ namespace NFSScript.MW
         /// <summary>
         /// Is speech enabled?
         /// </summary>
-        public static bool isSpeechEnabled
+        public static bool IsSpeechEnabled
         {
             get { return _readAudioIDValue(SPEECH_ID); }
             set { _setAudioIDValue(SPEECH_ID, value); }
@@ -102,7 +102,7 @@ namespace NFSScript.MW
         /// <summary>
         /// Is NIS audio enabled?
         /// </summary>
-        public static bool isNISAudioEnabled
+        public static bool IsNISAudioEnabled
         {
             get { return _readAudioIDValue(NIS_AUDIO_ID); }
             set { _setAudioIDValue(NIS_AUDIO_ID, value); }
@@ -134,7 +134,7 @@ namespace NFSScript.MW
         /// </summary>
         public static void LoadingScreenOn()
         {
-            if(isGameplayActive)
+            if(IsGameplayActive)
                 Function.Call(Funcs.LOADING_SCREEN_ON);
         }
 
@@ -273,7 +273,7 @@ namespace NFSScript.MW
         public static void EnablePoliceSirens()
         {
             _setPoliceSirensIntensity(sirensIntensityR, sirensIntensityB, sirensIntensityW);
-            sirensEnabled = true;
+            SirensEnabled = true;
         }
 
         /// <summary>
@@ -282,7 +282,7 @@ namespace NFSScript.MW
         public static void DisablePoliceSirens()
         {
             _setPoliceSirensIntensity(0, 0, 0);
-            sirensEnabled = false;
+            SirensEnabled = false;
         }
 
         /// <summary>
@@ -297,7 +297,7 @@ namespace NFSScript.MW
             sirensIntensityB = blue;
             sirensIntensityW = white;
 
-            if (sirensEnabled)
+            if (SirensEnabled)
             {
                 _setPoliceSirensIntensity(red, blue, white);
             }
@@ -392,7 +392,7 @@ namespace NFSScript.MW
             /// <summary>
             /// World's speed modifier for animations (like waving trees) in the game's world. (Default value is 45.0)
             /// </summary>
-            public static float animationSpeed
+            public static float AnimationSpeed
             {
                 get { return memory.ReadFloat((IntPtr)Addrs.WorldAddrs.STATIC_ANIMATION_SPEED); }
                 set { memory.WriteFloat((IntPtr)Addrs.WorldAddrs.STATIC_ANIMATION_SPEED, value); }
@@ -557,14 +557,14 @@ namespace NFSScript.MW
         /// <summary>
         /// The address where the main GameFlowManager is located at.
         /// </summary>
-        public static IntPtr address { get { return (IntPtr)Addrs.GenericAddrs.STATIC_GAME_STATE; } }
+        public static IntPtr Address { get { return (IntPtr)Addrs.GenericAddrs.STATIC_GAME_STATE; } }
 
         private int gameStateValue;
 
         /// <summary>
         /// The main GameFlowManager.
         /// </summary>
-        public static GameFlowManager TheGameFlowManager { get { return new GameFlowManager(memory.ReadInt32(address)); } }
+        public static GameFlowManager TheGameFlowManager { get { return new GameFlowManager(memory.ReadInt32(Address)); } }
 
         /// <summary>
         /// Instantiate a GameFlowManager class.

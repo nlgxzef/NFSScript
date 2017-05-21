@@ -12,7 +12,7 @@ namespace NFSScript.Underground2
         /// <summary>
         /// Returns the amount of seconds it takes to render a frame
         /// </summary>
-        public static float lastFrameTime
+        public static float LastFrameTime
         {
             get
             {
@@ -23,7 +23,7 @@ namespace NFSScript.Underground2
         /// <summary>
         /// Returns a value indicating whether the game is active or not.
         /// </summary>
-        public static bool isGameplayActive
+        public static bool IsGameplayActive
         {
             get
             {
@@ -37,7 +37,7 @@ namespace NFSScript.Underground2
         /// <summary>
         /// Returns a value that indicates whether the game is in replay mode or not.
         /// </summary>
-        public static bool isInReplayMode
+        public static bool IsInReplayMode
         {
             get {
                 byte b = memory.ReadByte((IntPtr)Addrs.GenericAddrs.STATIC_IS_REPLAY_MODE);
@@ -63,7 +63,7 @@ namespace NFSScript.Underground2
             /// <summary>
             ///  The neon brightness value for cars present at the game's world.
             /// </summary>
-            public static float carsNeonBrightness
+            public static float CarsNeonBrightness
             {
                 get { return memory.ReadFloat((IntPtr)Addrs.WorldAddrs.STATIC_WORLD_CARS_NEON_BRIGHTNESS); }
                 set { memory.WriteFloat((IntPtr)Addrs.WorldAddrs.STATIC_WORLD_CARS_NEON_BRIGHTNESS, value); }
@@ -79,14 +79,14 @@ namespace NFSScript.Underground2
         /// <summary>
         /// The address where the main GameFlowManager is located at.
         /// </summary>
-        public static IntPtr address { get { return (IntPtr)Addrs.GenericAddrs.STATIC_GAME_STATE; } }
+        public static IntPtr Address { get { return (IntPtr)Addrs.GenericAddrs.STATIC_GAME_STATE; } }
 
         private int gameStateValue;
 
         /// <summary>
         /// The main GameFlowManager.
         /// </summary>
-        public static GameFlowManager TheGameFlowManager { get { return new GameFlowManager(memory.ReadInt32(address)); } }
+        public static GameFlowManager TheGameFlowManager { get { return new GameFlowManager(memory.ReadInt32(Address)); } }
 
         /// <summary>
         /// Instantiate a GameFlowManager class.

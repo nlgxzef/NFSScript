@@ -21,7 +21,7 @@ namespace NFSScript.ProStreet
         /// <summary>
         /// Returns the currently playing song ID.
         /// </summary>
-        public static int currentlyPlayingSongID
+        public static int CurrentlyPlayingSongID
         {
             get { return memory.ReadInt32((IntPtr)Addrs.GameAddrs.STATIC_SONG_ID); }
         }
@@ -29,12 +29,12 @@ namespace NFSScript.ProStreet
         /// <summary>
         /// Returns the save game directory path.
         /// </summary>
-        public static string saveDirectory { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NFS ProStreet"); } }
+        public static string SaveDirectory { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NFS ProStreet"); } }
 
         /// <summary>
         /// Returns true is the gameplay is active.
         /// </summary>
-        public static bool isGameplayActive
+        public static bool IsGameplayActive
         {
             get
             {         
@@ -47,7 +47,7 @@ namespace NFSScript.ProStreet
         /// <summary>
         /// Returns true if the career is loaded.
         /// </summary>
-        public static bool isCareerLoaded
+        public static bool IsCareerLoaded
         {
             get
             {
@@ -60,7 +60,7 @@ namespace NFSScript.ProStreet
         /// <summary>
         /// Is sound enabled?
         /// </summary>
-        public static bool isSoundEnabled
+        public static bool IsSoundEnabled
         {
             get { return _readAudioIDValue(SOUND_ID); }
             set { _setAudioIDValue(SOUND_ID, value); }
@@ -69,7 +69,7 @@ namespace NFSScript.ProStreet
         /// <summary>
         /// Is audio stream enabled?
         /// </summary>
-        public static bool isAudioStreamingEnabled
+        public static bool IsAudioStreamingEnabled
         {
             get { return _readAudioIDValue(AUDIO_STREAMING_ID); }
             set { _setAudioIDValue(AUDIO_STREAMING_ID, value); }
@@ -78,7 +78,7 @@ namespace NFSScript.ProStreet
         /// <summary>
         /// Is speech enabled?
         /// </summary>
-        public static bool isSpeechEnabled
+        public static bool IsSpeechEnabled
         {
             get { return _readAudioIDValue(SPEECH_ID); }
             set { _setAudioIDValue(SPEECH_ID, value); }
@@ -87,7 +87,7 @@ namespace NFSScript.ProStreet
         /// <summary>
         /// Is NIS audio enabled?
         /// </summary>
-        public static bool isNISAudioEnabled
+        public static bool IsNISAudioEnabled
         {
             get { return _readAudioIDValue(NIS_AUDIO_ID); }
             set { _setAudioIDValue(NIS_AUDIO_ID, value); }
@@ -235,14 +235,14 @@ namespace NFSScript.ProStreet
         /// <summary>
         /// The address where the main GameFlowManager is located at.
         /// </summary>
-        public static IntPtr address { get { return (IntPtr)Addrs.GenericAddrs.STATIC_GAME_STATE; } }
+        public static IntPtr Address { get { return (IntPtr)Addrs.GenericAddrs.STATIC_GAME_STATE; } }
 
         private int gameStateValue;
 
         /// <summary>
         /// The main GameFlowManager.
         /// </summary>
-        public static GameFlowManager TheGameFlowManager { get { return new GameFlowManager(memory.ReadInt32(address)); } }
+        public static GameFlowManager TheGameFlowManager { get { return new GameFlowManager(memory.ReadInt32(Address)); } }
 
         /// <summary>
         /// Instantiate a GameFlowManager class.

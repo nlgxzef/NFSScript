@@ -29,7 +29,7 @@ namespace NFSScript.Underground2
         /// <summary>
         /// <see cref="Player"/>'s cash (Read only).
         /// </summary>
-        public static int cash
+        public static int Cash
         {
             get
             {
@@ -43,7 +43,7 @@ namespace NFSScript.Underground2
         /// <param name="value"></param>
         public static void AwardCash(int value)
         {
-            memory.WriteInt32((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_CASH, cash + value);
+            memory.WriteInt32((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_CASH, Cash + value);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace NFSScript.Underground2
             /// <summary>
             /// Returns the <see cref="Player"/>'s current car star rating
             /// </summary>
-            public static float starRating
+            public static float StarRating
             {
                 get
                 {

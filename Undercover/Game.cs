@@ -19,12 +19,12 @@ namespace NFSScript.Undercover
         /// <summary>
         /// Returns the save game directory path.
         /// </summary>
-        public static string saveDirectory { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NFS Undercover"); } }
+        public static string SaveDirectory { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NFS Undercover"); } }
 
         /// <summary>
         /// Returns the amount of seconds it takes to render a frame
         /// </summary>
-        public static float lastFrameTime
+        public static float LastFrameTime
         {
             get
             {
@@ -35,7 +35,7 @@ namespace NFSScript.Undercover
         /// <summary>
         /// Returns a boolean that indicates whether the game is paused or not.
         /// </summary>
-        public static bool isGamePaused
+        public static bool IsGamePaused
         {
             get
             {
@@ -49,7 +49,7 @@ namespace NFSScript.Undercover
         /// <summary>
         /// Is sound enabled?
         /// </summary>
-        public static bool isSoundEnabled
+        public static bool IsSoundEnabled
         {
             get { return _readAudioIDValue(SOUND_ID); }
             set { _setAudioIDValue(SOUND_ID, value); }
@@ -58,7 +58,7 @@ namespace NFSScript.Undercover
         /// <summary>
         /// Is audio stream enabled?
         /// </summary>
-        public static bool isAudioStreamingEnabled
+        public static bool IsAudioStreamingEnabled
         {
             get { return _readAudioIDValue(AUDIO_STREAMING_ID); }
             set { _setAudioIDValue(AUDIO_STREAMING_ID, value); }
@@ -67,7 +67,7 @@ namespace NFSScript.Undercover
         /// <summary>
         /// Is speech enabled?
         /// </summary>
-        public static bool isSpeechEnabled
+        public static bool IsSpeechEnabled
         {
             get { return _readAudioIDValue(SPEECH_ID); }
             set { _setAudioIDValue(SPEECH_ID, value); }
@@ -76,7 +76,7 @@ namespace NFSScript.Undercover
         /// <summary>
         /// Is NIS audio enabled?
         /// </summary>
-        public static bool isNISAudioEnabled
+        public static bool IsNISAudioEnabled
         {
             get { return _readAudioIDValue(NIS_AUDIO_ID); }
             set { _setAudioIDValue(NIS_AUDIO_ID, value); }
@@ -278,14 +278,14 @@ namespace NFSScript.Undercover
         /// <summary>
         /// The address where the main GameFlowManager is located at.
         /// </summary>
-        public static IntPtr address { get { return (IntPtr)Addrs.GenericAddrs.STATIC_GAME_STATE; } }
+        public static IntPtr Address { get { return (IntPtr)Addrs.GenericAddrs.STATIC_GAME_STATE; } }
 
         private int gameStateValue;
 
         /// <summary>
         /// The main GameFlowManager.
         /// </summary>
-        public static GameFlowManager TheGameFlowManager { get { return new GameFlowManager(memory.ReadInt32(address)); } }
+        public static GameFlowManager TheGameFlowManager { get { return new GameFlowManager(memory.ReadInt32(Address)); } }
 
         /// <summary>
         /// Instantiate a GameFlowManager class.

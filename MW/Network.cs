@@ -17,7 +17,7 @@ namespace NFSScript.MW
         /// <summary>
         /// The network's lobby IP (A string with a length of 32).
         /// </summary>
-        public static string lobbyIP
+        public static string LobbyIP
         {
             get { return _readNetworkLobbyIP(); }
             set { _setNetworkLobbyIP(value); }
@@ -26,7 +26,7 @@ namespace NFSScript.MW
         /// <summary>
         /// The network's lobby port.
         /// </summary>
-        public static ushort lobbyPort
+        public static ushort LobbyPort
         {
             get { return _readNetworkLobbyPort(); }
             set { _setNetworkLobbyPort(value); }
@@ -35,7 +35,7 @@ namespace NFSScript.MW
         /// <summary>
         /// A value that indicates whether the network debug is enabled or not.
         /// </summary>
-        public static bool debug
+        public static bool Debug
         {
             get { return _readIsNetworkDebug(); }
             set { _setIsNetworkDebug(value); }
@@ -86,7 +86,7 @@ namespace NFSScript.MW
             /// <summary>
             /// Returns an array of players in the current game room.
             /// </summary>
-            public static Player[] players { get { return _readPlayers(); } }
+            public static Player[] Players { get { return _readPlayers(); } }
 
             internal static Player[] _readPlayers()
             {
@@ -107,12 +107,12 @@ namespace NFSScript.MW
                 /// <summary>
                 /// The minimum amount of laps in the player's own host game.
                 /// </summary>
-                public static byte minimumLaps { get { return _readMinLaps(); } set { _setMinLaps(value); } }
+                public static byte MinimumLaps { get { return _readMinLaps(); } set { _setMinLaps(value); } }
 
                 /// <summary>
                 /// The maximum amount of laps in the player's own host game.
                 /// </summary>
-                public static byte maximumLaps { get { return _readMaxLaps(); } set { _setMaxLaps(value); } }
+                public static byte MaximumLaps { get { return _readMaxLaps(); } set { _setMaxLaps(value); } }
 
                 internal static byte _readMaxLaps()
                 {

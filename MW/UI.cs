@@ -25,7 +25,7 @@ namespace NFSScript.MW
         /// <summary>
         /// Returns the point of where the game's cursor is located on screen. (Might be inaccurate)
         /// </summary>
-        public static Point cursorPosition
+        public static Point CursorPosition
         {
             get
             {

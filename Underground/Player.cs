@@ -13,7 +13,7 @@ namespace NFSScript.Underground
         /// <summary>
         /// <see cref="Player"/>'s cash (Read only).
         /// </summary>
-        public static int cash
+        public static int Cash
         {
             get
             {
@@ -24,7 +24,7 @@ namespace NFSScript.Underground
         /// <summary>
         /// Returns the total amount of money that the <see cref="Player"/> has earned (Read only).
         /// </summary>
-        public static int totalMoneyEarned
+        public static int TotalMoneyEarned
         {
             get {
                 return memory.ReadInt32((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_TOTAL_MONEY_EARNED);
@@ -34,7 +34,7 @@ namespace NFSScript.Underground
         /// <summary>
         /// Gets <see cref="Player"/>'s style points (Read only).
         /// </summary>
-        public static int stylePoints
+        public static int StylePoints
         {
             get { return memory.ReadInt32((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_STYLE_POINTS);
             }
@@ -46,7 +46,7 @@ namespace NFSScript.Underground
         /// <param name="value"></param>
         public static void AwardCash(int value)
         {
-            memory.WriteInt32((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_CASH, cash + value);
+            memory.WriteInt32((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_CASH, Cash + value);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace NFSScript.Underground
         /// <param name="value"></param>
         public static void AwardStylePoints(int value)
         {
-            memory.WriteInt32((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_STYLE_POINTS, stylePoints + value);
+            memory.WriteInt32((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_STYLE_POINTS, StylePoints + value);
         }
 
         /// <summary>

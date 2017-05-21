@@ -27,7 +27,7 @@ namespace NFSScript.Undercover
         /// <summary>
         /// Returns the point of where the game's cursor is located on screen. (Inaccurate)
         /// </summary>
-        public static Point cursorPosition
+        public static Point CursorPosition
         {
             get
             {
@@ -41,7 +41,7 @@ namespace NFSScript.Undercover
         /// <summary>
         /// Returns the point of where the world map's cursor is located on screen. (Inaccurate)
         /// </summary>
-        public static Point worldMapCursorPosition
+        public static Point WorldMapCursorPosition
         {
             get
             {

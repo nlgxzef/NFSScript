@@ -58,17 +58,17 @@ namespace NFSScript.Carbon
         /// <summary>
         /// Returns the save game directory path.
         /// </summary>
-        public static string saveDirectory { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NFS Carbon"); } }
+        public static string SaveDirectory { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NFS Carbon"); } }
 
         /// <summary>
         /// Returns a value that indicates whether the sirens are enabled in or not.
         /// </summary>
-        public static bool sirensEnabled { get; private set; }
+        public static bool SirensEnabled { get; private set; }
 
         /// <summary>
         /// Returns the game's run time in seconds.
         /// </summary>
-        public static float runTime
+        public static float RunTime
         {
             get
             {
@@ -79,7 +79,7 @@ namespace NFSScript.Carbon
         /// <summary>
         /// The scale at which the gameplay's time is passing. (Not the global time scale)
         /// </summary>
-        public static float gameSpeed
+        public static float GameSpeed
         {
             get
             {
@@ -94,7 +94,7 @@ namespace NFSScript.Carbon
         /// <summary>
         /// Returns the amount of seconds it takes to render a frame. (Might be inaccurate)
         /// </summary>
-        public static float lastFrameTime
+        public static float LastFrameTime
         {
             get
             {
@@ -105,7 +105,7 @@ namespace NFSScript.Carbon
         /// <summary>
         /// Returns true if the gameplay is currently active.
         /// </summary>
-        public static bool isGameplayActive
+        public static bool IsGameplayActive
         {
             get
             {               
@@ -116,7 +116,7 @@ namespace NFSScript.Carbon
         /// <summary>
         /// Returns true if there is an ongoing activity/race.
         /// </summary>
-        public static bool isActivityActive
+        public static bool IsActivityActive
         {
             get
             {
@@ -127,7 +127,7 @@ namespace NFSScript.Carbon
         /// <summary>
         /// Returns the current game resolution.
         /// </summary>
-        public static Point videoResolution
+        public static Point VideoResolution
         {
             get
             {
@@ -152,7 +152,7 @@ namespace NFSScript.Carbon
         /// <summary>
         /// Is sound enabled?
         /// </summary>
-        public static bool isSoundEnabled
+        public static bool IsSoundEnabled
         {
             get { return _readAudioIDValue(SOUND_ID); }
             set { _setAudioIDValue(SOUND_ID, value); }
@@ -161,7 +161,7 @@ namespace NFSScript.Carbon
         /// <summary>
         /// Is audio stream enabled?
         /// </summary>
-        public static bool isAudioStreamingEnabled
+        public static bool IsAudioStreamingEnabled
         {
             get { return _readAudioIDValue(AUDIO_STREAMING_ID); }
             set { _setAudioIDValue(AUDIO_STREAMING_ID, value); }
@@ -170,7 +170,7 @@ namespace NFSScript.Carbon
         /// <summary>
         /// Is speech enabled?
         /// </summary>
-        public static bool isSpeechEnabled
+        public static bool IsSpeechEnabled
         {
             get { return _readAudioIDValue(SPEECH_ID); }
             set { _setAudioIDValue(SPEECH_ID, value); }
@@ -179,7 +179,7 @@ namespace NFSScript.Carbon
         /// <summary>
         /// Is NIS audio enabled?
         /// </summary>
-        public static bool isNISAudioEnabled
+        public static bool IsNISAudioEnabled
         {
             get { return _readAudioIDValue(NIS_AUDIO_ID); }
             set { _setAudioIDValue(NIS_AUDIO_ID, value); }
@@ -188,7 +188,7 @@ namespace NFSScript.Carbon
         /// <summary>
         /// Is memcard versioning enabled?
         /// </summary>
-        public static bool isMemcardVersioningEnabled
+        public static bool IsMemcardVersioningEnabled
         {
             get
             {
@@ -199,7 +199,7 @@ namespace NFSScript.Carbon
         /// <summary>
         /// Returns a boolean that indicates whether it's the collectors edition of the game or not.
         /// </summary>
-        public static bool isCollectorsEdition
+        public static bool IsCollectorsEdition
         {
             get
             {
@@ -355,7 +355,7 @@ namespace NFSScript.Carbon
         public static void EnablePoliceSirens()
         {
             _setPoliceSirensIntensity(sirensIntensityR, sirensIntensityB, sirensIntensityW);
-            sirensEnabled = true;
+            SirensEnabled = true;
         }
 
         /// <summary>
@@ -364,7 +364,7 @@ namespace NFSScript.Carbon
         public static void DisablePoliceSirens()
         {
             _setPoliceSirensIntensity(0, 0, 0);
-            sirensEnabled = false;
+            SirensEnabled = false;
         }
         
         /// <summary>
@@ -497,7 +497,7 @@ namespace NFSScript.Carbon
             sirensIntensityB = blue;
             sirensIntensityW = white;
 
-            if (sirensEnabled)
+            if (SirensEnabled)
             {
                 _setPoliceSirensIntensity(red, blue, white);
             }

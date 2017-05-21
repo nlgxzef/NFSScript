@@ -58,7 +58,7 @@ namespace NFSScript.MW
         /// <summary>
         /// Sets a value indicating whether the AI controls the <see cref="Player"/>'s car.
         /// </summary>
-        public static bool isControlledByAi
+        public static bool IsControlledByAi
         {
             get
             {

@@ -17,7 +17,7 @@ namespace NFSScript
         /// <summary>
         /// 
         /// </summary>
-        public static NFSGame currentLoadedNFSGame;
+        public static NFSGame CurrentLoadedNFSGame;
 
         /// <summary>
         /// Returns the directory of the script loader (NFSScriptLoader.exe).

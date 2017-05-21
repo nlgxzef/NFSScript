@@ -14,7 +14,7 @@ namespace NFSScript.Underground
         /// <summary>
         /// Returns the point of where the game's cursor is located on screen.
         /// </summary>
-        public static Point cursorPosition
+        public static Point CursorPosition
         {
             get
             {

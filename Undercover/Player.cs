@@ -12,7 +12,7 @@ namespace NFSScript.Undercover
         /// <summary>
         /// Returns a boolean that indicates whether the <see cref="Player"/> is in pursuit or not.
         /// </summary>
-        public static bool isInPursuit
+        public static bool IsInPursuit
         {
             get
             {

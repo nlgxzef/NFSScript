@@ -14,7 +14,7 @@ namespace NFSScript.World
         /// <summary>
         /// Returns the amount of seconds it takes to render a frame.
         /// </summary>
-        public static float lastFrameTime
+        public static float LastFrameTime
         {
             get
             {
@@ -25,7 +25,7 @@ namespace NFSScript.World
         /// <summary>
         /// Returns true if the gameplay is currently active.
         /// </summary>
-        public static bool isGameplayActive
+        public static bool IsGameplayActive
         {
             get
             {
@@ -36,7 +36,7 @@ namespace NFSScript.World
         /// <summary>
         /// The master sound volume.
         /// </summary>
-        public static float masterVolume
+        public static float MasterVolume
         {
             get { return memory.ReadFloat((IntPtr)memory.getBaseAddress + GameAddrs.NON_STATIC_MASTER_VOLUME); }
             set { memory.WriteFloat((IntPtr)memory.getBaseAddress + GameAddrs.NON_STATIC_MASTER_VOLUME, value); }
@@ -45,7 +45,7 @@ namespace NFSScript.World
         /// <summary>
         /// The speech sound volume.
         /// </summary>
-        public static float speechVolume
+        public static float SpeechVolume
         {
             get { return memory.ReadFloat((IntPtr)memory.getBaseAddress + GameAddrs.NON_STATIC_SPEECH_VOLUME); }
             set { memory.WriteFloat((IntPtr)GameAddrs.NON_STATIC_SPEECH_VOLUME, value); }
@@ -54,7 +54,7 @@ namespace NFSScript.World
         /// <summary>
         /// The sound effects sound volume.
         /// </summary>
-        public static float soundEffectsVolume
+        public static float SoundEffectsVolume
         {
             get { return memory.ReadFloat((IntPtr)memory.getBaseAddress + GameAddrs.NON_STATIC_SOUND_EFFECTS_VOLUME); }
             set { memory.WriteFloat((IntPtr)memory.getBaseAddress + GameAddrs.NON_STATIC_SOUND_EFFECTS_VOLUME, value); }
@@ -63,7 +63,7 @@ namespace NFSScript.World
         /// <summary>
         /// The car sound volume.
         /// </summary>
-        public static float carVolume
+        public static float CarVolume
         {
             get { return memory.ReadFloat((IntPtr)memory.getBaseAddress + GameAddrs.NON_STATIC_CAR_VOLUME); }
             set { memory.WriteFloat((IntPtr)memory.getBaseAddress + GameAddrs.NON_STATIC_CAR_VOLUME, value); }
@@ -72,7 +72,7 @@ namespace NFSScript.World
         /// <summary>
         /// The free roam music volume.
         /// </summary>
-        public static float freeRoamMusicVolune
+        public static float FreeRoamMusicVolune
         {
             get { return memory.ReadFloat((IntPtr)memory.getBaseAddress + GameAddrs.NON_STATIC_FREE_ROAM_MUSIC_VOLUME); }
             set { memory.WriteFloat((IntPtr)memory.getBaseAddress + GameAddrs.NON_STATIC_FREE_ROAM_MUSIC_VOLUME, value); }
@@ -81,7 +81,7 @@ namespace NFSScript.World
         /// <summary>
         /// The event music volume.
         /// </summary>
-        public static float eventMusicVolume
+        public static float EventMusicVolume
         {
             get { return memory.ReadFloat((IntPtr)memory.getBaseAddress + GameAddrs.NON_STATIC_EVENT_MUSIC_VOLUME); }
             set { memory.WriteFloat((IntPtr)memory.getBaseAddress + GameAddrs.NON_STATIC_EVENT_MUSIC_VOLUME, value); }

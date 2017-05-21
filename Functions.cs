@@ -2542,372 +2542,320 @@ namespace NFSScript
         /// </summary>
         public const int SET_PURSUIT_OFFSET = 0x651810;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int TIME_PLAYER_FACING_WRONG_WAY = 0x65C970;
-
 
         /// <summary>
         /// Game_TriggerCrewIndication(int, char const *, char const *)
         /// </summary>
         public const int TRIGGER_CREW_INDICATION = 0x65C9A0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int FINALIZE_SCORES = 0x64C140;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int CANYON_RACE_CLEAR = 0x64C170;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int CANYON_RACE_SETUP = 0x656980;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int CANYON_RACE_UPDATE = 0x64C1D0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int CANYON_RACE_STATE = 0x64C1F0;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int KNOCKOUT_RACE_SETUP = 0x64C190;
 
-
         /// <summary>
         /// 
         /// </summary>
         public const int KNOCKOUT_RACE_UPDATE = 0x64C1B0;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int GET_STORY_LINE_PROGRESSION = 0x64C380;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int ADVANCE_STORY_LINE_PROGRESSION = 0x64C390;
-
 
         /// <summary>
         /// Game_StartRaceFromInGame(char const *)
         /// </summary>
         public const int START_RACE_FROM_IN_GAME = 0x64C3B0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int SET_STORY_RACE_FLAG = 0x64C4A0;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int GET_OVER_ALL_WON_ATTACK_RACES = 0x64C3F0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int GET_WON_ATTACK_RACESIN_AREA = 0x64C3D0;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int QUIT_TO_CAR_CLASS_SELECT_SCREEN = 0x64C450;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int QUIT_TO_LOGO_SCREEN = 0x64C400;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int SKIP_CAREER_INTRO = 0x64C560;
 
-
         /// <summary>
         /// Game_SetCareerEventContext(int)
         /// </summary>
         public const int SET_CAREER_EVENT_CONTEXT = 0x64C570;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int SETUP_CREW_TUTORIAL = 0x65CAF0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int DISMISS_TUTORIAL_AI = 0x656C30;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int FINISH_TUTORIAL = 0x65CBC0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int RESET_DRAFTING = 0x651C30;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int DO_POST_BOSS_FLOW = 0x656C80;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int FINISH_CREW_DEFECTION_FLOW = 0x667DF0;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int SHOULD_DO_SPECIAL_DEFECTION_FLOW = 0x64C5B0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int UNLOCK_NIKKI = 0x667FF0;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int UPDATE_BOSS_STATE = 0x64C600;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int CREATE_DEFECTOR_CAR = 0x65E280;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int PLACE_CREW_VEHICLE = 0x651DC0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int IS_CREW_VEHICLE_LOADED = 0x651FB0;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int SET_FREE_ROAM_START_MARKER = 0x64C590;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int YOU_WON = 0x64C670;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int SET_RACE_EXPIRED = 0x652000;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int MUSIC__REQUEST_TRANSITION = 0x652080;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int FORCE_CANYON_MUSIC = 0x0064C770;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int FORCE_PURSUIT_MUSIC = 0x0064C7A0;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int FORCE_LICENSED_MUSIC = 0x0064C7D0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int FORCE_CREW_MUSIC = 0x0064C740;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int FORCE_KILL_MUSIC = 0x0064C800;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int SPEECH__RACE_OVER = 0x65CC80;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int RENDER__ENABLE_CRASH_VISUAL_TREATMENT = 0x64CA00;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int CAMERA__ACTIVATE_DEFECTOR_CAMERA = 0x65CD50;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int GAME__PLAYER_HUD_EXIST = 0x6522F0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int ACTIVATE_DEFAULT_CAMERA_OVERRIDE = 0x0064C830;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int DEACTIVATE_DEFAULT_CAMERA_OVERRIDE = 0x64C960;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int ALLOW_FINISH_LINE = 0x64B0A0;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int SETUP_CREW_DEFECTION_TRIGGER = 0x651D50;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int CLEAR_CAREER_VEHICLE = 0x64CA20;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int SPAWN_ICONS = 0x652330;
 
-
         /// <summary>
         /// Racer_ForceCoast(int)
         /// </summary>
         public const int RACER__FORCE_COAST = 0x64CA30;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int END_FORCE_STOP = 0x64CA50;
 
-
         /// <summary>
         /// Game_HideLoadingScreen(int)
         /// </summary>
         public const int GAME__HIDE_LOADING_SCREEN = 0x64CA70;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int ENABLE_TRIGGER = 0x64C5D0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int GAME__SET_TIMER = 0x64A8C0;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int GAME__KILL_TIMER = 0x64A8E0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int DIALOG_BOX__GENERATE = 0x5CDEA0;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int DIALOG_BOX__OK = 0x5CF440;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int DIALOG_BOX__OKCANCEL = 0x5CF460;
-
 
         /// <summary>
         ///
         /// </summary>
         public const int DIALOG_BOX__YES_NO = 0x5CF4B0;
 
-
         /// <summary>
         ///
         /// </summary>
         public const int DIALOG_BOX__CANCEL = 0x5CF490;
 
+        /// <summary>
+        /// JLZDecompress(unsigned char* inBuffer, unsigned char* outBuffer)
+        /// </summary>
+        public const int JLZ_DECOMPRESS = 0x0069C5D0;
+
+        /// <summary>
+        /// JLZCompress(unsigned char* inBuffer, unsigned char* outBuffer)
+        /// </summary>
+        public const int JLZ_COMPRESS = 0x006AA5B0;
 
     }
 

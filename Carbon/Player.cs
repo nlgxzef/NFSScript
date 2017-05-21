@@ -82,7 +82,7 @@ namespace NFSScript.Carbon
         /// <summary>
         /// <see cref="Player"/>'s cash (Read only).
         /// </summary>
-        public static int cash
+        public static int Cash
         {
             get
             {
@@ -100,7 +100,7 @@ namespace NFSScript.Carbon
         /// <summary>
         /// Sets a value indicating whether the <see cref="Player"/> is ignored by the police or not.
         /// </summary>
-        public static bool ignoredByPolice
+        public static bool IgnoredByPolice
         {
             get
             {
@@ -120,7 +120,7 @@ namespace NFSScript.Carbon
         /// <summary>
         /// Sets a value indicating whether the AI controls the <see cref="Player"/>'s car.
         /// </summary>
-        public static bool isControlledByAi
+        public static bool IsControlledByAi
         {
             get
             {
@@ -141,7 +141,7 @@ namespace NFSScript.Carbon
             address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CASH_4);
             address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CASH_5);
 
-            memory.WriteInt32((IntPtr)address, Player.cash + value);
+            memory.WriteInt32((IntPtr)address, Player.Cash + value);
         }
 
         /// <summary>
