@@ -6,7 +6,6 @@ using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Windows.Forms;
 
 using static NFSScript.Core.NativeMethods;
 
@@ -84,7 +83,7 @@ namespace NFSScript.Core
                 this.ErrorProcessNotFound(this.processName);
                 return false;
             }
-            int num = (int)MessageBox.Show("Programmer, define process name first!");
+            //int num = (int)MessageBox.Show("Programmer, define process name first!");
             return false;
         }
 

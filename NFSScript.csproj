@@ -42,7 +42,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,6 +56,7 @@
     <Compile Include="Core\MemoryEssentials.cs" />
     <Compile Include="Core\NativeMethods.cs" />
     <Compile Include="Core\PatternScan.cs" />
+    <Compile Include="Enumerators.cs" />
     <Compile Include="Inheritables.cs" />
     <Compile Include="Interfaces.cs" />
     <Compile Include="MW\Database.cs" />
