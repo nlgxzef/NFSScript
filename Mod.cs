@@ -152,12 +152,12 @@ namespace NFSScript
         /// Peforms a task after a number of defined milliseconds without blocking the thread.
         /// </summary>
         /// <param name="action">The action to peform.</param>
-        /// <param name="secondsBeforeExecuting">The amount of time to wait in milliseconds before executing the task.</param>
-        public static void DoTimedTask(Action action, int secondsBeforeExecuting)
+        /// <param name="millisecondsBeforeExecuting">The amount of time to wait in milliseconds before executing the task.</param>
+        public static void DoTimedTask(Action action, int millisecondsBeforeExecuting)
         {
             var task = new Task(() =>
             {
-                System.Threading.Thread.Sleep(secondsBeforeExecuting);
+                System.Threading.Thread.Sleep(millisecondsBeforeExecuting);
                 action();
             });
             task.Start();
