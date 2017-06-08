@@ -80,323 +80,323 @@ namespace NFSScript.World
         {
             memory.WriteByte((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_AUTODRIVE, 1);
         }
-    }
-
-
-    /// <summary>
-    /// A class that represents the <see cref="Player"/>'s car.
-    /// </summary>
-    public static class Car
-    {
-        /// <summary>
-        /// The <see cref="Player"/>'s car's position.
-        /// </summary>
-        public static Vector3 Position
-        {
-            get
-            {
-                int addr = Game.PWorld_Cars + CarOffset;
-                float x = memory.ReadFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_X_POS);
-                float y = memory.ReadFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_Y_POS);
-                float z = memory.ReadFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_Z_POS);
-
-                return new Vector3(x, y, z);
-            }
-            set
-            {
-                int addr = Game.PWorld_Cars + CarOffset;
-                memory.WriteFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_X_POS, value.x);
-                memory.WriteFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_Y_POS, value.y);
-                memory.WriteFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_Z_POS, value.z);
-            }
-        }
 
         /// <summary>
-        /// Gets the local player's memory offset relative to <see cref="Game.PWorld_Cars"/>.
+        /// A class that represents the <see cref="Player"/>'s car.
         /// </summary>
-        public static int CarOffset
+        public static class Car
         {
-            get
+            /// <summary>
+            /// The <see cref="Player"/>'s car's position.
+            /// </summary>
+            public static Vector3 Position
             {
-                for (int i = 0; i < 0x78; i++)
+                get
                 {
-                    int offset = 0xB0 * i;
                     int addr = Game.PWorld_Cars + CarOffset;
+                    float x = memory.ReadFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_X_POS);
+                    float y = memory.ReadFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_Y_POS);
+                    float z = memory.ReadFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_Z_POS);
 
-                    float localX = memory.ReadFloat((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_X_POS);
-                    float localY = memory.ReadFloat((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_Y_POS);
-                    float localZ = memory.ReadFloat((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_Z_POS);
-                    float opponentX = memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_X_POS)));
-                    float opponentY = memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_Y_POS)));
-                    float opponentZ = memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_Z_POS)));
-
-                    if (Mathf.Abs(localX - opponentX) < 1f &&
-                        Mathf.Abs(localY - opponentY) < 1f &&
-                        Mathf.Abs(localZ - opponentZ) < 1f)
-                    {
-                        return offset;
-                    }
+                    return new Vector3(x, y, z);
                 }
-                return 0xFF;
+                set
+                {
+                    int addr = Game.PWorld_Cars + CarOffset;
+                    memory.WriteFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_X_POS, value.x);
+                    memory.WriteFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_Y_POS, value.y);
+                    memory.WriteFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_Z_POS, value.z);
+                }
             }
-        }
 
-        /// <summary>
-        /// The <see cref="Player"/>'s car's speed in MPS.
-        /// </summary>
-        /// <remarks>
-        /// See <see cref="Math.Mathf.ConvertSpeed(float, SpeedMeasurementConversionTypes)"/>.
-        /// </remarks>
-        public static float Speed
-        {
-            get
+            /// <summary>
+            /// Gets the local player's memory offset relative to <see cref="Game.PWorld_Cars"/>.
+            /// </summary>
+            public static int CarOffset
             {
-                // TODO: Add constants to PlayerAddrs.
-                int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + 0x91F9D0);
-                address = memory.ReadInt32((IntPtr)address + 0x68);
+                get
+                {
+                    for (int i = 0; i < 0x78; i++)
+                    {
+                        int offset = 0xB0 * i;
+                        int addr = Game.PWorld_Cars + CarOffset;
 
-                return memory.ReadFloat((IntPtr)address);
+                        float localX = memory.ReadFloat((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_X_POS);
+                        float localY = memory.ReadFloat((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_Y_POS);
+                        float localZ = memory.ReadFloat((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_Z_POS);
+                        float opponentX = memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_X_POS)));
+                        float opponentY = memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_Y_POS)));
+                        float opponentZ = memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_Z_POS)));
+
+                        if (Mathf.Abs(localX - opponentX) < 1f &&
+                            Mathf.Abs(localY - opponentY) < 1f &&
+                            Mathf.Abs(localZ - opponentZ) < 1f)
+                        {
+                            return offset;
+                        }
+                    }
+                    return 0xFF;
+                }
             }
-        }
 
-        /// <summary>
-        /// The <see cref="Player"/>'s car's gravity.
-        /// </summary>
-        /// <remarks>
-        /// Default value is 1000.
-        /// </remarks>
-        public static float Gravity
-        {
-            get
+            /// <summary>
+            /// The <see cref="Player"/>'s car's speed in MPS.
+            /// </summary>
+            /// <remarks>
+            /// See <see cref="Math.Mathf.ConvertSpeed(float, SpeedMeasurementConversionTypes)"/>.
+            /// </remarks>
+            public static double Speed
             {
-                int addr = Game.PWorld_Cars + CarOffset;
-                return memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + + GameAddrs.PSTATIC_CAR_GRAVITY)));
+                get
+                {
+                    // TODO: Add constants to PlayerAddrs.
+                    int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + 0x91F9D0);
+                    address = memory.ReadInt32((IntPtr)address + 0x68);
+
+                    return memory.ReadDouble((IntPtr)address);
+                }
             }
-            set
+
+            /// <summary>
+            /// The <see cref="Player"/>'s car's gravity.
+            /// </summary>
+            /// <remarks>
+            /// Default value is 1000.
+            /// </remarks>
+            public static float Gravity
             {
-                int addr = Game.PWorld_Cars + CarOffset;
-                memory.WriteFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_GRAVITY)), value);
+                get
+                {
+                    int addr = Game.PWorld_Cars + CarOffset;
+                    return memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + +GameAddrs.PSTATIC_CAR_GRAVITY)));
+                }
+                set
+                {
+                    int addr = Game.PWorld_Cars + CarOffset;
+                    memory.WriteFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_GRAVITY)), value);
+                }
             }
-        }
 
-        /// <summary>
-        /// The <see cref="Player"/>'s car's weight.
-        /// </summary>
-        /// <remarks>
-        /// Each car has its own weight.
-        /// </remarks>
-        public static float Weight
-        {
-            get
+            /// <summary>
+            /// The <see cref="Player"/>'s car's weight.
+            /// </summary>
+            /// <remarks>
+            /// Each car has its own weight.
+            /// </remarks>
+            public static float Weight
             {
-                int addr = Game.PWorld_Cars + CarOffset;
-                return memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + + GameAddrs.PSTATIC_CAR_WEIGHT)));
+                get
+                {
+                    int addr = Game.PWorld_Cars + CarOffset;
+                    return memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + +GameAddrs.PSTATIC_CAR_WEIGHT)));
+                }
+                set
+                {
+                    int addr = Game.PWorld_Cars + CarOffset;
+                    memory.WriteFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_WEIGHT)), value);
+                }
             }
-            set
+
+            /// <summary>
+            /// The <see cref="Player"/>'s car's current velocity towards east.
+            /// </summary>
+            public static float VelocityTowardsEast
             {
-                int addr = Game.PWorld_Cars + CarOffset;
-                memory.WriteFloat((IntPtr)(addr + (memory.getBaseAddress +  GameAddrs.PSTATIC_CAR_WEIGHT)), value);
+                get
+                {
+                    int addr = Game.PWorld_Cars + CarOffset;
+                    return memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_VELOCITY_TOWARDS_EAST)));
+                }
+                set
+                {
+                    int addr = Game.PWorld_Cars + CarOffset;
+                    memory.WriteFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_VELOCITY_TOWARDS_EAST)), value);
+                }
             }
-        }
 
-        /// <summary>
-        /// The <see cref="Player"/>'s car's current velocity towards east.
-        /// </summary>
-        public static float VelocityTowardsEast
-        {
-            get
+            /// <summary>
+            /// The <see cref="Player"/>'s car's current velocity towards south.
+            /// </summary>
+            public static float VelocityTowardsSouth
             {
-                int addr = Game.PWorld_Cars + CarOffset;
-                return memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_VELOCITY_TOWARDS_EAST)));
+                get
+                {
+                    int addr = Game.PWorld_Cars + CarOffset;
+                    return memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_VELOCITY_TOWARDS_SOUTH)));
+                }
+                set
+                {
+                    int addr = Game.PWorld_Cars + CarOffset;
+                    memory.WriteFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_VELOCITY_TOWARDS_SOUTH)), value);
+                }
             }
-            set
+
+            /// <summary>
+            /// The <see cref="Player"/>'s car's vertical velocity towards sky.
+            /// </summary>
+            public static float VerticalVelocity
             {
-                int addr = Game.PWorld_Cars + CarOffset;
-                memory.WriteFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_VELOCITY_TOWARDS_EAST)), value);
+                get
+                {
+                    int addr = Game.PWorld_Cars + CarOffset;
+                    return memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_VERTICAL_VELOCITY)));
+                }
+                set
+                {
+                    int addr = Game.PWorld_Cars + CarOffset;
+                    memory.WriteFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_VERTICAL_VELOCITY)), value);
+                }
             }
-        }
 
-        /// <summary>
-        /// The <see cref="Player"/>'s car's current velocity towards south.
-        /// </summary>
-        public static float VelocityTowardsSouth
-        {
-            get
+            /// <summary>
+            /// The <see cref="Player"/>'s car's angular velocity towards right.
+            /// </summary>
+            public static float AngularVelocity
             {
-                int addr = Game.PWorld_Cars + CarOffset;
-                return memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_VELOCITY_TOWARDS_SOUTH)));
+                get
+                {
+                    int addr = Game.PWorld_Cars + CarOffset;
+                    return memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_ANGULAR_VELOCITY)));
+                }
+                set
+                {
+                    int addr = Game.PWorld_Cars + CarOffset;
+                    memory.WriteFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_ANGULAR_VELOCITY)), value);
+                }
             }
-            set
+
+            /// <summary>
+            /// Instantly stops the <see cref="Player"/>'s car.
+            /// </summary>
+            public static void ForceStop()
             {
-                int addr = Game.PWorld_Cars + CarOffset;
-                memory.WriteFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_VELOCITY_TOWARDS_SOUTH)), value);
+                VelocityTowardsSouth = 0;
+                VelocityTowardsEast = 0;
             }
-        }
 
-        /// <summary>
-        /// The <see cref="Player"/>'s car's vertical velocity towards sky.
-        /// </summary>
-        public static float VerticalVelocity
-        {
-            get
+            /// <summary>
+            /// Pushes the <see cref="Player"/>'s car to north.
+            /// </summary>
+            /// <param name="amountOfForce">Amount of force applied to the car.</param>
+            /// <param name="resetWhenSetting">Whether to reset the current value before applying the force.</param>
+            public static void PushNorth(float amountOfForce, bool resetWhenSetting = false)
             {
-                int addr = Game.PWorld_Cars + CarOffset;
-                return memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_VERTICAL_VELOCITY)));
+                if (resetWhenSetting)
+                    VelocityTowardsSouth = 0f;
+                VelocityTowardsSouth -= amountOfForce;
             }
-            set
+
+            /// <summary>
+            /// Pushes the <see cref="Player"/>'s car to west.
+            /// </summary>
+            /// <param name="amountOfForce">Amount of force applied to the car.</param>
+            /// <param name="resetWhenSetting">Whether to reset the current value before applying the force.</param>
+            public static void PushWest(float amountOfForce, bool resetWhenSetting = false)
             {
-                int addr = Game.PWorld_Cars + CarOffset;
-                memory.WriteFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_VERTICAL_VELOCITY)), value);
+                if (resetWhenSetting)
+                    VelocityTowardsEast = 0f;
+                VelocityTowardsEast -= amountOfForce;
             }
-        }
 
-        /// <summary>
-        /// The <see cref="Player"/>'s car's angular velocity towards right.
-        /// </summary>
-        public static float AngularVelocity
-        {
-            get
+            /// <summary>
+            /// Pushes the <see cref="Player"/>'s car to east.
+            /// </summary>
+            /// <param name="amountOfForce">Amount of force applied to the car.</param>
+            /// <param name="resetWhenSetting">Whether to reset the current value before applying the force.</param>
+            public static void PushEast(float amountOfForce, bool resetWhenSetting = false)
             {
-                int addr = Game.PWorld_Cars + CarOffset;
-                return memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_ANGULAR_VELOCITY)));
+                if (resetWhenSetting)
+                    VelocityTowardsEast = 0f;
+                VelocityTowardsEast += amountOfForce;
             }
-            set
+
+            /// <summary>
+            /// Pushes the <see cref="Player"/>'s car to south.
+            /// </summary>
+            /// <param name="amountOfForce">Amount of force applied to the car.</param>
+            /// <param name="resetWhenSetting">Whether to reset the current value before applying the force.</param>
+            public static void PushSouth(float amountOfForce, bool resetWhenSetting = false)
             {
-                int addr = Game.PWorld_Cars + CarOffset;
-                memory.WriteFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_ANGULAR_VELOCITY)), value);
+                if (resetWhenSetting)
+                    VelocityTowardsSouth = 0f;
+                VelocityTowardsSouth += amountOfForce;
             }
-        }
 
-        /*/// <summary>
-        /// Instantly stops the <see cref="Player"/>'s car.
-        /// </summary>
-        public static void ForceStop()
-        {
-            Speed = 0f;
-        }*/
+            /// <summary>
+            /// 'Member Mario? I 'member!
+            /// </summary>
+            public static void Hop()
+            {
+                VerticalVelocity = 10f;
+            }
 
-        /// <summary>
-        /// Pushes the <see cref="Player"/>'s car to north.
-        /// </summary>
-        /// <param name="amountOfForce">Amount of force applied to the car.</param>
-        /// <param name="resetWhenSetting">Whether to reset the current value before applying the force.</param>
-        public static void PushNorth(float amountOfForce, bool resetWhenSetting = false)
-        {
-            if (resetWhenSetting)
-                VelocityTowardsSouth = 0f;
-            VelocityTowardsSouth -= amountOfForce;
-        }
+            /// <summary>
+            /// Pushes the <see cref="Player"/>'s car above.
+            /// </summary>
+            /// <param name="amountOfForce">Amount of force applied to the car.</param>
+            /// <param name="resetWhenSetting">Whether to reset the current value before applying the force.</param>
+            public static void ForceJump(float amountOfForce, bool resetWhenSetting = false)
+            {
+                if (resetWhenSetting)
+                    VerticalVelocity = 0f;
+                VerticalVelocity += amountOfForce;
+            }
 
-        /// <summary>
-        /// Pushes the <see cref="Player"/>'s car to west.
-        /// </summary>
-        /// <param name="amountOfForce">Amount of force applied to the car.</param>
-        /// <param name="resetWhenSetting">Whether to reset the current value before applying the force.</param>
-        public static void PushWest(float amountOfForce, bool resetWhenSetting = false)
-        {
-            if (resetWhenSetting)
-                VelocityTowardsEast = 0f;
-            VelocityTowardsEast -= amountOfForce;
-        }
+            /// <summary>
+            /// Applies a force that turns the <see cref="Player"/>'s car clockwise.
+            /// </summary>
+            /// <param name="amountOfForce">Amount of force applied to the car.</param>
+            /// <param name="resetWhenSetting">Whether to reset the current value before applying the force.</param>
+            public static void TurnClockwise(float amountOfForce, bool resetWhenSetting = false)
+            {
+                if (resetWhenSetting)
+                    AngularVelocity = 0f;
+                AngularVelocity += amountOfForce;
+            }
 
-        /// <summary>
-        /// Pushes the <see cref="Player"/>'s car to east.
-        /// </summary>
-        /// <param name="amountOfForce">Amount of force applied to the car.</param>
-        /// <param name="resetWhenSetting">Whether to reset the current value before applying the force.</param>
-        public static void PushEast(float amountOfForce, bool resetWhenSetting = false)
-        {
-            if (resetWhenSetting)
-                VelocityTowardsEast = 0f;
-            VelocityTowardsEast += amountOfForce;
-        }
+            /// <summary>
+            /// Applies a force that turns the <see cref="Player"/>'s car counter-clockwise.
+            /// </summary>
+            /// <param name="amountOfForce">Amount of force applied to the car.</param>
+            /// <param name="resetWhenSetting">Whether to reset the current value before applying the force.</param>
+            public static void TurnCounterClockwise(float amountOfForce, bool resetWhenSetting = false)
+            {
+                if (resetWhenSetting)
+                    AngularVelocity = 0f;
+                AngularVelocity -= amountOfForce;
+            }
 
-        /// <summary>
-        /// Pushes the <see cref="Player"/>'s car to south.
-        /// </summary>
-        /// <param name="amountOfForce">Amount of force applied to the car.</param>
-        /// <param name="resetWhenSetting">Whether to reset the current value before applying the force.</param>
-        public static void PushSouth(float amountOfForce, bool resetWhenSetting = false)
-        {
-            if (resetWhenSetting)
-                VelocityTowardsSouth = 0f;
-            VelocityTowardsSouth += amountOfForce;
-        }
+            /// <summary>
+            /// Disables collision with walls.
+            /// </summary>
+            public static void DisableWallCollisions()
+            {
+                memory.WriteByte((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_WALL_COLLISION, 0x38);
+            }
 
-        /// <summary>
-        /// 'Member Mario? I 'member!
-        /// </summary>
-        public static void Hop()
-        {
-            VerticalVelocity = 10f;
-        }
+            /// <summary>
+            /// Enables collision with walls.
+            /// </summary>
+            public static void EnableWallCollisions()
+            {
+                memory.WriteByte((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_WALL_COLLISION, 0x84);
+            }
 
-        /// <summary>
-        /// Pushes the <see cref="Player"/>'s car above.
-        /// </summary>
-        /// <param name="amountOfForce">Amount of force applied to the car.</param>
-        /// <param name="resetWhenSetting">Whether to reset the current value before applying the force.</param>
-        public static void ForceJump(float amountOfForce, bool resetWhenSetting = false)
-        {
-            if (resetWhenSetting)
-                VerticalVelocity = 0f;
-            VerticalVelocity += amountOfForce;
-        }
+            /// <summary>
+            /// Disables car collision.
+            /// </summary>
+            public static void DisableCarCollision()
+            {
+                memory.WriteByte((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_CAR_COLLISION, 0xEB);
+            }
 
-        /// <summary>
-        /// Applies a force that turns the <see cref="Player"/>'s car clockwise.
-        /// </summary>
-        /// <param name="amountOfForce">Amount of force applied to the car.</param>
-        /// <param name="resetWhenSetting">Whether to reset the current value before applying the force.</param>
-        public static void TurnClockwise(float amountOfForce, bool resetWhenSetting = false)
-        {
-            if (resetWhenSetting)
-                AngularVelocity = 0f;
-            AngularVelocity += amountOfForce;
-        }
-
-        /// <summary>
-        /// Applies a force that turns the <see cref="Player"/>'s car counter-clockwise.
-        /// </summary>
-        /// <param name="amountOfForce">Amount of force applied to the car.</param>
-        /// <param name="resetWhenSetting">Whether to reset the current value before applying the force.</param>
-        public static void TurnCounterClockwise(float amountOfForce, bool resetWhenSetting = false)
-        {
-            if (resetWhenSetting)
-                AngularVelocity = 0f;
-            AngularVelocity -= amountOfForce;
-        }
-
-        /// <summary>
-        /// Disables collision with walls.
-        /// </summary>
-        public static void DisableWallCollisions()
-        {
-            memory.WriteByte((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_WALL_COLLISION, 0x38);
-        }
-
-        /// <summary>
-        /// Enables collision with walls.
-        /// </summary>
-        public static void EnableWallCollisions()
-        {
-            memory.WriteByte((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_WALL_COLLISION, 0x84);
-        }
-
-        /// <summary>
-        /// Disables car collision.
-        /// </summary>
-        public static void DisableCarCollision()
-        {
-            memory.WriteByte((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_CAR_COLLISION, 0xEB);
-        }
-
-        /// <summary>
-        /// Enables car collision.
-        /// </summary>
-        public static void EnableCarCollision()
-        {
-            memory.WriteByte((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_CAR_COLLISION, 0x74);
+            /// <summary>
+            /// Enables car collision.
+            /// </summary>
+            public static void EnableCarCollision()
+            {
+                memory.WriteByte((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_CAR_COLLISION, 0x74);
+            }
         }
     }
 
