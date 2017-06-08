@@ -9,7 +9,6 @@ namespace NFSScript
     /// <summary>
     /// A class for reading and writing INI files
     /// </summary>
-
     public class INIFile
     {
         /// <summary>

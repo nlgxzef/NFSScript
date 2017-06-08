@@ -1,4 +1,5 @@
 ﻿using System;
+using NFSScript.Core;
 
 namespace NFSScript
 {
@@ -7,6 +8,28 @@ namespace NFSScript
     /// </summary>
     public static class Time
     {
+        /// <summary>
+        /// Returns NFSScript's run time in milliseconds.
+        /// </summary>
+        public static float Runtime
+        {
+            get
+            {
+                return (float)(DateTime.UtcNow - System.Diagnostics.Process.GetCurrentProcess().StartTime.ToUniversalTime()).TotalMilliseconds;
+            }
+        }
+
+        /// <summary>
+        /// Returns the game's run time in milliseconds.
+        /// </summary>
+        public static float GameRuntime
+        {
+            get
+            {
+                return (float)(DateTime.UtcNow - GameMemory.memory.GetMainProcess().StartTime.ToUniversalTime()).TotalMilliseconds;
+            }
+        }
+
         /// <summary>
         /// Returns a float that moves back and foruth.
         /// </summary>

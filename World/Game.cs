@@ -101,7 +101,7 @@ namespace NFSScript.World
         /// <summary>
         /// Enable the loading screen.
         /// </summary>
-        /// <param name="enable">A value that indicates whether the loading screen should be enabled or not.</param>
+        /// <param name="enable">A value that indicates whether a loading screen should be enabled or not.</param>
         public static void EnableLoadingScreen(bool enable)
         {
             CallBinding(_EASharpBinding_331, enable);

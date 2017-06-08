@@ -140,8 +140,9 @@ namespace NFSScript.World
                 return 0xFF;
             }
         }
+
         /// <summary>
-        /// The <see cref="Player"/>'s car's speed in mps.
+        /// The <see cref="Player"/>'s car's speed in MPS.
         /// </summary>
         /// <remarks>
         /// See <see cref="Math.Mathf.ConvertSpeed(float, SpeedMeasurementConversionTypes)"/>.
@@ -150,15 +151,12 @@ namespace NFSScript.World
         {
             get
             {
-                int addr = Game.PWorld_Cars + CarOffset;
-                return memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_SPEED)));
-            }
-            set
-            {
-                int addr = Game.PWorld_Cars + CarOffset;
-                memory.WriteFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_SPEED)), value);
-            }
+                // TODO: Add constants to PlayerAddrs.
+                int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + 0x91F9D0);
+                address = memory.ReadInt32((IntPtr)address + 0x68);
 
+                return memory.ReadFloat((IntPtr)address);
+            }
         }
 
         /// <summary>
@@ -269,13 +267,13 @@ namespace NFSScript.World
             }
         }
 
-        /// <summary>
+        /*/// <summary>
         /// Instantly stops the <see cref="Player"/>'s car.
         /// </summary>
         public static void ForceStop()
         {
             Speed = 0f;
-        }
+        }*/
 
         /// <summary>
         /// Pushes the <see cref="Player"/>'s car to north.
