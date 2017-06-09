@@ -45,6 +45,16 @@ namespace NFSScript.Core
         }
 
         /// <summary>
+        /// Calls an address (This may crash the game.)
+        /// </summary>
+        /// <param name="address"></param>
+        public void Call(uint address)
+        {
+            b.AddRange(new byte[] { 0xE8 });
+            b.AddRange(BitConverter.GetBytes(address));
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="value"></param>
@@ -200,6 +210,16 @@ namespace NFSScript.Core
         public void MovEAX(uint value)
         {
             b.Add(0xB8);
+            b.AddRange(BitConverter.GetBytes(value));
+        }
+
+        /// <summary>
+        /// Move a value to the ECX registry.
+        /// </summary>
+        /// <param name="value"></param>
+        public void MovECX(uint value)
+        {
+            b.Add(0xB9);
             b.AddRange(BitConverter.GetBytes(value));
         }
 
@@ -376,6 +396,38 @@ namespace NFSScript.Core
 
             if (!CloseHandle(hThread))
                 Log.Print(ASM_ERROR, string.Format("Could not close handle! {0}", Marshal.GetLastWin32Error()));
+
+            return hAlloc;
+        }
+        /// <summary>
+        /// Inject shellcode and get the address where the shellcode was injected. (Doesn't save to memory's cache!!)
+        /// </summary>
+        /// <param name="asm"></param>
+        /// <param name="handle"></param>
+        /// <returns></returns>
+        public static IntPtr InjectForAddress(byte[] asm, IntPtr handle)
+        {
+            IntPtr hAlloc = VirtualAllocEx(handle, IntPtr.Zero, (uint)asm.Length, AllocationType.Commit, MemoryProtection.ExecuteReadWrite);
+
+            if (hAlloc == IntPtr.Zero)
+            {
+                Log.Print(ASM_ERROR, string.Format("Failed to allocate memory! {0}", Marshal.GetLastWin32Error()));
+                return IntPtr.Zero;
+            }
+
+            UIntPtr bytesWritten = UIntPtr.Zero;
+
+            if (!WriteProcessMemory(handle, hAlloc, asm, (uint)asm.Length, out bytesWritten))
+            {
+                Log.Print(ASM_ERROR, string.Format("Could not write process memory! {0}", Marshal.GetLastWin32Error()));
+                return IntPtr.Zero;
+            }
+
+            if (asm.Length != (int)bytesWritten)
+            {
+                Log.Print(ASM_ERROR, "ASM length is not equal to the amount of bytes written.");
+                return IntPtr.Zero;
+            }
 
             return hAlloc;
         }

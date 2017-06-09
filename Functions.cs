@@ -1145,6 +1145,11 @@ namespace NFSScript
     public static class CarbonFunctions
     {
         /// <summary>
+        ///  EFlasherGeneric::EFlasherGeneric((int,char const *,int,int,int,int,int))
+        /// </summary>
+        public const int EFLASHER_GENERIC = 0x67C290;
+
+        /// <summary>
         /// CameraAI::SetAction((EVIEW_ID, char const *))
         /// </summary>
         public const int CAMERA_AI__SET_ACTION = 0x48D620;
@@ -5736,7 +5741,7 @@ namespace NFSScript
         /// <param name="o">The parameters to pass to the function.</param>
         public static void Call(uint address, params object[] o)
         {
-            Call(address, true, o);
+            Call(true, address, o);
         }
 
         /// <summary>
@@ -5745,7 +5750,7 @@ namespace NFSScript
         /// <param name="address">The address to call.</param>
         /// <param name="o">The parameters to pass to the function.</param>
         /// <param name="align">Whether to align the stack or not.</param>
-        public static void Call(uint address, bool align, params object[] o)
+        public static void Call(bool align, uint address, params object[] o)
         {
             ASMBuilder function = ParameterPush(o);
             
@@ -5775,7 +5780,7 @@ namespace NFSScript
         /// <returns></returns>
         public static object Call<T>(uint address, params object[] o)
         {
-            return Call<T>(address, true, o);
+            return Call<T>(true, address, o);
         }
 
         /// <summary>
@@ -5785,7 +5790,7 @@ namespace NFSScript
         /// <param name="address">The address to call.</param>
         /// <param name="o">The parameters to pass to the function.</param>
         /// <param name="align">Whether to align the stack or not.</param>
-        public static object Call<T>(uint address, bool align, params object[] o)
+        public static object Call<T>(bool align, uint address, params object[] o)
         {
             Type typeParameterType = typeof(T);
             Any ret = Return(address, align, o);

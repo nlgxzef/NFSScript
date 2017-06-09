@@ -119,14 +119,14 @@ namespace NFSScript.World
                     for (int i = 0; i < 0x78; i++)
                     {
                         int offset = 0xB0 * i;
-                        int addr = Game.PWorld_Cars + CarOffset;
+                        int addr = Game.PWorld_Cars + offset;
 
-                        float localX = memory.ReadFloat((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_X_POS);
-                        float localY = memory.ReadFloat((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_Y_POS);
-                        float localZ = memory.ReadFloat((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_Z_POS);
-                        float opponentX = memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_X_POS)));
-                        float opponentY = memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_Y_POS)));
-                        float opponentZ = memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_Z_POS)));
+                        float localX = memory.ReadFloat((IntPtr)(memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_X_POS));
+                        float localY = memory.ReadFloat((IntPtr)(memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_Y_POS));
+                        float localZ = memory.ReadFloat((IntPtr)(memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_Z_POS));
+                        float opponentX = memory.ReadFloat((IntPtr)(addr + GameAddrs.PSTATIC_CAR_X_POS));
+                        float opponentY = -memory.ReadFloat((IntPtr)(addr + GameAddrs.PSTATIC_CAR_Y_POS)); // the - at the start is important
+                        float opponentZ = memory.ReadFloat((IntPtr)(addr + GameAddrs.PSTATIC_CAR_Z_POS));
 
                         if (Mathf.Abs(localX - opponentX) < 1f &&
                             Mathf.Abs(localY - opponentY) < 1f &&
@@ -152,7 +152,7 @@ namespace NFSScript.World
                     // TODO: Add constants to PlayerAddrs.
                     int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + 0x91F9D0);
                     address = memory.ReadInt32((IntPtr)address + 0x68);
-
+                    
                     return memory.ReadDouble((IntPtr)address);
                 }
             }
@@ -168,12 +168,12 @@ namespace NFSScript.World
                 get
                 {
                     int addr = Game.PWorld_Cars + CarOffset;
-                    return memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + +GameAddrs.PSTATIC_CAR_GRAVITY)));
+                    return memory.ReadFloat((IntPtr)(addr +GameAddrs.PSTATIC_CAR_GRAVITY));
                 }
                 set
                 {
                     int addr = Game.PWorld_Cars + CarOffset;
-                    memory.WriteFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_GRAVITY)), value);
+                    memory.WriteFloat((IntPtr)(addr + GameAddrs.PSTATIC_CAR_GRAVITY), value);
                 }
             }
 
@@ -188,12 +188,12 @@ namespace NFSScript.World
                 get
                 {
                     int addr = Game.PWorld_Cars + CarOffset;
-                    return memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + +GameAddrs.PSTATIC_CAR_WEIGHT)));
+                    return memory.ReadFloat((IntPtr)(addr +GameAddrs.PSTATIC_CAR_WEIGHT));
                 }
                 set
                 {
                     int addr = Game.PWorld_Cars + CarOffset;
-                    memory.WriteFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_WEIGHT)), value);
+                    memory.WriteFloat((IntPtr)(addr + GameAddrs.PSTATIC_CAR_WEIGHT), value);
                 }
             }
 
@@ -205,29 +205,29 @@ namespace NFSScript.World
                 get
                 {
                     int addr = Game.PWorld_Cars + CarOffset;
-                    return memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_VELOCITY_TOWARDS_EAST)));
+                    return memory.ReadFloat((IntPtr)(addr + GameAddrs.PSTATIC_CAR_VELOCITY_TOWARDS_EAST));
                 }
                 set
                 {
                     int addr = Game.PWorld_Cars + CarOffset;
-                    memory.WriteFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_VELOCITY_TOWARDS_EAST)), value);
+                    memory.WriteFloat((IntPtr)(addr + GameAddrs.PSTATIC_CAR_VELOCITY_TOWARDS_EAST), value);
                 }
             }
 
             /// <summary>
             /// The <see cref="Player"/>'s car's current velocity towards south.
-            /// </summary>
+            /// </summary>xw
             public static float VelocityTowardsSouth
             {
                 get
                 {
                     int addr = Game.PWorld_Cars + CarOffset;
-                    return memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_VELOCITY_TOWARDS_SOUTH)));
+                    return memory.ReadFloat((IntPtr)(addr + GameAddrs.PSTATIC_CAR_VELOCITY_TOWARDS_SOUTH));
                 }
                 set
                 {
                     int addr = Game.PWorld_Cars + CarOffset;
-                    memory.WriteFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_VELOCITY_TOWARDS_SOUTH)), value);
+                    memory.WriteFloat((IntPtr)(addr + GameAddrs.PSTATIC_CAR_VELOCITY_TOWARDS_SOUTH), value);
                 }
             }
 
@@ -239,12 +239,12 @@ namespace NFSScript.World
                 get
                 {
                     int addr = Game.PWorld_Cars + CarOffset;
-                    return memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_VERTICAL_VELOCITY)));
+                    return memory.ReadFloat((IntPtr)(addr + GameAddrs.PSTATIC_CAR_VERTICAL_VELOCITY));
                 }
                 set
                 {
                     int addr = Game.PWorld_Cars + CarOffset;
-                    memory.WriteFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_VERTICAL_VELOCITY)), value);
+                    memory.WriteFloat((IntPtr)(addr + GameAddrs.PSTATIC_CAR_VERTICAL_VELOCITY), value);
                 }
             }
 
@@ -256,12 +256,12 @@ namespace NFSScript.World
                 get
                 {
                     int addr = Game.PWorld_Cars + CarOffset;
-                    return memory.ReadFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_ANGULAR_VELOCITY)));
+                    return memory.ReadFloat((IntPtr)(addr + GameAddrs.PSTATIC_CAR_ANGULAR_VELOCITY));
                 }
                 set
                 {
                     int addr = Game.PWorld_Cars + CarOffset;
-                    memory.WriteFloat((IntPtr)(addr + (memory.getBaseAddress + GameAddrs.PSTATIC_CAR_ANGULAR_VELOCITY)), value);
+                    memory.WriteFloat((IntPtr)(addr + GameAddrs.PSTATIC_CAR_ANGULAR_VELOCITY), value);
                 }
             }
 

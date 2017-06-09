@@ -42,14 +42,37 @@ namespace NFSScript.Carbon
             Function.Call(SHOW_TIME_EXTENSION);
         }
 
+        static IntPtr eventAddress = IntPtr.Zero;
+
         /// <summary>
         /// Shows a screen text message on the HUD.
         /// </summary>
-        /// <param name="message"></param>
-        public static void ShowScreenTextMessage(string message)
+        /// <param name="message">The text message that will be shown.</param>
+        /// <param name="priority">Message priority, usually ranging from 1 to 5.</param>
+        /// <param name="textLocation">Location of the text.</param>
+        /// <param name="textMode">The mode of the text.</param>
+        /// <param name="textType">The type of the text.</param>
+        public static void ShowScreenTextMessage(string message, int priority, TextLocation textLocation, TextMode textMode, TextType textType)
         {
             _setErrorMsgString(message);
-            Function.Call(SHOW_SCREEN_TEXT_MESSAGE, 0x1, 0x1, 0x1, 0x8AB83EDB, 0x0, Addrs.UIAddrs.STATIC_ERROR_ALLOCATED_MSG);
+            if(eventAddress == IntPtr.Zero)
+                eventAddress = _ASM.InjectForAddress(new byte[] { 0x24 }, memory.ProcessHandle);
+
+            ASMBuilder asm = new ASMBuilder();
+
+            asm.MovECX((uint)eventAddress.ToInt32());
+            asm.Push(priority); // priority
+            asm.Push((int)textLocation); // location
+            asm.Push((int)textMode); // mode
+            asm.Push((uint)textType); // type
+            asm.Push(0x0); // unknown
+            asm.Push(Addrs.UIAddrs.STATIC_ERROR_ALLOCATED_MSG); // mesage
+            asm.Push(0x0); // unknown
+            asm.MovEAX(EFLASHER_GENERIC); // sub_67C290
+            asm.CallEAX();
+
+            asm.Return();
+            _ASM.Call(asm.ToArray(), memory.ProcessHandle);
         }
 
         private const int ERROR_MSG_MAX_LENGTH = 44;
@@ -155,7 +178,7 @@ namespace NFSScript.Carbon
             }
         }
     }
-/*  // Soon.
+
     /// <summary>
     /// An enum for the text mode.
     /// </summary>
@@ -243,5 +266,5 @@ namespace NFSScript.Carbon
         /// 
         /// </summary>
         Unknown4 = 0x136707
-    }*/
+    }
 }
