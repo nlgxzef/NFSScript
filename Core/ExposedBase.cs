@@ -33,7 +33,7 @@ namespace NFSScript.Core
         /// <returns></returns>
         public unsafe void* _GetRaw()
         {
-            return this.mSelf.ToPointer();
+            return mSelf.ToPointer();
         }
 
         /// <summary>

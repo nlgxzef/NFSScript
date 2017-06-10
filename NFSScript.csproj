@@ -96,6 +96,7 @@
     <Compile Include="ProStreet\Game.cs" />
     <Compile Include="ProStreet\Player.cs" />
     <Compile Include="ProStreet\UI.cs" />
+    <Compile Include="Types\Voidf.cs" />
     <Compile Include="Undercover\Database.cs" />
     <Compile Include="Undercover\Game.cs" />
     <Compile Include="Undercover\Player.cs" />

@@ -5724,6 +5724,10 @@ namespace NFSScript
                     function.Push(ushrt);
                     Log.Debug(string.Format("Pushing ushort {0} to the stack", ushrt));
                 }
+                else if (o[i] is Voidf voidf)
+                {
+                    Log.Debug("You can't push Voidf, what were you thinking?");
+                }
                 else
                 {
                     Log.Print("Function Error", string.Format("The type {0} is not supported in Function.Call yet! Pushing 0 instead.", o[i].GetType()));
@@ -5839,6 +5843,10 @@ namespace NFSScript
             else if (typeParameterType == typeof(double))
             {
                 obj = BitConverter.ToDouble(ret, 0);
+            }
+            else if(typeParameterType == typeof(Voidf))
+            {
+                obj = null;
             }
             else
             {
