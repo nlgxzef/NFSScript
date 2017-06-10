@@ -56,6 +56,7 @@
     <Compile Include="Core\NativeMethods.cs" />
     <Compile Include="Core\PatternScan.cs" />
     <Compile Include="Enumerators.cs" />
+    <Compile Include="Exceptions.cs" />
     <Compile Include="Inheritables.cs" />
     <Compile Include="Interfaces.cs" />
     <Compile Include="MW\Database.cs" />
@@ -125,6 +126,7 @@
     <Compile Include="World\Attrib\Hash\VisualPart\Attributes.cs" />
     <Compile Include="World\Database.cs" />
     <Compile Include="World\EASharpBindings.cs" />
+    <Compile Include="World\EASharp\InternalUtil.cs" />
     <Compile Include="World\EASharp\Math.cs" />
     <Compile Include="World\EffectType.cs" />
     <Compile Include="World\Game.cs" />

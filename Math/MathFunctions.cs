@@ -15,12 +15,12 @@ namespace NFSScript.Math
         /// <summary>
         /// Degrees-to-radians conversion constant (Read only).
         /// </summary>
-        public static float Deg2Rad = (PI * 2) / 360;
+        public const float Deg2Rad = (PI * 2) / 360;
 
         /// <summary>
         /// Radians-to-degrees conversion constant (Read only).
         /// </summary>
-        public static float Rad2Deg = 360 / (PI * 2);
+        public const float Rad2Deg = 360 / (PI * 2);
 
         /// <summary>
         /// A small floating point value, a VERY small floating point value.
@@ -59,27 +59,87 @@ namespace NFSScript.Math
         }
 
         /// <summary>
-        /// Converts degree to radian.
+        /// Converts a degree to a radian.
         /// </summary>
         /// <param name="angle"></param>
         /// <returns></returns>
-        public static double DegreeToRadian(double angle)
+        public static float Degree2Radian(float angle)
         {
-            return PI * angle / 180.0;
+            return (float)(PI * angle / 180.0);
         }
 
         /// <summary>
-        /// Converts radian to degrees.
+        /// Converts a radian to a degree.
         /// </summary>
         /// <param name="angle"></param>
         /// <returns></returns>
-        public static double RadianToDegree(double angle)
+        public static float Radian2Degree(float angle)
         {
-            return angle * (180.0 / PI);
+            return (float)(angle * (180.0 / PI));
         }
 
         /// <summary>
-        /// 
+        /// Converts a radian to an angle.
+        /// </summary>
+        /// <param name="rad"></param>
+        /// <returns></returns>
+        public static float Rad2Angle(float rad)
+        {
+            return rad * 0.1591549f;
+        }
+
+        /// <summary>
+        /// Converts a degree to an angle.
+        /// </summary>
+        /// <param name="deg"></param>
+        /// <returns></returns>
+        public static float Degree2Angle(float deg)
+        {
+            return deg * 0.00277778f;
+        }
+
+        /// <summary>
+        /// Converts an angle to a degree.
+        /// </summary>
+        /// <param name="angle"></param>
+        /// <returns></returns>
+        public static float Angle2Degree(float angle)
+        {
+            return angle * 360;
+        }
+
+        /// <summary>
+        /// Converts an angle to a radian.
+        /// </summary>
+        /// <param name="angle"></param>
+        /// <returns></returns>
+        public static float Angle2Rad(float angle)
+        {
+            return angle * 6.283185f;
+        }
+
+        /// <summary>
+        /// Converts RPS to RPM.
+        /// </summary>
+        /// <param name="rps"></param>
+        /// <returns></returns>
+        public static float RPS2RPM(float rps)
+        {
+            return (float)(rps * 60.0 * 0.159154936671257);
+        }
+
+        /// <summary>
+        /// Converts RPM to RPS.
+        /// </summary>
+        /// <param name="rpm"></param>
+        /// <returns></returns>
+        public static float RPM2RPS(float rpm)
+        {
+            return (float)(rpm * 6.28318548202515 / 60.0);
+        }
+
+        /// <summary>
+        /// Converts a byte to float.
         /// </summary>
         public static float ByteToFloat(byte b)
         {
@@ -87,7 +147,7 @@ namespace NFSScript.Math
         }
 
         /// <summary>
-        /// 
+        /// Converts a float to byte.
         /// </summary>
         public static byte FloatToByte(float f)
         {
@@ -109,6 +169,24 @@ namespace NFSScript.Math
             if (number < 0)
                 number = -number;
             return number;
+        }
+
+        /// <summary>
+        /// Clamps a value between min and max.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
+        public static T Clamp<T>(T value, T min, T max) where T : IComparable<T>
+        {
+            T obj = value;
+            if (obj.CompareTo(min) < 0)
+                obj = min;
+            if (obj.CompareTo(max) > 0)
+                obj = max;
+            return obj;
         }
     }
 

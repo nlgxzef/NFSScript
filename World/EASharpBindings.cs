@@ -23,7 +23,7 @@
         /// <returns></returns>
         public static object CallBinding<T>(uint binding, params object[] o)
         {
-            return Function.Call<T>(binding + MemoryBase.FunctionBase, true, o);
+            return Function.Call<T>(binding + MemoryBase.FunctionBase, o);
         }
 
         /// <summary>

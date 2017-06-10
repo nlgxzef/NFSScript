@@ -1,4 +1,6 @@
-﻿namespace NFSScript.Core
+﻿using System;
+
+namespace NFSScript.Core
 {
     /// <summary>
     /// 

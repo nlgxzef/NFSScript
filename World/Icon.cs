@@ -9,6 +9,7 @@ namespace NFSScript.World
     /// </summary>
     public class Icon : ExposedBase
     {
+        private bool exists = false;
         /// <summary>
         /// Creates a new <see cref="Icon"/> instance.
         /// </summary>
@@ -17,16 +18,25 @@ namespace NFSScript.World
         /// <param name="rotation"></param>
         public Icon(EAVector3 position, uint type, float rotation)
         {
-            mSelf = (IntPtr)CallBinding<uint>(_EASharpBinding_109, position.mSelf, type, rotation);
+            uint addr = (uint)CallBinding<uint>(_EASharpBinding_109, position.mSelf, type, rotation);
+            mSelf = new IntPtr(addr);
+
+            exists = true;
         }
 
         /// <summary>
-        /// Destroys this <see cref="Icon"/> instance. 
+        /// Destroys this <see cref="Icon"/> instance from the game. 
         /// </summary>
         public void Destroy()
         {
+            if (!exists)
+            {
+                throw new DoesNotExistException(string.Format("An attempt was made to destroy an instance that does not exist inside the game."));
+            }
+
             CallBinding(_EASharpBinding_110, mSelf);
             mSelf = IntPtr.Zero;
+            exists = false;
         }
 
         /// <summary>
@@ -34,6 +44,9 @@ namespace NFSScript.World
         /// </summary>
         public void Enable()
         {
+            if (!exists)
+                throw new DoesNotExistException(string.Format("The Icon instance does not exist inside the game."));
+
             CallBinding(_EASharpBinding_111, mSelf);
         }
 
@@ -42,6 +55,9 @@ namespace NFSScript.World
         /// </summary>
         public void Disable()
         {
+            if (!exists)
+                throw new DoesNotExistException(string.Format("The Icon instance does not exist inside the game."));
+
             CallBinding(_EASharpBinding_112, mSelf);
         }
     }
