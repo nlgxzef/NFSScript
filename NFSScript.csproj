@@ -130,6 +130,7 @@
     <Compile Include="World\Game.cs" />
     <Compile Include="World\Hash.cs" />
     <Compile Include="World\HUD.cs" />
+    <Compile Include="World\Icon.cs" />
     <Compile Include="World\MemoryBase.cs" />
     <Compile Include="World\Net.cs" />
     <Compile Include="World\Player.cs" />

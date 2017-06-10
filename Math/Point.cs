@@ -10,12 +10,12 @@ namespace NFSScript.Math
         /// <summary>
         /// Returns the x-coordinate of this <see cref="Point"/>.
         /// </summary>
-        public int x { get; private set; }
+        public int X { get; private set; }
 
         /// <summary>
         /// Returns the y-coordinate of this <see cref="Point"/>.
         /// </summary>
-        public int y { get; private set; }
+        public int Y { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Point"/> class using coordinates specified by an interger value.
@@ -23,8 +23,8 @@ namespace NFSScript.Math
         /// <param name="value"></param>
         public Point(int value)
         {
-            x = value;
-            y = value;
+            X = value;
+            Y = value;
         }
 
         /// <summary>
@@ -34,8 +34,8 @@ namespace NFSScript.Math
         /// <param name="y"></param>
         public Point(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            this.X = x;
+            this.Y = y;
         }
 
         /// <summary>
@@ -45,8 +45,8 @@ namespace NFSScript.Math
         /// <param name="y"></param>
         public void Set(int x, int y)
         {
-            this.x = x;
-            this.y = x;
+            this.X = x;
+            this.Y = x;
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static int Distance(Point a, Point b)
         {
-            return (int)Maths.Sqrt(Maths.Pow((b.x - a.x), 2) + Maths.Pow((b.y - a.y), 2));
+            return (int)Maths.Sqrt(Maths.Pow((b.X - a.X), 2) + Maths.Pow((b.Y - a.Y), 2));
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public override int GetHashCode()
         {
-            return x.GetHashCode() ^ y.GetHashCode() << 2;
+            return X.GetHashCode() ^ Y.GetHashCode() << 2;
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static bool Equals(Point a, Point b)
         {
-            return (a.x == b.x && a.y == b.y);
+            return (a.X == b.X && a.Y == b.Y);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public override string ToString()
         {
-            return string.Format("X = {0} Y = {1}", x, y);
+            return string.Format("X = {0} Y = {1}", X, Y);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public string ToString(string numberFormat)
         {
-            return string.Format("X = {0} Y = {1}", x.ToString(numberFormat), y.ToString(numberFormat));
+            return string.Format("X = {0} Y = {1}", X.ToString(numberFormat), Y.ToString(numberFormat));
         }
     }
 }

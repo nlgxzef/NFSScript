@@ -245,7 +245,7 @@ namespace NFSScript.Carbon
         /// 
         /// </summary>
         /// <param name="value"></param>
-        public static void gDebugEventStrings(bool value)
+        public static void GDebugEventStrings(bool value)
         {
             memory.WriteBoolean((IntPtr)GenericAddrs.STATIC_GDEBUG_EVENT_STRINGS, value);
         }
@@ -254,7 +254,7 @@ namespace NFSScript.Carbon
         /// 
         /// </summary>
         /// <param name="value"></param>
-        public static void bRumbleEnabled(bool value)
+        public static void BRumbleEnabled(bool value)
         {
             memory.WriteBoolean((IntPtr)GenericAddrs.STATIC_B_RUMBLE_ENABLED, value);
         }
@@ -663,7 +663,7 @@ namespace NFSScript.Carbon
             /// <summary>
             /// World's speed modifier for animations (like waving trees) on the game's world. (Default value is 45.0)
             /// </summary>
-            public static float animationSpeed
+            public static float AnimationSpeed
             {
                 get { return memory.ReadFloat((IntPtr)WorldAddrs.STATIC_ANIMATION_SPEED); }
                 set { memory.WriteFloat((IntPtr)WorldAddrs.STATIC_ANIMATION_SPEED, value); }
@@ -672,7 +672,7 @@ namespace NFSScript.Carbon
             /// <summary>
             /// Sets a value that indicates whether it should always rain.
             /// </summary>
-            public static bool alwaysRain
+            public static bool AlwaysRain
             {
                 get
                 {
@@ -729,7 +729,7 @@ namespace NFSScript.Carbon
             /// <summary>
             /// Sets a value that indicates whether rainy road reflections are enabled.
             /// </summary>
-            public static bool rainyRoadReflections
+            public static bool RainyRoadReflections
             {
                 get
                 {
@@ -871,14 +871,14 @@ namespace NFSScript.Carbon
         /// <summary>
         /// The address where the main GameFlowManager is located at.
         /// </summary>
-        public static IntPtr address { get { return (IntPtr)GenericAddrs.STATIC_GAME_STATE; } }
+        public static IntPtr Address { get { return (IntPtr)GenericAddrs.STATIC_GAME_STATE; } }
 
         private int gameStateValue;
 
         /// <summary>
         /// The main GameFlowManager.
         /// </summary>
-        public static GameFlowManager TheGameFlowManager { get { return new GameFlowManager(memory.ReadInt32(address)); } }
+        public static GameFlowManager TheGameFlowManager { get { return new GameFlowManager(memory.ReadInt32(Address)); } }
 
         /// <summary>
         /// Instantiate a GameFlowManager class.

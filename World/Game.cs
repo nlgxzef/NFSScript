@@ -397,14 +397,14 @@ namespace NFSScript.World
         /// <summary>
         /// The address where the main GameFlowManager is located at.
         /// </summary>
-        public static IntPtr address { get { return (IntPtr)memory.getBaseAddress + GenericAddrs.NON_STATIC_GAME_STATE; } }
+        public static IntPtr Address { get { return (IntPtr)memory.getBaseAddress + GenericAddrs.NON_STATIC_GAME_STATE; } }
 
         private int gameStateValue;
 
         /// <summary>
         /// The main GameFlowManager.
         /// </summary>
-        public static GameFlowManager TheGameFlowManager { get { return new GameFlowManager(memory.ReadInt32(address)); } }
+        public static GameFlowManager TheGameFlowManager { get { return new GameFlowManager(memory.ReadInt32(Address)); } }
 
         /// <summary>
         /// Instantiate a GameFlowManager class.
