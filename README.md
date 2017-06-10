@@ -1,4 +1,7 @@
 # NFSScript
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f2d6423a6a4349408fcde231750b6862)](https://www.codacy.com/app/DennisStanistan/NFSScript?utm_source=github.com&utm_medium=referral&utm_content=DennisStanistan/NFSScript&utm_campaign=badger)
+
 A 'plug-in' for supported NFS games that allows scripting and further modding NFS games by using .NET.
 
 # First of all
