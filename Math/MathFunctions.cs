@@ -59,6 +59,26 @@ namespace NFSScript.Math
         }
 
         /// <summary>
+        /// Converts degree to radian.
+        /// </summary>
+        /// <param name="angle"></param>
+        /// <returns></returns>
+        public static double DegreeToRadian(double angle)
+        {
+            return PI * angle / 180.0;
+        }
+
+        /// <summary>
+        /// Converts radian to degrees.
+        /// </summary>
+        /// <param name="angle"></param>
+        /// <returns></returns>
+        public static double RadianToDegree(double angle)
+        {
+            return angle * (180.0 / PI);
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         public static float ByteToFloat(byte b)

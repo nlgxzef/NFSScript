@@ -432,5 +432,23 @@ namespace NFSScript.Math
 
             return Normalize(result);
         }
+
+        /// <summary>
+        /// Returns a formmated <see cref="Quaternion"/> string.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return string.Format("W = {0} X = {1} Y = {2} Z = {3}", w, x, y, z);
+        }
+
+        /// <summary>
+        /// Returns a formmated <see cref="Quaternion"/> string with a specified number format.
+        /// </summary>
+        /// <returns></returns>
+        public string ToString(string numberFormat)
+        {
+            return string.Format("W = {0} X = {1} Y = {2} Z = {3}", w.ToString(numberFormat), x.ToString(numberFormat), y.ToString(numberFormat), z.ToString(numberFormat));
+        }
     }
 }

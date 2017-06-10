@@ -87,7 +87,7 @@ namespace NFSScript.World
         public static class Car
         {
             /// <summary>
-            /// The <see cref="Player"/>'s car's position.
+            /// The <see cref="Player"/>'s car position.
             /// </summary>
             public static Vector3 Position
             {
@@ -106,6 +106,23 @@ namespace NFSScript.World
                     memory.WriteFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_X_POS, value.x);
                     memory.WriteFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_Y_POS, value.y);
                     memory.WriteFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_Z_POS, value.z);
+                }
+            }
+
+            /// <summary>
+            /// The <see cref="Player"/>'s car rotation.
+            /// </summary>
+            public static Quaternion Rotation
+            {
+                get
+                {
+                    int addr = Game.PWorld_Cars + CarOffset;
+                    float q1 = memory.ReadFloat((IntPtr)(addr + (GameAddrs.PSTATIC_CAR_ANGULAR_VELOCITY + 0x5C)));
+                    float q2 = memory.ReadFloat((IntPtr)(addr + (GameAddrs.PSTATIC_CAR_ANGULAR_VELOCITY + 0x60)));
+                    float q3 = memory.ReadFloat((IntPtr)(addr + (GameAddrs.PSTATIC_CAR_ANGULAR_VELOCITY + 0x64)));
+                    float q4 = memory.ReadFloat((IntPtr)(addr + (GameAddrs.PSTATIC_CAR_ANGULAR_VELOCITY + 0x54)));
+
+                    return new Quaternion(q1, q2, q3, q4);
                 }
             }
 
@@ -140,7 +157,7 @@ namespace NFSScript.World
             }
 
             /// <summary>
-            /// The <see cref="Player"/>'s car's speed in MPS.
+            /// The <see cref="Player"/>'s car speed in MPS.
             /// </summary>
             /// <remarks>
             /// See <see cref="Math.Mathf.ConvertSpeed(float, SpeedMeasurementConversionTypes)"/>.
@@ -178,7 +195,7 @@ namespace NFSScript.World
             }
 
             /// <summary>
-            /// The <see cref="Player"/>'s car's weight.
+            /// The <see cref="Player"/>'s car weight.
             /// </summary>
             /// <remarks>
             /// Each car has its own weight.
@@ -198,7 +215,7 @@ namespace NFSScript.World
             }
 
             /// <summary>
-            /// The <see cref="Player"/>'s car's current velocity towards east.
+            /// The <see cref="Player"/>'s car current velocity towards east.
             /// </summary>
             public static float VelocityTowardsEast
             {
@@ -215,7 +232,7 @@ namespace NFSScript.World
             }
 
             /// <summary>
-            /// The <see cref="Player"/>'s car's current velocity towards south.
+            /// The <see cref="Player"/>'s car current velocity towards south.
             /// </summary>xw
             public static float VelocityTowardsSouth
             {
@@ -232,7 +249,7 @@ namespace NFSScript.World
             }
 
             /// <summary>
-            /// The <see cref="Player"/>'s car's vertical velocity towards sky.
+            /// The <see cref="Player"/>'s car vertical velocity towards sky.
             /// </summary>
             public static float VerticalVelocity
             {
@@ -249,7 +266,7 @@ namespace NFSScript.World
             }
 
             /// <summary>
-            /// The <see cref="Player"/>'s car's angular velocity towards right.
+            /// The <see cref="Player"/>'s car angular velocity towards right.
             /// </summary>
             public static float AngularVelocity
             {
