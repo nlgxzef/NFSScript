@@ -21,6 +21,11 @@ namespace NFSScript.MW
         private int offset = 0;
 
         /// <summary>
+        /// Returns whether the dynamic game object was applied to an opponent or not.
+        /// </summary>
+        public bool IsOpponent { get; private set; }
+
+        /// <summary>
         /// Dynamic game object gravity values.
         /// </summary>
         public override Vector3 GravityValues
@@ -81,9 +86,9 @@ namespace NFSScript.MW
             set
             {
                 memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT + offset, value.x);
-                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT + offset, value.y);
-                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT + offset, value.z);
-                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT + offset, value.w);
+                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_Y_ROT + offset, value.y);
+                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_Z_ROT + offset, value.z);
+                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_W_ROT + offset, value.w);
             }
         }
 
@@ -94,38 +99,17 @@ namespace NFSScript.MW
         {
             get
             {
-                float x = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0x20);
-                float y = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0x24);
-                float z = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0x28);
+                float x = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POS_X + offset + 0x20);
+                float y = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POS_X + offset + 0x24);
+                float z = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POS_X + offset + 0x28);
 
                 return new Vector3(x, y, z);
             }
             set
             {
-                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0x20, value.x);
-                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0x24, value.y);
-                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0x28, value.z);
-            }
-        }
-
-        /// <summary>
-        /// The velocity direction of the dynamic object.
-        /// </summary>
-        public override Vector3 VelocityDirection
-        {
-            get
-            {
-                float x = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0xF0);
-                float y = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0xF4);
-                float z = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0xF8);
-
-                return new Vector3(x, y, z);
-            }
-            set
-            {
-                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0xF0, value.x);
-                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0xF4, value.y);
-                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0xF8, value.z);
+                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POS_X + offset + 0x20, value.x);
+                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POS_X + offset + 0x24, value.y);
+                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POS_X + offset + 0x28, value.z);
             }
         }
 
@@ -141,6 +125,20 @@ namespace NFSScript.MW
         public DynamicGameObject(byte ID)
         {
             this.ID = ID;
+            IsOpponent = false;
+            offset = GetOffset(ID);
+        }
+
+        /// <summary>
+        /// Instantiate a dynamic game object class by ID.
+        /// </summary>
+        /// <param name="ID">The ID of the car in the world, an ID bigger than 32 will probably crash the game.</param>
+        /// <param name="isOpponent">Get the dynamic game object of an opponent.</param>
+        public DynamicGameObject(byte ID, bool isOpponent)
+        {
+            this.ID = ID;
+            IsOpponent = isOpponent;
+            offset = GetOffset(ID);
         }
 
         private int GetOffset(byte ID)
@@ -148,7 +146,9 @@ namespace NFSScript.MW
             int offset = 0;
             for (int i = 0; i < ID; i++)
             {
-                offset = offset + Addrs.GenericAddrs.POINTER_CAR_OFFSET;
+                if (!IsOpponent)
+                    offset = offset + Addrs.GenericAddrs.POINTER_CAR_OFFSET;
+                else offset = offset + 0xB0;
             }
 
             return offset;

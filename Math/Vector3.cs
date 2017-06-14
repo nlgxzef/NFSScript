@@ -343,6 +343,20 @@ namespace NFSScript.Math
         }
 
         /// <summary>
+        /// Moves a point current in a straight line towards a target point.
+        /// </summary>
+        /// <returns></returns>
+        public static Vector3 MoveTowards(Vector3 current, Vector3 target, float t)
+        {
+            Vector3 x = new Vector3(current.x, current.y, current.z);
+
+            Vector3 direction = x - target;
+            direction = direction.normalized;
+
+            return x -= direction * t;
+        }
+
+        /// <summary>
         /// Returns a hash code for this <see cref="Vector3"/>.
         /// </summary>
         /// <returns></returns>
