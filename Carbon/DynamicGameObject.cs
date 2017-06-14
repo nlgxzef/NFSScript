@@ -143,6 +143,7 @@ namespace NFSScript.Carbon
         {
             this.ID = ID;
             IsOpponent = isOpponent;
+            offset = GetOffset(ID);
         }
 
         private int GetOffset(byte ID)

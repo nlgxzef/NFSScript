@@ -144,7 +144,7 @@ namespace NFSScript.MW
         private int GetOffset(byte ID)
         {
             int offset = 0;
-            for (int i = 0; i < ID; i++)
+            for (int i = 0; i <= ID; i++)
             {
                 if (!IsOpponent)
                     offset = offset + Addrs.GenericAddrs.POINTER_CAR_OFFSET;
