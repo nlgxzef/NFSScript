@@ -19,6 +19,8 @@ namespace NFSScript.Carbon
             get { return new DynamicGameObject(0); }
         }
 
+        private int offset = 0;
+
         /// <summary>
         /// Dynamic game object gravity values.
         /// </summary>
@@ -27,28 +29,18 @@ namespace NFSScript.Carbon
             get
             {
                 int addr = (int)memory.getBaseAddress;
-                int offset = 0;
-                for (int i = 0; i < ID; i++)
-                {
-                    offset = offset + GenericAddrs.POINTER_CAR_OFFSET;
-                }
-                float x = memory.ReadFloat((IntPtr)PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset + 30);
-                float y = memory.ReadFloat((IntPtr)PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset + 30);
-                float z = memory.ReadFloat((IntPtr)PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset + 30);
+                float x = memory.ReadFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset + 30);
+                float y = memory.ReadFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset + 30);
+                float z = memory.ReadFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset + 30);
 
                 return new Vector3(x, y, z);
             }
             set
             {
                 int addr = (int)memory.getBaseAddress;
-                int offset = 0;
-                for (int i = 0; i < ID; i++)
-                {
-                    offset = offset + GenericAddrs.POINTER_CAR_OFFSET;
-                }
-                memory.WriteFloat((IntPtr)PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset + 30, value.x);
-                memory.WriteFloat((IntPtr)PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset + 30, value.y);
-                memory.WriteFloat((IntPtr)PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset + 30, value.z);
+                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset + 30, value.x);
+                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset + 30, value.y);
+                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset + 30, value.z);
             }
         }
 
@@ -60,11 +52,6 @@ namespace NFSScript.Carbon
             get
             {
                 int addr = (int)memory.getBaseAddress;
-                int offset = 0;
-                for (int i = 0; i < ID; i++)
-                {
-                    offset = offset + GenericAddrs.POINTER_CAR_OFFSET;
-                }
                 float x = memory.ReadFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset);
                 float y = memory.ReadFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset);
                 float z = memory.ReadFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Z_POS + offset);
@@ -74,11 +61,6 @@ namespace NFSScript.Carbon
             set
             {
                 int addr = (int)memory.getBaseAddress;
-                int offset = 0;
-                for (int i = 0; i < ID; i++)
-                {
-                    offset = offset + GenericAddrs.POINTER_CAR_OFFSET;
-                }
                 memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset, value.x);
                 memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset, value.y);
                 memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Z_POS + offset, value.z);
@@ -92,30 +74,61 @@ namespace NFSScript.Carbon
         {
             get
             {
-                int offset = 0;
-                for (int i = 0; i < ID; i++)
-                {
-                    offset = offset + GenericAddrs.POINTER_CAR_OFFSET;
-                }
-                float x = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset) * 360;
-                float y = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_Y_ROT + offset) * 360;
-                float z = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_Z_ROT + offset) * 360;
-                float w = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_W_ROT + offset) * 360;
+                float x = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset);
+                float y = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_Y_ROT + offset);
+                float z = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_Z_ROT + offset);
+                float w = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_W_ROT + offset);
 
                 return new Quaternion(x, y, z, w);
             }
             set
             {
-                int offset = 0;
-                for (int i = 0; i < ID; i++)
-                {
-                    offset = offset + GenericAddrs.POINTER_CAR_OFFSET;
-                }
+                memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset, value.x);
+                memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset, value.y);
+                memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset, value.z);
+                memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset, value.w);
+            }
+        }
 
-                memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset, value.x / 360);
-                memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset, value.y / 360);
-                memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset, value.z / 360);
-                memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset, value.w / 360);
+        /// <summary>
+        /// The rotation axis of the dynamic object.
+        /// </summary>
+        public override Vector3 RotationAxis
+        {
+            get
+            {
+                float x = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0x20);
+                float y = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0x24);
+                float z = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0x28);
+
+                return new Vector3(x, y, z);
+            }
+            set
+            {
+                memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0x20, value.x);
+                memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0x24, value.y);
+                memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0x28, value.z);
+            }
+        }
+
+        /// <summary>
+        /// The velocity direction of the dynamic object.
+        /// </summary>
+        public override Vector3 VelocityDirection
+        {
+            get
+            {
+                float x = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0xF0);
+                float y = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0xF4);
+                float z = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0xF8);
+
+                return new Vector3(x, y, z);
+            }
+            set
+            {
+                memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0xF0, value.x);
+                memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0xF4, value.y);
+                memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT + offset + 0xF8, value.z);
             }
         }
 
@@ -131,6 +144,18 @@ namespace NFSScript.Carbon
         public DynamicGameObject(byte ID)
         {
             this.ID = ID;
+            offset = GetOffset(ID);
+        }
+
+        private int GetOffset(byte ID)
+        {
+            int offset = 0;
+            for (int i = 0; i < ID; i++)
+            {
+                offset = offset + GenericAddrs.POINTER_CAR_OFFSET;
+            }
+
+            return offset;
         }
     }
 }

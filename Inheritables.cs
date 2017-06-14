@@ -25,6 +25,16 @@ namespace NFSScript
         public abstract Quaternion Rotation { get; set; }
 
         /// <summary>
+        /// The rotation axis of the dynamic object.
+        /// </summary>
+        public abstract Vector3 RotationAxis { get; set; }
+
+        /// <summary>
+        /// The velocity direction of the dynamic object.
+        /// </summary>
+        public abstract Vector3 VelocityDirection { get; set; }
+
+        /// <summary>
         /// The ID of the <see cref="EAGLPhysicsObject"/>.
         /// </summary>
         public abstract byte ID { get; set; }

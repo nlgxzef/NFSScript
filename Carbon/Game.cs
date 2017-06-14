@@ -150,6 +150,32 @@ namespace NFSScript.Carbon
         }
 
         /// <summary>
+        /// Returns true if the game camera moment is shown.
+        /// </summary>
+        public static bool IsGameMoment
+        {
+            get
+            {
+                return (memory.ReadInt32((IntPtr)GameAddrs.STATIC_IS_GAME_MOMENT)) == 1;
+            }
+        }
+
+        /// <summary>
+        /// Game paused value.
+        /// </summary>
+        public static bool IsPaused
+        {
+            get
+            {
+                return (memory.ReadInt32((IntPtr)GameAddrs.STATIC_IS_PAUSED)) == 1;
+            }
+            set
+            {
+                memory.WriteInt32((IntPtr)GameAddrs.STATIC_IS_PAUSED, value.ToByte());
+            }
+        }
+
+        /// <summary>
         /// Is sound enabled?
         /// </summary>
         public static bool IsSoundEnabled
@@ -204,6 +230,28 @@ namespace NFSScript.Carbon
             get
             {
                 return memory.ReadBoolean((IntPtr)GenericAddrs.STATIC_IS_COLLECTORS_EDITION);
+            }
+        }
+
+        /// <summary>
+        /// Returns the current active crew member ID.
+        /// </summary>
+        public static int CurrentActiveCrewMemberID
+        {
+            get
+            {
+                return memory.ReadInt32((IntPtr)GameAddrs.STATIC_CURRENT_ACTIVE_CREW_MEMBER_ID);
+            }
+        }
+
+        /// <summary>
+        /// Returns the active crew member ID from the change current active crew member screen.
+        /// </summary>
+        public static int CurrentChangeActiveCrewMemberCrewMemberID
+        {
+            get
+            {
+                return memory.ReadInt32((IntPtr)GameAddrs.STATIC_CURRENT_CHANGE_ACTIVE_CREW_MEMBER_CURRENT_ID);
             }
         }
 
@@ -513,15 +561,6 @@ namespace NFSScript.Carbon
         }
 
         /// <summary>
-        /// Returns the current activity ID.
-        /// </summary>
-        /// <returns></returns>
-        public static string GetCurrentActivityID()
-        {
-            return Encoding.Default.GetString(memory.ReadByteArray((IntPtr)GameAddrs.STATIC_ACTIVITY_ID, 106).Where(b => b != 0x00).ToArray());
-        }
-
-        /// <summary>
         /// Returns the police lights intensity value.
         /// </summary>
         /// <returns></returns>
@@ -727,6 +766,14 @@ namespace NFSScript.Carbon
             }
 
             /// <summary>
+            /// Resets all the props in the <see cref="World"/>.
+            /// </summary>
+            public static void ResetProps()
+            {
+                Function.Call(RESET_PROPS);
+            }
+
+            /// <summary>
             /// Sets a value that indicates whether rainy road reflections are enabled.
             /// </summary>
             public static bool RainyRoadReflections
@@ -799,6 +846,18 @@ namespace NFSScript.Carbon
         public static class RacesManager
         {
             /// <summary>
+            /// Returns the current activity ID.
+            /// </summary>
+            /// <returns></returns>
+            public static string CurrentActivityID
+            {
+                get
+                {
+                    return Encoding.Default.GetString(memory.ReadByteArray((IntPtr)GameAddrs.STATIC_ACTIVITY_ID, 106).Where(b => b != 0x00).ToArray());
+                }
+            }
+
+            /// <summary>
             /// Maximum Drift Multiplier for Track (Circuit) Drifts. (Default value is 10)
             /// </summary>
             public static byte MaximumTrackDriftMultiplier
@@ -827,6 +886,40 @@ namespace NFSScript.Carbon
                     memory.WriteByte((IntPtr)RaceAddrs.STATIC_MAX_DRIFT_MULTIPLIER_CANYON, value);
                     memory.WriteByte((IntPtr)RaceAddrs.STATIC_MAX_DRIFT_MULTIPLIER_CANYON2, value);
                 }
+            }
+
+            /// <summary>
+            /// Returns an array of string which contains the current opponent names.
+            /// </summary>
+            /// <param name="length">The amount of the opponents name that the array will return.</param>
+            /// <returns></returns>
+            public static string[] GetOpponentNames(byte length)
+            {
+                List<string> opponents = new List<string>();
+                for(byte i = 0; i < length; i++)
+                {
+                    opponents.Add(_getOpponentNameByID(i));
+                }
+
+                return opponents.ToArray();
+            }
+
+            /// <summary>
+            /// Sets the name of the defined opponent ID.
+            /// </summary>
+            /// <param name="ID">The ID of the opponent.</param>
+            /// <param name="name">The name.</param>
+            public static void SetOpponentNameByID(byte ID, string name)
+            {
+                _setOpponentNameByID(ID, name);
+            }
+
+            /// <summary>
+            /// Expires the race.
+            /// </summary>
+            public static void SetRaceExpired()
+            {
+                Function.Call(SET_RACE_EXPIRED);
             }
 
             /// <summary>
@@ -859,6 +952,40 @@ namespace NFSScript.Carbon
                 memory.WriteUInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_3, x3);
                 memory.WriteUInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_4, x4);
                 memory.WriteUInteger((IntPtr)RaceAddrs.STATIC_PLAYER_ALWAYS_WIN_ADDR_5, x5);
+            }
+
+            internal static string _getOpponentNameByID(byte ID)
+            {
+                int pointer = memory.ReadInt32((IntPtr)RaceAddrs.STATIC_RACE_LEADERBOARD_POINTER);
+                int firstIDAddr = pointer + RaceAddrs.STATIC_RACE_LEADERBOARD_FIRST_PLACE_OFFSET;
+
+                int x = 0;
+                for(int i = 0; i < ID; i++)
+                {
+                    x = x + RaceAddrs.STATIC_RACE_LEADERBOARD_OFFSET;
+                }
+
+                //return memory.ReadStringASCII((IntPtr)firstIDAddr + x, 15);
+                return Encoding.ASCII.GetString(memory.ReadByteArray((IntPtr)firstIDAddr + x, 15).Where(c => c != 0xEE).Where(b => b != 0x00).Where(b => b != 0xFF)
+                    .Where(b => b != 0x20).Where(b => b != 0x74).Where(b => b != 0x9D).Where(b => b != 0xFE).ToArray());
+            }
+
+            internal static void _setOpponentNameByID(byte ID, string name)
+            {
+                int pointer = memory.ReadInt32((IntPtr)RaceAddrs.STATIC_RACE_LEADERBOARD_POINTER);
+                int firstIDAddr = pointer + RaceAddrs.STATIC_RACE_LEADERBOARD_FIRST_PLACE_OFFSET;
+
+                int x = 0;
+                for (int i = 0; i < ID; i++)
+                {
+                    x = x + RaceAddrs.STATIC_RACE_LEADERBOARD_OFFSET;
+                }
+
+                List<byte> nameArray = new List<byte>();
+                nameArray.AddRange(Encoding.ASCII.GetBytes(new string(name.Take(15).ToArray())));
+                nameArray.Add(0x00);
+
+                memory.WriteByteArray((IntPtr)firstIDAddr + x, nameArray.ToArray());
             }
         }
     }

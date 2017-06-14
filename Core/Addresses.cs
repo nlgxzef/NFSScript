@@ -943,6 +943,16 @@ namespace NFSScript.Core
             /// <summary>
             /// 
             /// </summary>
+            public const int STATIC_IS_GAME_MOMENT = 0xB69BF0;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_IS_PAUSED = 0xA8AD18;
+
+            /// <summary>
+            /// 
+            /// </summary>
             public const int STATIC_ACTIVITY_ID = 0xA98180;
 
             /// <summary>
@@ -1164,6 +1174,16 @@ namespace NFSScript.Core
             /// <summary>
             /// 
             /// </summary>
+            public const int STATIC_CURRENT_ACTIVE_CREW_MEMBER_ID = 0xBBAA74;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_CURRENT_CHANGE_ACTIVE_CREW_MEMBER_CURRENT_ID = 0xA7B7FC;
+
+            /// <summary>
+            /// 
+            /// </summary>
             public const int NON_STATIC_CURRENT_AMOUNT_OF_COPS_IN_PURSUIT = 0x69F384; // int
         }
 
@@ -1331,6 +1351,21 @@ namespace NFSScript.Core
             /// <summary>
             /// 
             /// </summary>
+            public const int STATIC_RACE_LEADERBOARD_POINTER = 0xA98284;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_RACE_LEADERBOARD_FIRST_PLACE_OFFSET = 0x20;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_RACE_LEADERBOARD_OFFSET = 0x384;
+
+            /// <summary>
+            /// 
+            /// </summary>
             public const int POINTER_PLAYER_OPPONENT_1 = 0x7FC;
 
             /// <summary>
@@ -1423,7 +1458,37 @@ namespace NFSScript.Core
             /// 
             /// </summary>
             public const int STATIC_PLAYER_HEADLIGHTS_RIGHT = 0x7cbf77; // float
-            
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_IS_PLAYER_USING_SPEED_BREAKER = 0xA9922C;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int NON_STATIC_PLAYER_NAME = 0x697CFC;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int NON_STATIC_PLAYER_CREW_NAME = 0x00697CFC;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int NON_STATIC_LEFT_AXIS = 0x006A2BFC;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int PSTATIC_LEFT_AXIS_OFFSET_1 = 0x4;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int PSTATIC_LEFT_AXIS_OFFSET_2 = 0x434;
+
             /// <summary>
             /// 
             /// </summary>
@@ -1473,6 +1538,56 @@ namespace NFSScript.Core
             /// An int32 address
             /// </summary>
             public const int PNON_STATIC_PLAYER_CASH = 0x697CFC;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int POINTER_PLAYER_NAME_1 = 0x104;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int POINTER_PLAYER_NAME_2 = 0x324;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int POINTER_PLAYER_NAME_3 = 0x684;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int POINTER_PLAYER_NAME_4 = 0xB8;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int POINTER_PLAYER_NAME_5 = 0xC;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int POINTER_PLAYER_CREW_NAME_1 = 0x2A0;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int POINTER_PLAYER_CREW_NAME_2 = 0x0;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int POINTER_PLAYER_CREW_NAME_3 = 0x0;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int POINTER_PLAYER_CREW_NAME_4 = 0x330;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int POINTER_PLAYER_CREW_NAME_5 = 0x138;
 
             /// <summary>
             /// 

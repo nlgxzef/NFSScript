@@ -12,21 +12,6 @@ namespace NFSScript.Underground2
     public static class Player
     {
         /// <summary>
-        /// Returns the <see cref="Player"/> car's current position (Read only).
-        /// </summary>
-        public static Vector3 Position
-        {
-            get
-            {
-                float x = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POSITION_READONLY_X);
-                float y = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POSITION_READONLY_Y);
-                float z = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POSITION_READONLY_Z);
-
-                return new Vector3(x, y, z);
-            }
-        }
-
-        /// <summary>
         /// <see cref="Player"/>'s cash (Read only).
         /// </summary>
         public static int Cash
@@ -51,6 +36,20 @@ namespace NFSScript.Underground2
         /// </summary>
         public static class Car
         {
+            /// <summary>
+            /// Returns the <see cref="Player"/>'s car current position (Read only).
+            /// </summary>
+            public static Vector3 Position
+            {
+                get
+                {
+                    float x = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POSITION_READONLY_X);
+                    float y = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POSITION_READONLY_Y);
+                    float z = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POSITION_READONLY_Z);
+
+                    return new Vector3(x, y, z);
+                }
+            }
 
             /// <summary>
             /// Returns the <see cref="Player"/>'s current car star rating
@@ -64,12 +63,15 @@ namespace NFSScript.Underground2
             }
 
             /// <summary>
-            /// Returns the <see cref="Player"/> car's current speed in MPH
+            /// Returns the <see cref="Player"/>'s car current speed in MPH
             /// </summary>
             /// <returns></returns>
-            public static float GetSpeed()
+            public static float Speed
             {
-                return memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_CAR_SPEED_MPH);
+                get
+                {
+                    return memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_CAR_SPEED_MPH);
+                }
             }
         }
     }

@@ -183,7 +183,7 @@ namespace NFSScript.MW
                 {
                     offset = offset + Addrs.NetworkAddrs.STATIC_OFFSET_GAME_ROOM_PLAYER;
                 }
-                return Encoding.Default.GetString(memory.ReadByteArray((IntPtr)Addrs.NetworkAddrs.STATIC_NETWORK_GAME_ROOM_PLAYER + offset, 12).Where(b => b != 0x00).ToArray());
+                return Encoding.ASCII.GetString(memory.ReadByteArray((IntPtr)Addrs.NetworkAddrs.STATIC_NETWORK_GAME_ROOM_PLAYER + offset, 12).Where(x => x != 0x00).ToArray());
             }
 
             internal string _readUID()

@@ -31,9 +31,12 @@ namespace NFSScript.Undercover
             /// Returns the <see cref="Player"/>'s car current speed in MPH.
             /// </summary>
             /// <returns></returns>
-            public static float GetSpeed()
+            public static float Speed
             {
-                return memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_SPEED);
+                get
+                {
+                    return memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_SPEED);
+                }
             }
         }
     }

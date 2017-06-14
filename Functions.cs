@@ -5709,6 +5709,11 @@ namespace NFSScript
 
                     Log.Debug(string.Format("Pushing the value of [0x{0}] to the stack", value.ToString("X")));
                 }
+                else if(o[i] is null)
+                {
+                    function.Push(0x0);
+                    Log.Debug("Pushing null to the stack.");
+                }
                 else if (o[i] is sbyte sb)
                 {
                     function.Push(sb);

@@ -27,6 +27,17 @@ namespace NFSScript.Carbon
         }
 
         /// <summary>
+        /// If set to true, this will fade the screen to black. If set to false, it will disable the black screen.
+        /// </summary>
+        /// <param name="isFade"></param>
+        public static void FadeToBlack(bool isFade)
+        {
+            if (isFade)
+                Function.Call(HUD_FADE_TO_BLACK_ON);
+            else Function.Call(HUD_FADE_TO_BLACK_OFF);
+        }
+
+        /// <summary>
         /// Show a race countdown.
         /// </summary>
         public static void ShowRaceCountdown()

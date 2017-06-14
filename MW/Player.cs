@@ -12,50 +12,6 @@ namespace NFSScript.MW
     public static class Player
     {
         /// <summary>
-        /// The <see cref="Player"/>'s position
-        /// </summary>
-        public static Vector3 Position
-        {
-            get
-            {
-                float x = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POS_X);
-                float y = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POS_Y);
-                float z = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POS_Z);
-
-                return new Vector3(x, y, z);
-            }
-            set
-            {
-                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POS_X, value.x);
-                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POS_Y, value.y);
-                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POS_Z, value.z);
-            }
-        }
-
-        /// <summary>
-        /// The <see cref="Player"/>'s rotation
-        /// </summary>
-        public static Quaternion Rotation
-        {
-            get
-            {
-                float x = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT);
-                float y = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_Y_ROT);
-                float z = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_Z_ROT);
-                float w = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_W_ROT);
-
-                return new Quaternion(x, y, z, w);
-            }
-            set
-            {
-                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT, value.x);
-                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_Y_ROT, value.y);
-                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_Z_ROT, value.z);
-                memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_W_ROT, value.w);
-            }
-        }
-
-        /// <summary>
         /// Sets a value indicating whether the AI controls the <see cref="Player"/>'s car.
         /// </summary>
         public static bool IsControlledByAi
@@ -106,11 +62,58 @@ namespace NFSScript.MW
         public static class Car
         {
             /// <summary>
+            /// The <see cref="Player"/>'s car position
+            /// </summary>
+            public static Vector3 Position
+            {
+                get
+                {
+                    float x = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POS_X);
+                    float y = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POS_Y);
+                    float z = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POS_Z);
+
+                    return new Vector3(x, y, z);
+                }
+                set
+                {
+                    memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POS_X, value.x);
+                    memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POS_Y, value.y);
+                    memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_POS_Z, value.z);
+                }
+            }
+
+            /// <summary>
+            /// The <see cref="Player"/>'s car rotation
+            /// </summary>
+            public static Quaternion Rotation
+            {
+                get
+                {
+                    float x = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT);
+                    float y = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_Y_ROT);
+                    float z = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_Z_ROT);
+                    float w = memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_W_ROT);
+
+                    return new Quaternion(x, y, z, w);
+                }
+                set
+                {
+                    memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_X_ROT, value.x);
+                    memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_Y_ROT, value.y);
+                    memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_Z_ROT, value.z);
+                    memory.WriteFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_W_ROT, value.w);
+                }
+            }
+
+            /// <summary>
             /// Returns the <see cref="Player"/>'s car speed.
             /// </summary>
-            public static float GetSpeed()
+            public static float Speed
             {
-                return memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_SPEED);
+                get
+                {
+                    return memory.ReadFloat((IntPtr)Addrs.PlayerAddrs.STATIC_PLAYER_SPEED);
+                }
             }
 
             /// <summary>

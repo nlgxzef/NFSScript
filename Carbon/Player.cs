@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Text;
 using System.Collections.Generic;
 using NFSScript.Core;
 using static NFSScript.Core.GameMemory;
@@ -17,52 +19,6 @@ namespace NFSScript.Carbon
         private const uint POLICE_IGNORE_PLAYER_ENABLED = 3943023862U;
         private const uint POLICE_IGNORE_PLAYER_DISABLED = 2047198454U;
         #endregion
-
-        /// <summary>
-        /// The <see cref="Player"/>'s position
-        /// </summary>
-        public static Vector3 Position
-        {
-            get
-            {
-                int addr = (int)memory.getBaseAddress;
-                float x = memory.ReadFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS);
-                float y = memory.ReadFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS);
-                float z = memory.ReadFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Z_POS);
-
-                return new Vector3(x, y, z);
-            }
-            set
-            {
-                int addr = (int)memory.getBaseAddress;
-                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS, value.x);
-                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS, value.y);
-                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Z_POS, value.z);
-            }
-        }
-
-        /// <summary>
-        /// The <see cref="Player"/>'s rotation
-        /// </summary>
-        public static Quaternion Rotation
-        {
-            get
-            {
-                float x = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT);
-                float y = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_Y_ROT);
-                float z = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_Z_ROT);
-                float w = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_W_ROT);
-
-                return new Quaternion(x, y, z, w);
-            }
-            set
-            {
-                memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT, value.x);
-                memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_Y_ROT, value.y);
-                memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_Z_ROT, value.z);
-                memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_W_ROT, value.w);
-            }
-        }
 
         /// <summary>
         /// Returns the <see cref="Player"/>'s last known position (Read only).
@@ -127,6 +83,51 @@ namespace NFSScript.Carbon
                 return _safeGetAIControlValue();
             }
         }
+
+        /// <summary>
+        /// Returns the name of the player.
+        /// </summary>
+        public static string Name
+        {
+            get
+            {
+                int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_NAME);
+                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_NAME_1);
+                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_NAME_2);
+                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_NAME_3);
+                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_NAME_4);
+
+                return Encoding.ASCII.GetString(memory.ReadByteArray((IntPtr)address + PlayerAddrs.POINTER_PLAYER_NAME_5, 15).Where(x => x != 0x00).ToArray());
+            }
+        }
+
+        /// <summary>
+        /// Returns the player's crew name.
+        /// </summary>
+        public static string Crew
+        {
+            get
+            {
+                int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_CREW_NAME);
+                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_1);
+                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_2);
+                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_3);
+                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_4);
+
+                return Encoding.ASCII.GetString(memory.ReadByteArray((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_5, 15).Where(x => x != 0x00).Where(x=> x != 0x03).ToArray());
+            }
+            set
+            {
+                int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_CREW_NAME);
+                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_1);
+                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_2);
+                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_3);
+                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_4);
+
+                memory.WriteStringASCII((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_5, new string(value.Take(15).ToArray()));
+            }
+        }
+
 
         /// <summary>
         /// Award the <see cref="Player"/> with cash.
@@ -215,6 +216,146 @@ namespace NFSScript.Carbon
         public static class Car
         {
             /// <summary>
+            /// The <see cref="Player"/>'s car position
+            /// </summary>
+            public static Vector3 Position
+            {
+                get
+                {
+                    int addr = (int)memory.getBaseAddress;
+                    float x = memory.ReadFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS);
+                    float y = memory.ReadFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS);
+                    float z = memory.ReadFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Z_POS);
+
+                    return new Vector3(x, y, z);
+                }
+                set
+                {
+                    int addr = (int)memory.getBaseAddress;
+                    memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS, value.x);
+                    memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS, value.y);
+                    memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Z_POS, value.z);
+                }
+            }
+
+            /// <summary>
+            /// The <see cref="Player"/>'s car rotation
+            /// </summary>
+            public static Quaternion Rotation
+            {
+                get
+                {
+                    float x = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT);
+                    float y = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_Y_ROT);
+                    float z = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_Z_ROT);
+                    float w = memory.ReadFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_W_ROT);
+
+                    return new Quaternion(x, y, z, w);
+                }
+                set
+                {
+                    memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_X_ROT, value.x);
+                    memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_Y_ROT, value.y);
+                    memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_Z_ROT, value.z);
+                    memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_W_ROT, value.w);
+                }
+            }
+
+            /// <summary>
+            /// Returns the <see cref="Player"/>'s car speed.
+            /// </summary>
+            public static float Speed
+            {
+                get
+                {
+                    return memory.ReadFloat((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_SPEED);
+                }
+            }
+
+            /// <summary>
+            /// Resets the <see cref="Player"/>'s car.
+            /// </summary>
+            public static void Reset()
+            {
+                Function.Call(RESET_PLAYER_CAR);
+            }
+
+            static int axisAddr = memory.ReadInt32((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_LEFT_AXIS);
+            static int axisAddr2 = memory.ReadInt32((IntPtr)axisAddr + PlayerAddrs.PSTATIC_LEFT_AXIS_OFFSET_1);
+            static int finalAxisAddress = axisAddr2 + PlayerAddrs.PSTATIC_LEFT_AXIS_OFFSET_2;
+
+            /// <summary>
+            /// <see cref="Player"/>'s car wheels left axis value.
+            /// </summary>
+            public static float LeftAxis
+            {
+                get
+                {
+                    return memory.ReadFloat((IntPtr)finalAxisAddress);
+                }
+                set
+                {
+                    memory.WriteFloat((IntPtr)finalAxisAddress, value);
+                }
+            }
+
+            /// <summary>
+            /// <see cref="Player"/>'s car wheels right axis value.
+            /// </summary>
+            public static float RightAxis
+            {
+                get
+                {
+                    return memory.ReadFloat((IntPtr)(finalAxisAddress - 0x4));
+                }
+                set
+                {
+                    memory.WriteFloat((IntPtr)(finalAxisAddress - 0x4), value);
+                }
+            }
+
+            /// <summary>
+            /// <see cref="Player"/>'s car wheels forward axis value.
+            /// </summary>
+            public static float ForwardAxis
+            {
+                get
+                {
+                    return memory.ReadFloat((IntPtr)(finalAxisAddress + 0x14));
+                }
+                set
+                {
+                    memory.WriteFloat((IntPtr)(finalAxisAddress + 0x14), value);
+                }
+            }
+
+            /// <summary>
+            /// <see cref="Player"/>'s car wheels backward axis value.
+            /// </summary>
+            public static float BackwardAxis
+            {
+                get
+                {
+                    return memory.ReadFloat((IntPtr)(finalAxisAddress + 0x18));
+                }
+                set
+                {
+                    memory.WriteFloat((IntPtr)(finalAxisAddress + 0x18), value);
+                }
+            }
+
+            /// <summary>
+            /// Returns true if the speedbreaker is currently in use by the player.
+            /// </summary>
+            public static bool IsUsingSpeedbreaker
+            {
+                get
+                {
+                    return memory.ReadInt32((IntPtr)PlayerAddrs.STATIC_IS_PLAYER_USING_SPEED_BREAKER) == 1;
+                }
+            }
+
+            /// <summary>
             /// Sets a value indicating whether the car should drift like in-game cutscnes (NIS) using the handbrake. (Unsafe, may crash the game if not called on the proper game state).
             /// </summary>
             public static bool _unsafeEnableAugmentedDriftWithEBrake
@@ -243,14 +384,6 @@ namespace NFSScript.Carbon
             {
                 memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_HEADLIGHTS_LEFT, left);
                 memory.WriteFloat((IntPtr)PlayerAddrs.STATIC_PLAYER_HEADLIGHTS_RIGHT, right);
-            }
-
-            /// <summary>
-            /// Returns the <see cref="Player"/>'s car speed.
-            /// </summary>
-            public static float GetSpeed()
-            {
-                return memory.ReadFloat((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_SPEED);
             }
 
             /// <summary>
