@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using NFSScript.Types;
 
 namespace NFSScript
 {
@@ -8,6 +10,8 @@ namespace NFSScript
     /// </summary>
     public class Mod
     {
+        static List<InvokedClass> invokedClasses = new List<InvokedClass>();
+
         /// <summary>
         /// The initialize method name.
         /// </summary>
@@ -128,6 +132,38 @@ namespace NFSScript
         /// </summary>
         public virtual void OnExit()
         { }
+
+        /// <summary>
+        /// Calls the set action every set amount of milliseconds.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="interval"></param>
+        /// <param name="action"></param>
+        public static void InvokeRepeating(string name, double interval, Action action)
+        {
+            InvokedClass c = new InvokedClass(name, (uint)invokedClasses.Count, interval, action);
+            InvokedClass obj = invokedClasses.Find((item => item.Name == name));
+            if (obj == null)
+            {
+                invokedClasses.Add(c);
+                c.InvokeRepeat();
+            }
+        }
+
+        /// <summary>
+        /// Stops the repeating invoke by it's name.
+        /// </summary>
+        /// <param name="name"></param>
+        public static void StopRepeating(string name)
+        {
+            InvokedClass obj = invokedClasses.Find((item => item.Name == name));
+            if (obj != null)
+            {
+                obj.Stop();
+                invokedClasses.Remove(obj);
+            }
+        }
+
 
         /// <summary>
         /// Peforms a task.

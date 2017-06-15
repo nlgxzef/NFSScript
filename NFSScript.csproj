@@ -76,6 +76,7 @@
     <Compile Include="Functions.cs" />
     <Compile Include="Core\Time.cs" />
     <Compile Include="Types\CustomValueType.cs" />
+    <Compile Include="Types\InvokedClass.cs" />
     <Compile Include="Types\Locval.cs" />
     <Compile Include="Core\_ASM.cs" />
     <Compile Include="MW\Game.cs" />
