@@ -413,9 +413,9 @@ namespace NFSScript.MW
                 }
                 set
                 {
-                    memory.WriteFloat((IntPtr)Addrs.WorldAddrs.STATIC_GLOBAL_CAR_SCALE_X, value.x);
-                    memory.WriteFloat((IntPtr)Addrs.WorldAddrs.STATIC_GLOBAL_CAR_SCALE_Y, value.y);
-                    memory.WriteFloat((IntPtr)Addrs.WorldAddrs.STATIC_GLOBAL_CAR_SCALE_Z, value.z);
+                    memory.WriteFloat((IntPtr)Addrs.WorldAddrs.STATIC_GLOBAL_CAR_SCALE_X, value.X);
+                    memory.WriteFloat((IntPtr)Addrs.WorldAddrs.STATIC_GLOBAL_CAR_SCALE_Y, value.Y);
+                    memory.WriteFloat((IntPtr)Addrs.WorldAddrs.STATIC_GLOBAL_CAR_SCALE_Z, value.Z);
                 }
             }
 

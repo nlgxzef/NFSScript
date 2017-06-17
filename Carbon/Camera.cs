@@ -56,7 +56,7 @@ namespace NFSScript.Carbon
         public Vector3 Position
         {
             get { return _readPos(); }
-            set { _setPos(value.x, value.y, value.z); }
+            set { _setPos(value.X, value.Y, value.Z); }
         }
 
         /// <summary>

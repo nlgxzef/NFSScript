@@ -743,9 +743,9 @@ namespace NFSScript.Carbon
                 }
                 set
                 {
-                    memory.WriteFloat((IntPtr)WorldAddrs.STATIC_GLOBAL_CAR_SCALE_X, value.x);
-                    memory.WriteFloat((IntPtr)WorldAddrs.STATIC_GLOBAL_CAR_SCALE_Y, value.y);
-                    memory.WriteFloat((IntPtr)WorldAddrs.STATIC_GLOBAL_CAR_SCALE_Z, value.z);
+                    memory.WriteFloat((IntPtr)WorldAddrs.STATIC_GLOBAL_CAR_SCALE_X, value.X);
+                    memory.WriteFloat((IntPtr)WorldAddrs.STATIC_GLOBAL_CAR_SCALE_Y, value.Y);
+                    memory.WriteFloat((IntPtr)WorldAddrs.STATIC_GLOBAL_CAR_SCALE_Z, value.Z);
                 }
             }
 

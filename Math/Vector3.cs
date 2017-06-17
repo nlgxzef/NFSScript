@@ -1,9 +1,4 @@
-﻿// [----------------------------------------------------------------------------------------------------------------------------------------------]
-// This Vector3 class has been re-written in C# from SlimDX's C++ code.
-// Without SlimDX I'd be stuck infront of mathhelp and mathworks asking myself why it was a good idea to start this project in the first place.
-// So big thanks to SlimDX's Group <3
-// [----------------------------------------------------------------------------------------------------------------------------------------------]
-/*
+﻿/*
  * Copyright (C) 2007-2010 SlimDX Group
  *
  * Permission is hereby granted, free  of charge, to any person obtaining a copy of this software  and
@@ -21,6 +16,7 @@
  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,  OUT
  * OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+
 using Maths = System.Math;
 
 namespace NFSScript.Math
@@ -33,22 +29,22 @@ namespace NFSScript.Math
         /// <summary>
         /// Returns the x-coordinate of this <see cref="Vector3"/>.
         /// </summary>
-        public float x { get; private set; }
+        public float X { get; private set; }
 
         /// <summary>
         /// Returns the y-coordinate of this <see cref="Vector3"/>.
         /// </summary>
-        public float y { get; private set; }
+        public float Y { get; private set; }
 
         /// <summary>
         /// Returns the z-coordinate of this <see cref="Vector3"/>.
         /// </summary>
-        public float z { get; private set; }
+        public float Z { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public static Vector3 back
+        public static Vector3 Back
         {
             get
             {
@@ -59,7 +55,7 @@ namespace NFSScript.Math
         /// <summary>
         /// 
         /// </summary>
-        public static Vector3 down
+        public static Vector3 Down
         {
             get
             {
@@ -70,7 +66,7 @@ namespace NFSScript.Math
         /// <summary>
         /// 
         /// </summary>
-        public static Vector3 forward
+        public static Vector3 Forward
         {
             get
             {
@@ -81,7 +77,7 @@ namespace NFSScript.Math
         /// <summary>
         /// 
         /// </summary>
-        public static Vector3 left
+        public static Vector3 Left
         {
             get
             {
@@ -92,7 +88,7 @@ namespace NFSScript.Math
         /// <summary>
         /// 
         /// </summary>
-        public static Vector3 one
+        public static Vector3 One
         {
             get
             {
@@ -103,7 +99,7 @@ namespace NFSScript.Math
         /// <summary>
         /// 
         /// </summary>
-        public static Vector3 right
+        public static Vector3 Right
         {
             get
             {
@@ -114,7 +110,7 @@ namespace NFSScript.Math
         /// <summary>
         /// 
         /// </summary>
-        public static Vector3 up
+        public static Vector3 Up
         {
             get
             {
@@ -125,7 +121,7 @@ namespace NFSScript.Math
         /// <summary>
         /// 
         /// </summary>
-        public static Vector3 zero
+        public static Vector3 Zero
         {
             get
             {
@@ -136,34 +132,34 @@ namespace NFSScript.Math
         /// <summary>
         /// Returns the length of this <see cref="Vector3"/>.
         /// </summary>
-        public float magnitude
+        public float Magnitude
         {
             get
             {
-                return (float)Maths.Sqrt(x * x + y * y + z * z);
+                return (float)Maths.Sqrt(X * X + Y * Y + Z * Z);
             }
         }
 
         /// <summary>
         /// Returns the squared length of this <see cref="Vector3"/> (Read only).
         /// </summary>
-        public float magnitudeSquared
+        public float MagnitudeSquared
         {
             get
             {
-                return (x * x) + (y * y) + (z * z);
+                return (X * X) + (Y * Y) + (Z * Z);
             }
         }
 
         /// <summary>
         /// Returns this <see cref="Vector3"/> with a magnitude of 1 (Read only).
         /// </summary>
-        public Vector3 normalized
+        public Vector3 Normalized
         {
             get
             {
-                Vector3 norm = new Vector3(x, y, z);
-                norm.Set(norm.x / magnitude, norm.y / magnitude, norm.z / magnitude);
+                Vector3 norm = new Vector3(X, Y, Z);
+                norm.Set(norm.X / Magnitude, norm.Y / Magnitude, norm.Z / Magnitude);
 
                 return norm;
             }
@@ -174,9 +170,9 @@ namespace NFSScript.Math
         /// </summary>
         public Vector3(float x, float y, float z)
         {
-            this.x = x;
-            this.y = y;
-            this.z = z;
+            this.X = x;
+            this.Y = y;
+            this.Z = z;
         }
 
         /// <summary>
@@ -184,9 +180,9 @@ namespace NFSScript.Math
         /// </summary>
         public Vector3(float value)
         {
-            x = value;
-            y = value;
-            z = value;
+            X = value;
+            Y = value;
+            Z = value;
         }
 
         /// <summary>
@@ -194,9 +190,9 @@ namespace NFSScript.Math
         /// </summary>
         public void Set(float x, float y, float z)
         {
-            this.x = x;
-            this.y = y;
-            this.z = z;
+            this.X = x;
+            this.Y = y;
+            this.Z = z;
         }
 
         /// <summary>
@@ -205,10 +201,10 @@ namespace NFSScript.Math
         public static float Distance(Vector3 a, Vector3 b)
         {
             Vector3 diff = new Vector3(
-                  a.x - b.x,
-                  a.y - b.y,
-                  a.z - b.z);
-            return (float)Maths.Sqrt(Maths.Pow(diff.x, 2f) + Maths.Pow(diff.y, 2f) + Maths.Pow(diff.z, 2f));
+                  a.X - b.X,
+                  a.Y - b.Y,
+                  a.Z - b.Z);
+            return (float)Maths.Sqrt(Maths.Pow(diff.X, 2f) + Maths.Pow(diff.Y, 2f) + Maths.Pow(diff.Z, 2f));
         }
 
         /// <summary>
@@ -216,7 +212,7 @@ namespace NFSScript.Math
         /// </summary>
         public static float Dot(Vector3 lhs, Vector3 rhs)
         {
-            return (lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z);
+            return (lhs.X * rhs.X + lhs.Y * rhs.Y + lhs.Z * rhs.Z);
         }
 
         /// <summary>
@@ -226,8 +222,8 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Vector3 Normalize(Vector3 vector)
         {
-            float l = vector.magnitude;
-            return new Vector3(vector.x / l, vector.y / l, vector.z / l);
+            float l = vector.Magnitude;
+            return new Vector3(vector.X / l, vector.Y / l, vector.Z / l);
         }
 
         /// <summary>
@@ -238,9 +234,9 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Vector3 Cross(Vector3 a, Vector3 b)
         {
-            float x = a.y * b.z - a.z * b.y;
-            float y = a.z * b.x - a.x * b.z;
-            float z = a.x * b.y - a.y * b.x;
+            float x = a.Y * b.Z - a.Z * b.Y;
+            float y = a.Z * b.X - a.X * b.Z;
+            float z = a.X * b.Y - a.Y * b.X;
 
             return new Vector3(x, y, z);
         }
@@ -254,9 +250,9 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Vector3 Lerp(Vector3 start, Vector3 end, float factor)
         {
-            float x = start.x + ((end.x - start.x) * factor);
-            float y = start.y + ((end.y - start.y) * factor);
-            float z = start.z + ((end.z - start.z) * factor);
+            float x = start.X + ((end.X - start.X) * factor);
+            float y = start.Y + ((end.Y - start.Y) * factor);
+            float z = start.Z + ((end.Z - start.Z) * factor);
 
             return new Vector3(x, y, z);
         }
@@ -269,10 +265,10 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Vector3 Reflect(Vector3 dir, Vector3 normal)
         {
-            float dubdot = 2.0f * ((dir.x * normal.x) + (dir.y * normal.y) + (dir.z * normal.z));
-            float x = dir.x - (dubdot * normal.x);
-            float y = dir.y - (dubdot * normal.y);
-            float z = dir.z - (dubdot * normal.z);
+            float dubdot = 2.0f * ((dir.X * normal.X) + (dir.Y * normal.Y) + (dir.Z * normal.Z));
+            float x = dir.X - (dubdot * normal.X);
+            float y = dir.Y - (dubdot * normal.Y);
+            float z = dir.Z - (dubdot * normal.Z);
 
             return new Vector3(x, y, z);
         }
@@ -307,7 +303,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static float Angle(Vector3 from, Vector3 to)
         {
-            float dot = Dot(from.normalized, to.normalized);
+            float dot = Dot(from.Normalized, to.Normalized);
 
             return (float)Maths.Acos((dot) * (180.0 / Mathf.PI));
         }
@@ -320,9 +316,9 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Vector3 Min(Vector3 a, Vector3 b)
         {
-            float x = (a.x < b.x) ? a.x : b.x;
-            float y = (a.y < b.y) ? a.y : b.y;
-            float z = (a.z < b.z) ? a.z : b.z;
+            float x = (a.X < b.X) ? a.X : b.X;
+            float y = (a.Y < b.Y) ? a.Y : b.Y;
+            float z = (a.Z < b.Z) ? a.Z : b.Z;
 
             return new Vector3(x, y, z);
         }
@@ -335,9 +331,9 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Vector3 Max(Vector3 a, Vector3 b)
         {
-            float x = (a.x > b.x) ? a.x : b.x;
-            float y = (a.y > b.y) ? a.y : b.y;
-            float z = (a.z > b.z) ? a.z : b.z;
+            float x = (a.X > b.X) ? a.X : b.X;
+            float y = (a.Y > b.Y) ? a.Y : b.Y;
+            float z = (a.Z > b.Z) ? a.Z : b.Z;
 
             return new Vector3(x, y, z);
         }
@@ -348,10 +344,10 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Vector3 MoveTowards(Vector3 current, Vector3 target, float t)
         {
-            Vector3 x = new Vector3(current.x, current.y, current.z);
+            Vector3 x = new Vector3(current.X, current.Y, current.Z);
 
             Vector3 direction = x - target;
-            direction = direction.normalized;
+            direction = direction.Normalized;
 
             return x -= direction * t;
         }
@@ -362,7 +358,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public override int GetHashCode()
         {
-            return x.GetHashCode() ^ y.GetHashCode() << 2 ^ z.GetHashCode() >> 2;
+            return X.GetHashCode() ^ Y.GetHashCode() << 2 ^ Z.GetHashCode() >> 2;
         }
 
         /// <summary>
@@ -371,7 +367,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public override string ToString()
         {
-            return string.Format("X = {0} Y = {1} Z = {2}", x, y, z);
+            return string.Format("X = {0} Y = {1} Z = {2}", X, Y, Z);
         }
 
         /// <summary>
@@ -380,7 +376,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public string ToString(string numberFormat)
         {
-            return string.Format("X = {0} Y = {1} Z = {2}", x.ToString(numberFormat), y.ToString(numberFormat), z.ToString(numberFormat));
+            return string.Format("X = {0} Y = {1} Z = {2}", X.ToString(numberFormat), Y.ToString(numberFormat), Z.ToString(numberFormat));
         }
 
         /// <summary>
@@ -391,7 +387,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Vector3 operator +(Vector3 l, Vector3 r)
         {
-            return new Vector3(l.x + r.x, l.y + r.y, l.z + r.z);
+            return new Vector3(l.X + r.X, l.Y + r.Y, l.Z + r.Z);
         }
 
         /// <summary>
@@ -402,7 +398,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Vector3 operator +(Vector3 l, float r)
         {
-            return new Vector3(l.x + r, l.y + r, l.z + r);
+            return new Vector3(l.X + r, l.Y + r, l.Z + r);
         }
 
         /// <summary>
@@ -413,7 +409,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Vector3 operator +(float l, Vector3 r)
         {
-            return new Vector3(r.x + l, r.y + l, r.z + l);
+            return new Vector3(r.X + l, r.Y + l, r.Z + l);
         }
 
         /// <summary>
@@ -424,7 +420,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Vector3 operator -(Vector3 l, Vector3 r)
         {
-            return new Vector3(l.x - r.x, l.y - r.y, l.z - r.z);
+            return new Vector3(l.X - r.X, l.Y - r.Y, l.Z - r.Z);
         }
 
         /// <summary>
@@ -435,7 +431,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Vector3 operator -(Vector3 l, float r)
         {
-            return new Vector3(l.x - r, l.y - r, l.z - r);
+            return new Vector3(l.X - r, l.Y - r, l.Z - r);
         }
 
         /// <summary>
@@ -446,7 +442,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Vector3 operator -(float l, Vector3 r)
         {
-            return new Vector3(r.x - l, r.y - l, r.z - l);
+            return new Vector3(r.X - l, r.Y - l, r.Z - l);
         }
 
         /// <summary>
@@ -457,7 +453,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Vector3 operator *(Vector3 l, float r)
         {
-            return new Vector3(l.x * r, l.y * r, l.z * r);
+            return new Vector3(l.X * r, l.Y * r, l.Z * r);
         }
 
         /// <summary>
@@ -468,7 +464,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Vector3 operator *(float l, Vector3 r)
         {
-            return new Vector3(r.x * l, r.y * l, r.z * l);
+            return new Vector3(r.X * l, r.Y * l, r.Z * l);
         }
 
         /// <summary>
@@ -479,7 +475,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Vector3 operator *(Vector3 l, Vector3 r)
         {
-            return new Vector3(r.x * l.x, r.y * l.y, r.z * l.z);
+            return new Vector3(r.X * l.X, r.Y * l.Y, r.Z * l.Z);
         }
 
         /// <summary>
@@ -490,7 +486,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Vector3 operator /(Vector3 l, float r)
         {
-            return new Vector3(l.x / r, l.y / r, l.z / r);
+            return new Vector3(l.X / r, l.Y / r, l.Z / r);
         }
 
         /// <summary>
@@ -501,7 +497,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Vector3 operator /(float l, Vector3 r)
         {
-            return new Vector3(r.x / l, r.y / l, r.z / l);
+            return new Vector3(r.X / l, r.Y / l, r.Z / l);
         }
 
         /// <summary>
@@ -512,7 +508,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Vector3 operator /(Vector3 l, Vector3 r)
         {
-            return new Vector3(r.x / l.x, r.y / l.y, r.z / l.z);
+            return new Vector3(r.X / l.X, r.Y / l.Y, r.Z / l.Z);
         }
 
         /// <summary>
@@ -545,7 +541,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static bool Equals(Vector3 position1, Vector3 position2)
         {
-            return (position1.x == position2.x && position1.y == position2.y && position1.z == position2.z);
+            return (position1.X == position2.X && position1.Y == position2.Y && position1.Z == position2.Z);
         }
 
         /// <summary>
@@ -555,7 +551,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public bool Equals(float value)
         {
-            return (x == value && y == value && z == value);
+            return (X == value && Y == value && Z == value);
         }
 
         /// <summary>

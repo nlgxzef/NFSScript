@@ -232,9 +232,9 @@ namespace NFSScript.Carbon
                 set
                 {
                     int addr = (int)memory.getBaseAddress;
-                    memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS, value.x);
-                    memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS, value.y);
-                    memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Z_POS, value.z);
+                    memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS, value.X);
+                    memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS, value.Y);
+                    memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Z_POS, value.Z);
                 }
             }
 

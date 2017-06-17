@@ -863,7 +863,7 @@ namespace NFSScript.Core
             /// <summary>
             /// 
             /// </summary>
-            public const int STATIC_LAST_FRAME_TIME = 0x84D7EC;
+            public const int STATIC_LAST_FRAME_TIME = 0xA996E8;
 
             /// <summary>
             /// 
@@ -1686,6 +1686,16 @@ namespace NFSScript.Core
             /// 
             /// </summary>
             public const int STATIC_CURSOR_POS_Y = 0x00A97B34;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_UI_SCALE_X = 0x730DA9;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public const int STATIC_UI_SCALE_Y = 0x730DC1;
 
             /// <summary>
             /// Recommended length of 44.

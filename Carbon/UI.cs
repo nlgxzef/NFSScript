@@ -13,6 +13,25 @@ namespace NFSScript.Carbon
     public static class UI
     {
         /// <summary>
+        /// The scale of the game's <see cref="UI"/>.
+        /// </summary>
+        public static Vector2 Scale
+        {
+            get
+            {
+                float x = memory.ReadFloat((IntPtr)Addrs.UIAddrs.STATIC_UI_SCALE_X);
+                float y = memory.ReadFloat((IntPtr)Addrs.UIAddrs.STATIC_UI_SCALE_Y);
+
+                return new Vector2(x, y);
+            }
+            set
+            {
+                memory.WriteFloat((IntPtr)Addrs.UIAddrs.STATIC_UI_SCALE_X, value.X);
+                memory.WriteFloat((IntPtr)Addrs.UIAddrs.STATIC_UI_SCALE_Y, value.Y);
+            }
+        }
+
+        /// <summary>
         /// Returns the point of where the game's cursor is located on screen. (Might be inaccurate)
         /// </summary>
         public static Point CursorPosition

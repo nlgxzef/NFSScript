@@ -103,9 +103,9 @@ namespace NFSScript.World
                 set
                 {
                     int addr = Game.PWorld_Cars + CarOffset;
-                    memory.WriteFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_X_POS, value.x);
-                    memory.WriteFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_Y_POS, value.y);
-                    memory.WriteFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_Z_POS, value.z);
+                    memory.WriteFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_X_POS, value.X);
+                    memory.WriteFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_Y_POS, value.Y);
+                    memory.WriteFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_Z_POS, value.Z);
                 }
             }
 

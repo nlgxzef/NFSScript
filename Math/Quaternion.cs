@@ -131,9 +131,9 @@ namespace NFSScript.Math
         /// <param name="w"></param>
         public Quaternion(Vector3 value, float w)
         {
-            x = value.x;
-            y = value.y;
-            z = value.z;
+            x = value.X;
+            y = value.Y;
+            z = value.Z;
             this.w = w;
         }
 
@@ -407,7 +407,7 @@ namespace NFSScript.Math
         public static Quaternion Euler(Vector3 euler)
         {
             Vector3 eulerRad = euler * Mathf.Deg2Rad;
-            return RotationYawPitchRoll(eulerRad.x, eulerRad.y, eulerRad.z);
+            return RotationYawPitchRoll(eulerRad.X, eulerRad.Y, eulerRad.Z);
         }
 
         /// <summary>
@@ -418,7 +418,7 @@ namespace NFSScript.Math
         /// <returns></returns>
         public static Quaternion FromToRotation(Vector3 fromDir, Vector3 toDir)
         {
-            float normAB = (float)Maths.Sqrt(fromDir.magnitudeSquared * fromDir.magnitudeSquared);
+            float normAB = (float)Maths.Sqrt(fromDir.MagnitudeSquared * fromDir.MagnitudeSquared);
             float w = normAB + Vector3.Dot(fromDir, toDir);
 
             Quaternion result;
@@ -427,7 +427,7 @@ namespace NFSScript.Math
             else
             {
                 w = 0.0f;
-                result = (Maths.Abs(fromDir.x) > Maths.Abs(fromDir.y) ? new Quaternion(-fromDir.z, 0.0f, fromDir.x, w) : new Quaternion(0.0f, -fromDir.z, fromDir.y, w));
+                result = (Maths.Abs(fromDir.X) > Maths.Abs(fromDir.Y) ? new Quaternion(-fromDir.Z, 0.0f, fromDir.X, w) : new Quaternion(0.0f, -fromDir.Z, fromDir.Y, w));
             }
 
             return Normalize(result);

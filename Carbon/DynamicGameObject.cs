@@ -43,9 +43,9 @@ namespace NFSScript.Carbon
             set
             {
                 int addr = (int)memory.getBaseAddress;
-                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset + 30, value.x);
-                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset + 30, value.y);
-                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset + 30, value.z);
+                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset + 30, value.X);
+                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset + 30, value.Y);
+                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset + 30, value.Z);
             }
         }
 
@@ -66,9 +66,9 @@ namespace NFSScript.Carbon
             set
             {
                 int addr = (int)memory.getBaseAddress;
-                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset, value.x);
-                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset, value.y);
-                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Z_POS + offset, value.z);
+                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset, value.X);
+                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Y_POS + offset, value.Y);
+                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_Z_POS + offset, value.Z);
             }
         }
 
@@ -112,9 +112,9 @@ namespace NFSScript.Carbon
             set
             {
                 int addr = (int)memory.getBaseAddress;
-                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset + 0x20, value.x);
-                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset + 0x24, value.y);
-                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset + 0x28, value.z);
+                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset + 0x20, value.X);
+                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset + 0x24, value.Y);
+                memory.WriteFloat((IntPtr)addr + PlayerAddrs.NON_STATIC_PLAYER_X_POS + offset + 0x28, value.Z);
             }
         }
 

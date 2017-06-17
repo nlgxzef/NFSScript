@@ -59,6 +59,7 @@
     <Compile Include="Exceptions.cs" />
     <Compile Include="Inheritables.cs" />
     <Compile Include="Interfaces.cs" />
+    <Compile Include="Math\Vector2.cs" />
     <Compile Include="MW\Database.cs" />
     <Compile Include="MW\DynamicGameObject.cs" />
     <Compile Include="ProStreet\Database.cs" />
