@@ -301,11 +301,13 @@ namespace NFSScript.Core
         public static void MakeNopAt(int address, int count)
         {
             int addr = address;
-            for (int i = 0; i < count; i++)
+            List<byte> b = new List<byte>();
+            for (int i = 1; i <= count; i++)
             {
-                GameMemory.memory.WriteByte((IntPtr)addr, 0x90);
-                addr = addr + 0x01;
+                b.Add(0x90);
             }
+
+            GameMemory.memory.WriteByteArray((IntPtr)addr, b.ToArray());
         }
 
         /// <summary>
