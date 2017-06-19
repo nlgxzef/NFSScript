@@ -30,7 +30,7 @@ namespace NFSScript.ProStreet
         public static void AwardCash(int value)
         {
             int addr = memory.ReadInt32((IntPtr)memory.getBaseAddress + Addrs.PlayerAddrs.NON_STATIC_PLAYER_CASH);
-            memory.WriteInt32((IntPtr)addr + Addrs.PlayerAddrs.POINTER_NON_STATIC_PLAYER_CASH, value);
+            memory.WriteInt32((IntPtr)addr + Addrs.PlayerAddrs.POINTER_NON_STATIC_PLAYER_CASH, Cash + value);
         }
 
         /// <summary>
