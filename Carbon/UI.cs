@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NFSScript.Core;
 using static NFSScript.Core.GameMemory;
 using Addrs = NFSScript.Core.CarbonAddresses;
@@ -85,7 +86,7 @@ namespace NFSScript.Carbon
         public static void ShowScreenTextMessage(string message, int priority, TextLocation textLocation, TextMode textMode, TextType textType)
         {
             _setErrorMsgString(message);
-            if(eventAddress == IntPtr.Zero)
+            if (eventAddress == IntPtr.Zero)
                 eventAddress = _ASM.InjectForAddress(new byte[] { 0x24 }, memory.ProcessHandle);
 
             ASMBuilder asm = new ASMBuilder();

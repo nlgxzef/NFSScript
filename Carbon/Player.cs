@@ -47,9 +47,9 @@ namespace NFSScript.Carbon
                 address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CASH_2);
                 address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CASH_3);
                 address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CASH_4);
-                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CASH_5);
+                //address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CASH_5);
 
-                return memory.ReadInt32((IntPtr)address);
+                return memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CASH_5);
             }
         }
 
@@ -142,7 +142,7 @@ namespace NFSScript.Carbon
             address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CASH_4);
             address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CASH_5);
 
-            memory.WriteInt32((IntPtr)address, Player.Cash + value);
+            memory.WriteInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CASH_5, Cash + value);
         }
 
         /// <summary>

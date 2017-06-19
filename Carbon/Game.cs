@@ -256,12 +256,24 @@ namespace NFSScript.Carbon
         }
 
         /// <summary>
+        /// Returns the total amount of cops in pursuit.
+        /// </summary>
+        public static int TotalCopsInPursuit
+        {
+            get
+            {
+                int addr = memory.ReadInt32((IntPtr)memory.getBaseAddress + 0x00683EA0);
+                return memory.ReadInt32((IntPtr)addr + 0x194);
+            }
+        }
+
+        /// <summary>
         /// Returns the storyline progression.
         /// </summary>
         /// <returns></returns>
-        public static float GetStorylineProgression()
+        public static int GetStorylineProgression()
         {
-            return (float)Function.Call<float>(GET_STORY_LINE_PROGRESSION);
+            return (int)Function.Call<int>(GET_STORY_LINE_PROGRESSION);
         }
 
         /// <summary>
