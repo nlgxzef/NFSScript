@@ -102,34 +102,6 @@ namespace NFSScript.Carbon
         }
 
         /// <summary>
-        /// Returns the player's crew name.
-        /// </summary>
-        public static string Crew
-        {
-            get
-            {
-                int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_CREW_NAME);
-                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_1);
-                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_2);
-                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_3);
-                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_4);
-
-                return Encoding.ASCII.GetString(memory.ReadByteArray((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_5, 15).Where(x => x != 0x00).Where(x=> x != 0x03).ToArray());
-            }
-            set
-            {
-                int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_CREW_NAME);
-                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_1);
-                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_2);
-                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_3);
-                address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_4);
-
-                memory.WriteStringASCII((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_5, new string(value.Take(15).ToArray()));
-            }
-        }
-
-
-        /// <summary>
         /// Award the <see cref="Player"/> with cash.
         /// </summary>
         /// <param name="value"></param>
@@ -207,6 +179,66 @@ namespace NFSScript.Carbon
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// A class that represents the <see cref="Player"/>'s crew.
+        /// </summary>
+        public static class Crew
+        {
+            /// <summary>
+            /// Returns the player's crew name.
+            /// </summary>
+            public static string Name
+            {
+                get
+                {
+                    int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_CREW_NAME);
+                    address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_1);
+                    address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_2);
+                    address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_3);
+                    address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_4);
+
+                    return Encoding.ASCII.GetString(memory.ReadByteArray((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_5, 15).Where(x => x != 0x00).Where(x => x != 0x03).ToArray());
+                }
+                set
+                {
+                    int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_CREW_NAME);
+                    address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_1);
+                    address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_2);
+                    address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_3);
+                    address = memory.ReadInt32((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_4);
+
+                    memory.WriteStringASCII((IntPtr)address + PlayerAddrs.POINTER_PLAYER_CREW_NAME_5, new string(value.Take(15).ToArray()));
+                }
+            }
+
+            /// <summary>
+            /// The <see cref="Player"/>'s <see cref="Crew"/> color as a decimal.
+            /// </summary>
+            public static int Color
+            {
+                get
+                {
+                    return memory.ReadInt32(_getCrewColorAddress());
+                }
+                set
+                {
+                    memory.WriteInt32(_getCrewColorAddress(), value);
+                }
+            }
+
+            internal static IntPtr _getCrewColorAddress()
+            {
+                int addr = memory.ReadInt32((IntPtr)memory.getBaseAddress + 0x0069816C);
+                addr = memory.ReadInt32((IntPtr)addr + 0x320);
+                addr = memory.ReadInt32((IntPtr)addr + 0x304);
+                addr = memory.ReadInt32((IntPtr)addr + 0x240);
+                addr = memory.ReadInt32((IntPtr)addr + 0x28C);
+                addr = addr + 0x774;
+
+                return (IntPtr)addr;
+            }
         }
 
         /// <summary>
