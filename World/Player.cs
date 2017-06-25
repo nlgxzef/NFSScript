@@ -12,6 +12,17 @@ namespace NFSScript.World
     public static class Player
     {
         /// <summary>
+        /// Returns the current status of the player.
+        /// </summary>
+        public static PlayerStatus Status
+        {
+            get
+            {
+                return (PlayerStatus)memory.ReadInt32((IntPtr)memory.getBaseAddress + GameAddrs.NON_STATIC_PLAYER_STATUS);
+            }
+        }
+
+        /// <summary>
         /// Returns true if the <see cref="Player"/> is in free roam.
         /// </summary>
         public static bool IsFreeRoam
@@ -71,14 +82,18 @@ namespace NFSScript.World
         }
 
         /// <summary>
-        /// Enables in-game auto-drive functions.
+        /// Changes the in-game auto-drive function state.
         /// </summary>
         /// <remarks>
-        /// Requires any kind of directional input in-game in order to kick in.
+        /// Requires any kind of directional input in-game in order to apply the change.
         /// </remarks>
-        public static void EnableAutoDrive()
+        public static void ChangeAutoDrive(bool enableAutoDrive)
         {
-            memory.WriteByte((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_AUTODRIVE, 1);
+            if(enableAutoDrive)
+                memory.WriteByte((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_AUTODRIVE, 1);
+            else
+                memory.WriteByte((IntPtr)memory.getBaseAddress + PlayerAddrs.NON_STATIC_AUTODRIVE, 0);
+
         }
 
         /// <summary>
@@ -118,9 +133,9 @@ namespace NFSScript.World
                 {
                     int addr = Game.PWorld_Cars + CarOffset;
                     float q1 = memory.ReadFloat((IntPtr)(addr + (GameAddrs.PSTATIC_CAR_ANGULAR_VELOCITY + 0x5C)));
-                    float q2 = memory.ReadFloat((IntPtr)(addr + (GameAddrs.PSTATIC_CAR_ANGULAR_VELOCITY + 0x60)));
-                    float q3 = memory.ReadFloat((IntPtr)(addr + (GameAddrs.PSTATIC_CAR_ANGULAR_VELOCITY + 0x64)));
-                    float q4 = memory.ReadFloat((IntPtr)(addr + (GameAddrs.PSTATIC_CAR_ANGULAR_VELOCITY + 0x54)));
+                    float q2 = memory.ReadFloat((IntPtr)(addr + (GameAddrs.PSTATIC_CAR_FACING_SOUTH)));
+                    float q3 = memory.ReadFloat((IntPtr)(addr + (GameAddrs.PSTATIC_CAR_FACING_UP)));
+                    float q4 = memory.ReadFloat((IntPtr)(addr + (GameAddrs.PSTATIC_CAR_FACING_EAST)));
 
                     return new Quaternion(q1, q2, q3, q4);
                 }
@@ -138,6 +153,8 @@ namespace NFSScript.World
                         int offset = 0xB0 * i;
                         int addr = Game.PWorld_Cars + offset;
 
+                        // This check can be improved with bytes from offset +0x5C to +0x60.
+                        // 0x5D is non-player-checkish, 0x5C is initialized-checkish, check game code for more info.
                         float localX = memory.ReadFloat((IntPtr)(memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_X_POS));
                         float localY = memory.ReadFloat((IntPtr)(memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_Y_POS));
                         float localZ = memory.ReadFloat((IntPtr)(memory.getBaseAddress + PlayerAddrs.NON_STATIC_PLAYER_Z_POS));
@@ -157,20 +174,30 @@ namespace NFSScript.World
             }
 
             /// <summary>
-            /// The <see cref="Player"/>'s car speed in MPS.
+            /// The <see cref="Player"/>'s car speed in MPS, you need to set it in MPS as well.
             /// </summary>
             /// <remarks>
             /// See <see cref="Math.Mathf.ConvertSpeed(float, SpeedMeasurementConversionTypes)"/>.
             /// </remarks>
-            public static double Speed
+            public static float Speed
             {
                 get
                 {
-                    // TODO: Add constants to PlayerAddrs.
                     int address = memory.ReadInt32((IntPtr)memory.getBaseAddress + 0x91F9D0);
                     address = memory.ReadInt32((IntPtr)address + 0x68);
                     
-                    return memory.ReadDouble((IntPtr)address);
+                    return memory.ReadFloat((IntPtr)address);
+                }
+                set
+                {
+                    int addr = Game.PWorld_Cars + CarOffset;
+                    float southMult = memory.ReadFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_FACING_SOUTH);
+                    float vertMult = memory.ReadFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_FACING_UP);
+                    float eastMult = memory.ReadFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_FACING_EAST);
+
+                    memory.WriteFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_VELOCITY_TOWARDS_SOUTH, southMult * value);
+                    memory.WriteFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_VERTICAL_VELOCITY, vertMult * value);
+                    memory.WriteFloat((IntPtr)addr + GameAddrs.PSTATIC_CAR_VELOCITY_TOWARDS_EAST, eastMult * value);
                 }
             }
 

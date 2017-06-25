@@ -2814,6 +2814,11 @@ namespace NFSScript.Core
             /// <summary>
             /// 
             /// </summary>
+            public const int NON_STATIC_PLAYER_STATUS = 0x8E62CC;
+
+            /// <summary>
+            /// 
+            /// </summary>
             public const int NON_STATIC_IS_ACTIVITY_MODE = 0x1331F11 - 0xA20000;
 
             /// <summary>
@@ -2877,6 +2882,21 @@ namespace NFSScript.Core
             public const int PSTATIC_CAR_2_ROT = 0xC;
 
             /// <summary>
+            /// Value 1 = full south; -1 = full north.
+            /// </summary>
+            public const int PSTATIC_CAR_FACING_SOUTH = 0x90;
+
+            /// <summary>
+            /// Value 1 = full upwards; -1 full downwards (from bumper).
+            /// </summary>
+            public const int PSTATIC_CAR_FACING_UP = 0x94;
+
+            /// <summary>
+            /// Value 1 = full east; -1 = full west.
+            /// </summary>
+            public const int PSTATIC_CAR_FACING_EAST = 0x98;
+
+            /// <summary>
             /// 
             /// </summary>
             public const int PSTATIC_CAR_VELOCITY_TOWARDS_SOUTH = 0x20;
@@ -2915,7 +2935,7 @@ namespace NFSScript.Core
             public const int PSTATIC_CAR_SPEED = 0x28;
 
             /// <summary>
-            /// Default value is 1000.
+            /// Car gravity, default value is different per car.
             /// </summary>
             public const int PSTATIC_CAR_GRAVITY = 0x2C;
 

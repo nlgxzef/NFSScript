@@ -45,6 +45,13 @@ namespace NFSScript.Core
             }
         }
 
+        private void SetVariables()
+        {
+            baseAddress = IntPtr.Zero;
+            processModule = mainProcess[0].MainModule;
+            baseAddress = processModule.BaseAddress;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -58,6 +65,8 @@ namespace NFSScript.Core
         public GMemory(string pProcessName)
         {
             this.processName = pProcessName;
+            CheckProcess();
+            SetVariables();
         }
 
         /// <summary>

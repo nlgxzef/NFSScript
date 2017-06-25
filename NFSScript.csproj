@@ -133,6 +133,7 @@
     <Compile Include="World\EASharp\Math.cs" />
     <Compile Include="World\EffectType.cs" />
     <Compile Include="World\Game.cs" />
+    <Compile Include="World\PlayerStatus.cs" />
     <Compile Include="World\Hash.cs" />
     <Compile Include="World\HUD.cs" />
     <Compile Include="World\Icon.cs" />
