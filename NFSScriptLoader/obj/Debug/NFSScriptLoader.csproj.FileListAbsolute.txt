@@ -1,0 +1,9 @@
+E:\My Projects\NFSScriptNEW\NFSScript\NFSScriptLoader\bin\Debug\NFSScriptLoader.exe.config
+E:\My Projects\NFSScriptNEW\NFSScript\NFSScriptLoader\bin\Debug\NFSScriptLoader.exe
+E:\My Projects\NFSScriptNEW\NFSScript\NFSScriptLoader\bin\Debug\NFSScriptLoader.pdb
+E:\My Projects\NFSScriptNEW\NFSScript\NFSScriptLoader\bin\Debug\NFSScript.dll
+E:\My Projects\NFSScriptNEW\NFSScript\NFSScriptLoader\bin\Debug\NFSScript.pdb
+E:\My Projects\NFSScriptNEW\NFSScript\NFSScriptLoader\bin\Debug\NFSScript.xml
+E:\My Projects\NFSScriptNEW\NFSScript\NFSScriptLoader\obj\Debug\NFSScriptLoader.csprojResolveAssemblyReference.cache
+E:\My Projects\NFSScriptNEW\NFSScript\NFSScriptLoader\obj\Debug\NFSScriptLoader.exe
+E:\My Projects\NFSScriptNEW\NFSScript\NFSScriptLoader\obj\Debug\NFSScriptLoader.pdb

@@ -1,0 +1,8 @@
+E:\My Projects\NFSScriptNEW\NFSScript\NFSScript\bin\Debug\NFSScript.XML
+E:\My Projects\NFSScriptNEW\NFSScript\NFSScript\bin\Debug\NFSScript.dll
+E:\My Projects\NFSScriptNEW\NFSScript\NFSScript\bin\Debug\NFSScript.pdb
+E:\My Projects\NFSScriptNEW\NFSScript\NFSScript\obj\Debug\NFSScript.csprojResolveAssemblyReference.cache
+E:\My Projects\NFSScriptNEW\NFSScript\NFSScript\obj\Debug\Interop.MediaPlayer.dll
+E:\My Projects\NFSScriptNEW\NFSScript\NFSScript\obj\Debug\NFSScript.csproj.ResolveComReference.cache
+E:\My Projects\NFSScriptNEW\NFSScript\NFSScript\obj\Debug\NFSScript.dll
+E:\My Projects\NFSScriptNEW\NFSScript\NFSScript\obj\Debug\NFSScript.pdb

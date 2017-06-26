@@ -1,0 +1,8 @@
+E:\My Projects\NFSScriptNEW\NFSScript\MyMod\bin\Debug\MyMod.dll
+E:\My Projects\NFSScriptNEW\NFSScript\MyMod\bin\Debug\MyMod.pdb
+E:\My Projects\NFSScriptNEW\NFSScript\MyMod\bin\Debug\NFSScript.dll
+E:\My Projects\NFSScriptNEW\NFSScript\MyMod\bin\Debug\NFSScript.pdb
+E:\My Projects\NFSScriptNEW\NFSScript\MyMod\bin\Debug\NFSScript.xml
+E:\My Projects\NFSScriptNEW\NFSScript\MyMod\obj\Debug\MyMod.csprojResolveAssemblyReference.cache
+E:\My Projects\NFSScriptNEW\NFSScript\MyMod\obj\Debug\MyMod.dll
+E:\My Projects\NFSScriptNEW\NFSScript\MyMod\obj\Debug\MyMod.pdb
